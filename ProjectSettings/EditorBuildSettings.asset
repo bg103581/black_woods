@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/AssetsLWRP/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/MAIN/Scene/Menu.unity
+    guid: 8ec58cb338d76594397a6aa5db98e8d8
+  - enabled: 1
+    path: Assets/MAIN/Scene/RocheScene.unity
+    guid: a632b0da1db3f0a41a6a616d4e0c2292
   m_configObjects: {}
