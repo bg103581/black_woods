@@ -14,7 +14,6 @@ public class Dots : Player
     }
 
     private void Update() {
-        Vector2 m = new Vector2(_move.x, _move.y) * Time.deltaTime * _playerSpeed;
-        transform.Translate(m, Space.World);
+        PlayerUpdate();
     }
 }
