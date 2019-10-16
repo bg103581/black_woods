@@ -208,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 282462604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6782596, y: 1.28, z: -2.7652354}
+  m_LocalPosition: {x: 2.6782596, y: 0.862, z: -2.7652354}
   m_LocalScale: {x: 1.1022198, y: 0.3805406, z: 0.31897536}
   m_Children: []
   m_Father: {fileID: 0}
@@ -228,7 +228,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &282462610
 MonoBehaviour:
@@ -243,7 +243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 2
-  _jumpStrength: 200
+  _jumpStrength: 5
+  _fallMultiplier: 1.5
+  _airControl: 4
 --- !u!1 &512199308
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,8 +359,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 0.22789526, z: 10}
+  m_Center: {x: 0, y: -0.06443024, z: 0}
 --- !u!23 &699827408
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -413,8 +415,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699827406}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4214416, y: 0.6562104, z: -2.4497519}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.4214, y: 0.6562104, z: -2.4497519}
+  m_LocalScale: {x: 3.3328, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -598,7 +600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1846980147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.038, y: 1.28, z: -2.7652354}
+  m_LocalPosition: {x: 4.038, y: 0.744, z: -2.7652354}
   m_LocalScale: {x: 0.1540708, y: 0.13336807, z: 0.12316914}
   m_Children: []
   m_Father: {fileID: 0}
@@ -618,7 +620,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1846980153
 MonoBehaviour:
@@ -633,4 +635,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpeed: 2
-  _jumpStrength: 200
+  _jumpStrength: 3
+  _fallMultiplier: 1.5
+  _airControl: 7

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
@@ -10,12 +11,48 @@ public class Player : MonoBehaviour
     protected bool _isGrounded;
 
     protected Vector2 _move;
+    private float _oldX;
 
     [SerializeField]
     protected float _playerSpeed = 2;
     [SerializeField]
     protected float _jumpStrength;
+    [SerializeField]
+    protected float _fallMultiplier = 1.5f;
+    [SerializeField]
+    protected float _airControl = 2f;
     protected Rigidbody _rb;
+
+    //features that has to be put in update, common with Dots and Strix
+    protected void PlayerUpdate() {
+        if (_isGrounded) {
+            //walk
+            _rb.velocity = new Vector3(_move.x * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+            _oldX = _move.x;
+        }
+        else {
+            //aircontrol
+            if (_oldX != _move.x) {
+                if (_move.x > 0 && _rb.velocity.x < _playerSpeed)
+                    _rb.AddForce(Vector3.right * _airControl, ForceMode.Force);
+                else if (_move.x < 0 && _rb.velocity.x > (-1 * _playerSpeed))
+                    _rb.AddForce(Vector3.left * _airControl, ForceMode.Force);
+                else if (_move.x == 0 && Mathf.Abs(_rb.velocity.x) > 0.5f) {
+                    if (_oldX < 0) {
+                        _rb.AddForce(Vector3.right * _airControl, ForceMode.Force);
+                    }
+                    else if (_oldX > 0) {
+                        _rb.AddForce(Vector3.left * _airControl, ForceMode.Force);
+                    }
+                }
+            }
+        }
+
+        //speed up fall
+        if (_rb.velocity.y < 0) {
+            _rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
+        }
+    }
 
     protected void Init() {
         _controls = new PlayerControls();
@@ -23,8 +60,11 @@ public class Player : MonoBehaviour
     }
 
     protected void Jump() {
-        if (_isGrounded)
-            _rb.AddForce(Vector3.up * _jumpStrength);
+        if (_isGrounded) {
+            //make the jump
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            _rb.velocity += Vector3.up * _jumpStrength;
+        }
     }
 
     private void OnEnable() {
