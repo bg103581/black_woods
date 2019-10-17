@@ -8,12 +8,24 @@ using UnityEngine;
 
 public class CollectionSystem : MonoBehaviour
 {
-    public GameManager gameManager;
+    public int CollectibleIndex;
+
+    private GameManager gameManager;
+
+    private void Awake() {
+
+        gameManager = FindObjectOfType<GameManager>();
+        if (!gameManager.CollectibleState[CollectibleIndex]) {
+            gameObject.SetActive(false);
+        }
+        
+    }
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             gameManager.Collectibles++;
-            Destroy(this.gameObject);
+            gameManager.CollectibleState[CollectibleIndex] = false;
+            gameObject.SetActive(false);
 
             Debug.Log("Feather collected. You have " + gameManager.Collectibles + " feathers in total.");
         }
