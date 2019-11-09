@@ -6,7 +6,6 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-    protected PlayerControls _controls;
 
     protected bool _isGrounded;
 
@@ -55,24 +54,7 @@ public class Player : MonoBehaviour
     }
 
     protected void Init() {
-        _controls = new PlayerControls();
         _rb = GetComponent<Rigidbody>();
-    }
-
-    protected void Jump() {
-        if (_isGrounded) {
-            //make the jump
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            _rb.velocity += Vector3.up * _jumpStrength;
-        }
-    }
-
-    private void OnEnable() {
-        _controls.Player.Enable();
-    }
-
-    private void OnDisable() {
-        _controls.Player.Disable();
     }
 
     private void OnCollisionEnter(Collision collision) {
