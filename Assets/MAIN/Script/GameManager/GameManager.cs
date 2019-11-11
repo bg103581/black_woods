@@ -1,4 +1,6 @@
-﻿public class GameManager : GenericSingleton<GameManager>
+﻿using UnityEngine;
+
+public class GameManager : GenericSingleton<GameManager>
 {
     private int _collectibles;
     public bool[] CollectibleState;
@@ -33,5 +35,9 @@
         for (int i = 0; i < 3; i++) {
             CollectibleState[i] = true;
         }
+    }
+
+    private void OnPopupAide() {
+        Debug.Log("popup");
     }
 }
