@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 {
 
     protected bool _isGrounded;
+    protected bool _onTree;
+    protected bool _wallClimb;
 
     protected Vector2 _move;
     private float _oldX;
@@ -24,9 +26,14 @@ public class Player : MonoBehaviour
 
     //features that has to be put in update, common with Dots and Strix
     protected void PlayerUpdate() {
-        if (_isGrounded) {
+        if (_isGrounded || _wallClimb) {
             //walk
             _rb.velocity = new Vector3(_move.x * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+
+            //dots utilise son bec
+            if (_wallClimb) {
+                _rb.velocity = new Vector3(0, _move.y * _playerSpeed, _rb.velocity.z);
+            }
             _oldX = _move.x;
         }
         else {
@@ -60,15 +67,21 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag == "ground")
             _isGrounded = true;
+        if (collision.transform.tag == "tree")
+            _onTree = true;
     }
 
     private void OnCollisionExit(Collision collision) {
         if (collision.transform.tag == "ground")
             _isGrounded = false;
+        if (collision.transform.tag == "tree")
+            _onTree = false;
     }
 
     private void OnCollisionStay(Collision collision) {
         if (collision.transform.tag == "ground")
             _isGrounded = true;
+        if (collision.transform.tag == "tree")
+            _onTree = true;
     }
 }

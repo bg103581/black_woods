@@ -7,6 +7,7 @@ TagManager:
   - ground
   - collectible
   - new_camera
+  - tree
   layers:
   - Default
   - TransparentFX
