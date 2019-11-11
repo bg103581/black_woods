@@ -216,6 +216,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "d80dbb7e-5f35-4cb3-b5a3-d2192f5f763b",
+            "actions": [
+                {
+                    "name": "PopupAide",
+                    "type": "Button",
+                    "id": "f548c73a-5b04-4f4c-94ee-abebcbd92d5d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b3b3b68c-45c1-4847-bdc1-6721ab4eaf1b",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "PopupAide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

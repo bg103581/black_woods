@@ -228,6 +228,33 @@ public class PlayerControls : IInputActionCollection
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""d80dbb7e-5f35-4cb3-b5a3-d2192f5f763b"",
+            ""actions"": [
+                {
+                    ""name"": ""PopupAide"",
+                    ""type"": ""Button"",
+                    ""id"": ""f548c73a-5b04-4f4c-94ee-abebcbd92d5d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b3b3b68c-45c1-4847-bdc1-6721ab4eaf1b"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""PopupAide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -261,6 +288,9 @@ public class PlayerControls : IInputActionCollection
         m_Player_DotsJump = m_Player.FindAction("DotsJump", throwIfNotFound: true);
         m_Player_StrixMovement = m_Player.FindAction("StrixMovement", throwIfNotFound: true);
         m_Player_StrixJump = m_Player.FindAction("StrixJump", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_PopupAide = m_Menu.FindAction("PopupAide", throwIfNotFound: true);
     }
 
     ~PlayerControls()
@@ -363,6 +393,39 @@ public class PlayerControls : IInputActionCollection
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_PopupAide;
+    public struct MenuActions
+    {
+        private PlayerControls m_Wrapper;
+        public MenuActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @PopupAide => m_Wrapper.m_Menu_PopupAide;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                PopupAide.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPopupAide;
+                PopupAide.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPopupAide;
+                PopupAide.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPopupAide;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                PopupAide.started += instance.OnPopupAide;
+                PopupAide.performed += instance.OnPopupAide;
+                PopupAide.canceled += instance.OnPopupAide;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -387,5 +450,9 @@ public class PlayerControls : IInputActionCollection
         void OnDotsJump(InputAction.CallbackContext context);
         void OnStrixMovement(InputAction.CallbackContext context);
         void OnStrixJump(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnPopupAide(InputAction.CallbackContext context);
     }
 }
