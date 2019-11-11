@@ -48,13 +48,21 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DotsBec"",
+                    ""type"": ""Value"",
+                    ""id"": ""51c6bf55-b238-4a1b-99c4-17b1da7d107a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""1b53dde7-8194-4962-99ed-11a10267146a"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -131,7 +139,7 @@ public class PlayerControls : IInputActionCollection
                 {
                     ""name"": ""left"",
                     ""id"": ""cb8d7fda-9860-4e7f-a688-cbaa34c9105c"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -226,6 +234,28 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""StrixMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f77cabd0-deb9-4784-99a3-b2338522907e"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DotsBec"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d865b4fb-3448-4750-ba89-497862b02ba2"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DotsBec"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -288,6 +318,7 @@ public class PlayerControls : IInputActionCollection
         m_Player_DotsJump = m_Player.FindAction("DotsJump", throwIfNotFound: true);
         m_Player_StrixMovement = m_Player.FindAction("StrixMovement", throwIfNotFound: true);
         m_Player_StrixJump = m_Player.FindAction("StrixJump", throwIfNotFound: true);
+        m_Player_DotsBec = m_Player.FindAction("DotsBec", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_PopupAide = m_Menu.FindAction("PopupAide", throwIfNotFound: true);
@@ -344,6 +375,7 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Player_DotsJump;
     private readonly InputAction m_Player_StrixMovement;
     private readonly InputAction m_Player_StrixJump;
+    private readonly InputAction m_Player_DotsBec;
     public struct PlayerActions
     {
         private PlayerControls m_Wrapper;
@@ -352,6 +384,7 @@ public class PlayerControls : IInputActionCollection
         public InputAction @DotsJump => m_Wrapper.m_Player_DotsJump;
         public InputAction @StrixMovement => m_Wrapper.m_Player_StrixMovement;
         public InputAction @StrixJump => m_Wrapper.m_Player_StrixJump;
+        public InputAction @DotsBec => m_Wrapper.m_Player_DotsBec;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -373,6 +406,9 @@ public class PlayerControls : IInputActionCollection
                 StrixJump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixJump;
                 StrixJump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixJump;
                 StrixJump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixJump;
+                DotsBec.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsBec;
+                DotsBec.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsBec;
+                DotsBec.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsBec;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -389,6 +425,9 @@ public class PlayerControls : IInputActionCollection
                 StrixJump.started += instance.OnStrixJump;
                 StrixJump.performed += instance.OnStrixJump;
                 StrixJump.canceled += instance.OnStrixJump;
+                DotsBec.started += instance.OnDotsBec;
+                DotsBec.performed += instance.OnDotsBec;
+                DotsBec.canceled += instance.OnDotsBec;
             }
         }
     }
@@ -450,6 +489,7 @@ public class PlayerControls : IInputActionCollection
         void OnDotsJump(InputAction.CallbackContext context);
         void OnStrixMovement(InputAction.CallbackContext context);
         void OnStrixJump(InputAction.CallbackContext context);
+        void OnDotsBec(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
