@@ -1,10 +1,11 @@
-﻿public class GameManager : GenericSingleton<GameManager>
-{
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class GameManager : GenericSingleton<GameManager> {
     private int _collectibles;
     public bool[] CollectibleState;
 
-    public override void Awake() {
-
+    private void Start() {
         Initialize();
     }
 
@@ -33,5 +34,10 @@
         for (int i = 0; i < 3; i++) {
             CollectibleState[i] = true;
         }
+    }
+
+    private void OnPopupAide() {
+
+        GameObject.Find("SceneHandler").GetComponent<SceneHandler>().ShowPopup();
     }
 }
