@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollectibleState: 
+  PopupList: []
 --- !u!114 &9112074
 MonoBehaviour:
   m_ObjectHideFlags: 0
