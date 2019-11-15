@@ -5,6 +5,14 @@ using UnityEngine.InputSystem;
 
 public class Strix : Player
 {
+
+    [SerializeField]
+    private float _flairRadius = 5f;
+
+    private int _layerMaskFlair = 1 << 9;
+
+    private GameObject nearestObj;
+
     private void Awake() {
         Init();
 
@@ -28,5 +36,29 @@ public class Strix : Player
             _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
             _rb.velocity += Vector3.up * _jumpStrength;
         }
+    }
+
+    private void OnStrixFlair() {
+        Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
+
+        if (nearObjects.Length == 1) {
+            nearestObj = nearObjects[0].gameObject;
+        }
+        else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
+            float minDistance = 100f;
+            foreach(Collider obj in nearObjects) {
+                float distance = Vector3.Distance(transform.position, obj.transform.position);
+                if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
+                    minDistance = distance;
+                    nearestObj = obj.gameObject;
+                }
+            }
+        }
+
+        nearestObj.GetComponent<Usable>().OnDetected();
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position, _flairRadius);
     }
 }
