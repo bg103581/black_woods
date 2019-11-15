@@ -9,6 +9,7 @@ TagManager:
   - new_camera
   - tree
   - popup
+  - flair_object
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Flair_object
   - 
   - 
   - 
