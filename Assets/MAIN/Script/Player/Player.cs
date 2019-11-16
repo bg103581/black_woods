@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     protected float _airControl = 2f;
     protected Rigidbody _rb;
+    [SerializeField]
+    protected Animator animator;
 
     //features that has to be put in update, common with Dots and Strix
     protected void PlayerUpdate() {
@@ -62,11 +64,13 @@ public class Player : MonoBehaviour
 
     protected void Init() {
         _rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag == "ground")
             _isGrounded = true;
+            animator.SetBool("isJumping", false);
         if (collision.transform.tag == "tree")
             _onTree = true;
     }
@@ -74,6 +78,7 @@ public class Player : MonoBehaviour
     private void OnCollisionExit(Collision collision) {
         if (collision.transform.tag == "ground")
             _isGrounded = false;
+        animator.SetBool("isJumping", true);
         if (collision.transform.tag == "tree")
             _onTree = false;
     }

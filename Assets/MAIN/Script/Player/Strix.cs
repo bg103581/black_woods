@@ -28,6 +28,10 @@ public class Strix : Player
 
     private void OnStrixMovement(InputValue value) {
         _move = new Vector2(value.Get<Vector2>().x, 0);
+        animator.SetBool("isRunning", true);
+        if (value.Get<Vector2>().x == 0) {
+            animator.SetBool("isRunning", false);
+        }
     }
 
     private void OnStrixJump() {
@@ -55,7 +59,17 @@ public class Strix : Player
             }
         }
 
-        nearestObj.GetComponent<Usable>().OnDetected();
+        if (nearestObj != null) {
+            nearestObj.GetComponent<Usable>().OnDetected();
+        }
+
+        StartCoroutine(ActivateFlairAnimation());
+    }
+
+    IEnumerator ActivateFlairAnimation() {
+        animator.SetBool("isFlairing", true);
+        yield return new WaitForSeconds(3f);
+        animator.SetBool("isFlairing", false);
     }
 
     private void OnDrawGizmosSelected() {
