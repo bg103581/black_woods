@@ -33,6 +33,13 @@ public class Player : MonoBehaviour
             //walk
             _rb.velocity = new Vector3(_move.x * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
 
+            if (_rb.velocity.x < 0) {
+                transform.localScale = new Vector3(1, 1, -1);
+            }
+            else if (_rb.velocity.x > 0) {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+
             //dots utilise son bec
             if (_wallClimb) {
                 _rb.velocity = new Vector3(0, _move.y * _playerSpeed, _rb.velocity.z);

@@ -69,7 +69,7 @@ public class Strix : Player
 
     IEnumerator ActivateFlairAnimation() {
         animator.SetBool("isFlairing", true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.25f);
         animator.SetBool("isFlairing", false);
     }
 
