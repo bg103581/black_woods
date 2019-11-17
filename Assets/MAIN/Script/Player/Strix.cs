@@ -73,11 +73,19 @@ public class Strix : Player
         animator.SetBool("isFlairing", false);
     }
 
+    IEnumerator ActivateDigAnimation() {
+        animator.SetBool("isDigging", true);
+        yield return new WaitForSeconds(2.15f);
+        animator.SetBool("isDigging", false);
+    }
+
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, _flairRadius);
     }
 
     private void OnStrixCreuse() {
+        StartCoroutine(ActivateDigAnimation());
+
         if (_isNextToHole && _holeToDig != null) {
             _holeToDig.GetComponent<EnablePathObject>().EnablePath();
         }
