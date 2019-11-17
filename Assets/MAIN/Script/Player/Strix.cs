@@ -12,6 +12,7 @@ public class Strix : Player
     private int _layerMaskFlair = 1 << 9;
 
     private GameObject nearestObj;
+    private GameObject _holeToDig;
 
     private void Awake() {
         Init();
@@ -74,5 +75,30 @@ public class Strix : Player
 
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, _flairRadius);
+    }
+
+    private void OnStrixCreuse() {
+        if (_isNextToHole && _holeToDig != null) {
+            _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "creuse_object") {
+            _isNextToHole = true;
+            _holeToDig = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "creuse_object") {
+            _isNextToHole = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "creuse_object") {
+            _isNextToHole = true;
+        }
     }
 }

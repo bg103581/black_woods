@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     protected bool _isGrounded;
     protected bool _onTree;
     protected bool _wallClimb;
+    protected bool _isNextToHole;
 
     protected Vector2 _move;
     private float _oldX;

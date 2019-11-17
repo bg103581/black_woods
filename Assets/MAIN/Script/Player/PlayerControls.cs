@@ -64,6 +64,14 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""StrixCreuse"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c65a57c-a070-4a9e-b7c9-6979d3fbb684"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -286,6 +294,28 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""StrixFlair"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b6b6cf7-8be5-41d2-9b68-fa38bd6501d6"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StrixCreuse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f06506e8-1d89-4a61-86d6-520094917d3e"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StrixCreuse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -350,6 +380,7 @@ public class PlayerControls : IInputActionCollection
         m_Player_StrixJump = m_Player.FindAction("StrixJump", throwIfNotFound: true);
         m_Player_DotsBec = m_Player.FindAction("DotsBec", throwIfNotFound: true);
         m_Player_StrixFlair = m_Player.FindAction("StrixFlair", throwIfNotFound: true);
+        m_Player_StrixCreuse = m_Player.FindAction("StrixCreuse", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_PopupAide = m_Menu.FindAction("PopupAide", throwIfNotFound: true);
@@ -408,6 +439,7 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Player_StrixJump;
     private readonly InputAction m_Player_DotsBec;
     private readonly InputAction m_Player_StrixFlair;
+    private readonly InputAction m_Player_StrixCreuse;
     public struct PlayerActions
     {
         private PlayerControls m_Wrapper;
@@ -418,6 +450,7 @@ public class PlayerControls : IInputActionCollection
         public InputAction @StrixJump => m_Wrapper.m_Player_StrixJump;
         public InputAction @DotsBec => m_Wrapper.m_Player_DotsBec;
         public InputAction @StrixFlair => m_Wrapper.m_Player_StrixFlair;
+        public InputAction @StrixCreuse => m_Wrapper.m_Player_StrixCreuse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -445,6 +478,9 @@ public class PlayerControls : IInputActionCollection
                 StrixFlair.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixFlair;
                 StrixFlair.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixFlair;
                 StrixFlair.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixFlair;
+                StrixCreuse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCreuse;
+                StrixCreuse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCreuse;
+                StrixCreuse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCreuse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -467,6 +503,9 @@ public class PlayerControls : IInputActionCollection
                 StrixFlair.started += instance.OnStrixFlair;
                 StrixFlair.performed += instance.OnStrixFlair;
                 StrixFlair.canceled += instance.OnStrixFlair;
+                StrixCreuse.started += instance.OnStrixCreuse;
+                StrixCreuse.performed += instance.OnStrixCreuse;
+                StrixCreuse.canceled += instance.OnStrixCreuse;
             }
         }
     }
@@ -530,6 +569,7 @@ public class PlayerControls : IInputActionCollection
         void OnStrixJump(InputAction.CallbackContext context);
         void OnDotsBec(InputAction.CallbackContext context);
         void OnStrixFlair(InputAction.CallbackContext context);
+        void OnStrixCreuse(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
