@@ -21,7 +21,7 @@ TagManager:
   - 
   - PostProcessing
   - Flair_object
-  - 
+  - 2DBackground
   - 
   - 
   - 
@@ -44,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: 2DBackground
+    uniqueID: 3809755033
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 3341476359
     locked: 0
