@@ -11,6 +11,8 @@ public class Dots : Player
 
     private bool _isUsingBec;
 
+    private GameObject _objectToHit;
+
     private void Awake() {
         Init();
         _baseSpeed = _playerSpeed;
@@ -48,5 +50,20 @@ public class Dots : Player
 
     private void OnDotsBec(InputValue value) {
         _isUsingBec = value.Get<float>() > 0;
+        if (_objectToHit != null) {
+            _objectToHit.GetComponent<BreakObject>().OnBecHit();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "break_object") {
+            _objectToHit = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "break_object") {
+            _objectToHit = null;
+        }
     }
 }
