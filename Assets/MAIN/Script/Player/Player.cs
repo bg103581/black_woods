@@ -33,11 +33,11 @@ public class Player : MonoBehaviour
             //walk
             _rb.velocity = new Vector3(_move.x * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
 
-            if (_rb.velocity.x < 0) {
-                transform.localScale = new Vector3(1, 1, -1);
+            if ((_rb.velocity.x < 0 && transform.localScale.z > 0) || (_rb.velocity.x > 0 && transform.localScale.z < 0)) {
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
             }
-            else if (_rb.velocity.x > 0) {
-                transform.localScale = new Vector3(1, 1, 1);
+            else if (_rb.velocity.x > 0 && transform.localScale.z < 0) {
+                transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
             }
 
             //dots utilise son bec

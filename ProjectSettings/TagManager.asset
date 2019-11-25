@@ -11,6 +11,7 @@ TagManager:
   - popup
   - flair_object
   - creuse_object
+  - break_object
   layers:
   - Default
   - TransparentFX
