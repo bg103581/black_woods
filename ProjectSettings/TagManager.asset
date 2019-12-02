@@ -12,6 +12,7 @@ TagManager:
   - flair_object
   - creuse_object
   - break_object
+  - dialogue_box
   layers:
   - Default
   - TransparentFX
