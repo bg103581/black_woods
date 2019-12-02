@@ -15,6 +15,8 @@ public class MenuManager : MonoBehaviour
     public GameObject continueCanvas;
     public GameObject menuCanvas;
     public GameObject noSavedDataCanvas;
+    public FMODUnity.StudioEventEmitter EventEmitterRef; /// Sound 
+
     #endregion
 
     #region PRIVATE VARIABLES
@@ -23,6 +25,8 @@ public class MenuManager : MonoBehaviour
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
+
+        EventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>(); //Sound
     }
 
     private void OnEnable() {
@@ -35,6 +39,8 @@ public class MenuManager : MonoBehaviour
     public void NewGame() {
         SaveSystem.NewGame();
         gameManager.Initialize();
+        EventEmitterRef.Play(); //Sound
+
     }
 
     public void VolumeUpdate(float volumeValue) {
@@ -56,6 +62,7 @@ public class MenuManager : MonoBehaviour
         }
 
         menuCanvas.SetActive(false);
+        EventEmitterRef.Play(); // Sound
     }
 
     public void LoadScene(int sceneNumber) {
