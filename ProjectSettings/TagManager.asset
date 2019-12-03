@@ -12,6 +12,7 @@ TagManager:
   - flair_object
   - creuse_object
   - break_object
+  - head_strix
   layers:
   - Default
   - TransparentFX
