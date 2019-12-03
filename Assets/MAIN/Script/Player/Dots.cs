@@ -10,8 +10,15 @@ public class Dots : Player
     private float _baseSpeed;
 
     private bool _isUsingBec;
+    private bool _isNearHeadStrix;
+    private bool _isOnStrixHead;
 
     private GameObject _objectToHit;
+
+    [SerializeField]
+    private Transform _strix;
+    [SerializeField]
+    private Transform _strixHead;
 
     private void Awake() {
         Init();
@@ -29,7 +36,11 @@ public class Dots : Player
             _wallClimb = true;
             _playerSpeed = _speedOnTree;
             _rb.useGravity = false;
-        } else {
+        } 
+        else if (_isOnStrixHead) {      //si dots est sur Strix
+            _rb.useGravity = false;
+        }
+        else {
             _wallClimb = false;
             _playerSpeed = _baseSpeed;
             _rb.useGravity = true;
@@ -55,15 +66,49 @@ public class Dots : Player
         }
     }
 
+    private void OnDotsCoop() {
+        if (_isNearHeadStrix) {
+            Debug.Log("monte sur strix");
+            MoveToStrixHead();
+        }
+        else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {
+            Debug.Log("descend de strix");
+            GetDownFromStrix();
+        }
+    }
+
+    private void MoveToStrixHead() {
+        _isOnStrixHead = true;
+
+        transform.SetParent(_strix);
+
+        transform.position = _strixHead.position;
+        _rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    private void GetDownFromStrix() {
+        _isOnStrixHead = false;
+
+        transform.parent = null;
+
+        _rb.constraints = RigidbodyConstraints.FreezeRotation;
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "break_object") {
             _objectToHit = other.gameObject;
+        }
+        if (other.tag == "head_strix") {
+            _isNearHeadStrix = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "break_object") {
             _objectToHit = null;
+        }
+        if (other.tag == "head_strix") {
+            _isNearHeadStrix = false;
         }
     }
 }

@@ -72,6 +72,22 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""StrixCoop"",
+                    ""type"": ""Value"",
+                    ""id"": ""641d285e-eb90-4da1-a6a2-6e723615413a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""DotsCoop"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f51afda-3f09-476f-8dd7-f47321c75f5c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -316,6 +332,50 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""StrixCreuse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""138696be-79ad-4c5a-a42b-2f938c07864d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""StrixCoop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73672f5c-a39d-4c2a-bba4-c609e64aa0d4"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StrixCoop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7218fffd-a8e9-4194-badb-4ed20e1f521f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DotsCoop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a41d149-f6b4-4643-85ef-43ab2962080f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DotsCoop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -381,6 +441,8 @@ public class PlayerControls : IInputActionCollection
         m_Player_DotsBec = m_Player.FindAction("DotsBec", throwIfNotFound: true);
         m_Player_StrixFlair = m_Player.FindAction("StrixFlair", throwIfNotFound: true);
         m_Player_StrixCreuse = m_Player.FindAction("StrixCreuse", throwIfNotFound: true);
+        m_Player_StrixCoop = m_Player.FindAction("StrixCoop", throwIfNotFound: true);
+        m_Player_DotsCoop = m_Player.FindAction("DotsCoop", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_PopupAide = m_Menu.FindAction("PopupAide", throwIfNotFound: true);
@@ -440,6 +502,8 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Player_DotsBec;
     private readonly InputAction m_Player_StrixFlair;
     private readonly InputAction m_Player_StrixCreuse;
+    private readonly InputAction m_Player_StrixCoop;
+    private readonly InputAction m_Player_DotsCoop;
     public struct PlayerActions
     {
         private PlayerControls m_Wrapper;
@@ -451,6 +515,8 @@ public class PlayerControls : IInputActionCollection
         public InputAction @DotsBec => m_Wrapper.m_Player_DotsBec;
         public InputAction @StrixFlair => m_Wrapper.m_Player_StrixFlair;
         public InputAction @StrixCreuse => m_Wrapper.m_Player_StrixCreuse;
+        public InputAction @StrixCoop => m_Wrapper.m_Player_StrixCoop;
+        public InputAction @DotsCoop => m_Wrapper.m_Player_DotsCoop;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -481,6 +547,12 @@ public class PlayerControls : IInputActionCollection
                 StrixCreuse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCreuse;
                 StrixCreuse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCreuse;
                 StrixCreuse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCreuse;
+                StrixCoop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCoop;
+                StrixCoop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCoop;
+                StrixCoop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStrixCoop;
+                DotsCoop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsCoop;
+                DotsCoop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsCoop;
+                DotsCoop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsCoop;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -506,6 +578,12 @@ public class PlayerControls : IInputActionCollection
                 StrixCreuse.started += instance.OnStrixCreuse;
                 StrixCreuse.performed += instance.OnStrixCreuse;
                 StrixCreuse.canceled += instance.OnStrixCreuse;
+                StrixCoop.started += instance.OnStrixCoop;
+                StrixCoop.performed += instance.OnStrixCoop;
+                StrixCoop.canceled += instance.OnStrixCoop;
+                DotsCoop.started += instance.OnDotsCoop;
+                DotsCoop.performed += instance.OnDotsCoop;
+                DotsCoop.canceled += instance.OnDotsCoop;
             }
         }
     }
@@ -570,6 +648,8 @@ public class PlayerControls : IInputActionCollection
         void OnDotsBec(InputAction.CallbackContext context);
         void OnStrixFlair(InputAction.CallbackContext context);
         void OnStrixCreuse(InputAction.CallbackContext context);
+        void OnStrixCoop(InputAction.CallbackContext context);
+        void OnDotsCoop(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

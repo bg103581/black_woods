@@ -127,6 +127,10 @@ MonoBehaviour:
   _jumpStrength: 3
   _fallMultiplier: 1.5
   _airControl: 7
+  animator: {fileID: 0}
+  _speedOnTree: 1
+  _strix: {fileID: 0}
+  _strixHead: {fileID: 0}
 --- !u!114 &6318640702546060644
 MonoBehaviour:
   m_ObjectHideFlags: 0

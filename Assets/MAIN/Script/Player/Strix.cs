@@ -11,8 +11,14 @@ public class Strix : Player
 
     private int _layerMaskFlair = 1 << 9;
 
+    [HideInInspector]
+    public bool isCoop;
+
     private GameObject nearestObj;
     private GameObject _holeToDig;
+
+    [SerializeField]
+    private Collider _coopCollider;
 
     private void Awake() {
         Init();
@@ -25,6 +31,13 @@ public class Strix : Player
 
     private void Update() {
         PlayerUpdate();
+
+        if (isCoop) {
+            _coopCollider.enabled = true;
+        }
+        else {
+            _coopCollider.enabled = false;
+        }
     }
 
     private void OnStrixMovement(InputValue value) {
@@ -89,6 +102,11 @@ public class Strix : Player
         if (_isNextToHole && _holeToDig != null) {
             _holeToDig.GetComponent<EnablePathObject>().EnablePath();
         }
+    }
+
+    private void OnStrixCoop(InputValue value) {
+        isCoop = value.Get<float>() > 0;
+        Debug.Log("(Strix) : _isCoop = " + isCoop);
     }
 
     private void OnTriggerEnter(Collider other) {
