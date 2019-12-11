@@ -13,6 +13,7 @@ TagManager:
   - creuse_object
   - break_object
   - dialogue_box
+  - dialogue_trigger
   layers:
   - Default
   - TransparentFX

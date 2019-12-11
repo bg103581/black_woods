@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
 public class DialogueManager : GenericSingleton<DialogueManager>
 {
+    #region VARIABLES
     private Queue<string> sentences; // FIFO collection
     private GameObject dialogueBox;
     private string currentSentence;
@@ -15,8 +17,13 @@ public class DialogueManager : GenericSingleton<DialogueManager>
     private TextMeshProUGUI nameText;
     [SerializeField]
     private TextMeshProUGUI dialogueText;
- 
+
+    private GameObject[] players;
+    private int triggerIDcount = 0;
+
+    public GameObject[] dialogueTriggers;
     public bool sentenceIsComplete = false;
+    #endregion
 
     void Start()
     {
@@ -25,10 +32,26 @@ public class DialogueManager : GenericSingleton<DialogueManager>
         nameText = dialogueBox.transform.Find("Name").GetComponent<TextMeshProUGUI>();
         dialogueText = dialogueBox.transform.Find("Sentence").GetComponent<TextMeshProUGUI>();
 
+        players = GameObject.FindGameObjectsWithTag("Player");
+
+        foreach (GameObject player in players) {
+            player.GetComponent<PlayerInput>().enabled = false;
+        }
+
+        foreach (GameObject trigger in dialogueTriggers) {
+            if (trigger.GetComponent<DialogueTrigger>().ID != 1) {
+                trigger.SetActive(false);
+            }
+        }
+
         dialogueBox.SetActive(false);
     }
     
     public void StartDialogue(Dialogue dialogue) {
+        
+        foreach (GameObject player in players) {
+            player.GetComponent<PlayerInput>().enabled = false;
+        }
 
         dialogueBox.SetActive(true);
 
@@ -58,6 +81,18 @@ public class DialogueManager : GenericSingleton<DialogueManager>
 
     public void EndDialogue() {
         dialogueBox.SetActive(false);
+        sentenceIsComplete = false;
+
+        dialogueTriggers[triggerIDcount].SetActive(false);
+
+        triggerIDcount++;
+        if (triggerIDcount < dialogueTriggers.Length) {
+            dialogueTriggers[triggerIDcount].SetActive(true);
+        }
+        
+        foreach (GameObject player in players) {
+            player.GetComponent<PlayerInput>().enabled = true;
+        }
     }
 
     public void CompleteCurrentSentence() {
