@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     protected float _airControl = 2f;
     protected Rigidbody _rb;
     [SerializeField]
+    protected Collider _col;
     protected Animator animator;
 
     //features that has to be put in update, common with Dots and Strix
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
 
     protected void Init() {
         _rb = GetComponent<Rigidbody>();
+        _col = GetComponent<Collider>();
         animator = GetComponent<Animator>();
     }
 

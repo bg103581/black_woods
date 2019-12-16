@@ -114,17 +114,26 @@ public class Strix : Player
             _isNextToHole = true;
             _holeToDig = other.gameObject;
         }
+        if (other.tag == "ground") {
+            _isGrounded = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "creuse_object") {
             _isNextToHole = false;
         }
+        if (other.tag == "ground") {
+            _isGrounded = false;
+        }
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.tag == "creuse_object") {
             _isNextToHole = true;
+        }
+        if (other.tag == "ground") {
+            _isGrounded = true;
         }
     }
 }

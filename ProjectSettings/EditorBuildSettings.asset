@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/MAIN/Scene/Menu.unity
     guid: 8ec58cb338d76594397a6aa5db98e8d8
   - enabled: 1
+    path: Assets/MAIN/Scene/GuillaumeScene.unity
+    guid: 3a3880fa95db9f24e81cfcf001e94214
+  - enabled: 1
     path: Assets/MAIN/Scene/RocheScene.unity
     guid: a632b0da1db3f0a41a6a616d4e0c2292
   m_configObjects: {}

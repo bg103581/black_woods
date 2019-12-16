@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 9112075}
   - component: {fileID: 9112074}
   - component: {fileID: 9112073}
-  - component: {fileID: 9112076}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -152,7 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollectibleState: 
-  PopupList: []
 --- !u!114 &9112074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,34 +177,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9112076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9112072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 58f3bd7b1ba78624c8c9029629f8880d,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: d80dbb7e-5f35-4cb3-b5a3-d2192f5f763b
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &243219781
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,6 +3198,7 @@ MonoBehaviour:
   continueCanvas: {fileID: 420260293}
   menuCanvas: {fileID: 1230115042}
   noSavedDataCanvas: {fileID: 1486721568}
+  EventEmitterRef: {fileID: 0}
 --- !u!4 &1823036877
 Transform:
   m_ObjectHideFlags: 0
