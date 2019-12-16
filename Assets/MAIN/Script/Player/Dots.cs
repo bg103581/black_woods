@@ -84,6 +84,7 @@ public class Dots : Player
 
         transform.position = _strixHead.position;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
+        _col.isTrigger = true;
     }
 
     private void GetDownFromStrix() {
@@ -92,6 +93,7 @@ public class Dots : Player
         transform.parent = null;
 
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
+        _col.isTrigger = false;
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -101,6 +103,9 @@ public class Dots : Player
         if (other.tag == "head_strix") {
             _isNearHeadStrix = true;
         }
+        if (other.tag == "ground") {
+            _isGrounded = true;
+        }
     }
 
     private void OnTriggerExit(Collider other) {
@@ -109,6 +114,15 @@ public class Dots : Player
         }
         if (other.tag == "head_strix") {
             _isNearHeadStrix = false;
+        }
+        if (other.tag == "ground") {
+            _isGrounded = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "ground") {
+            _isGrounded = true;
         }
     }
 }
