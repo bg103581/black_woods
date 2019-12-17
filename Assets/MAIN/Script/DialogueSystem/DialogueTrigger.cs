@@ -7,6 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     #region VARIABLES
     public int ID;
     public Dialogue dialogue;
+    public GameObject trigger;
     
     private DialogueManager dialogueManager;
     private bool dialogueStarted = false;
@@ -17,7 +18,7 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     public void Update() {
-
+        
         switch (ID) {
             case 1:
                 if (!dialogueStarted) {
@@ -25,39 +26,14 @@ public class DialogueTrigger : MonoBehaviour
                     dialogueStarted = true;
                 }
                 break;
-            case 2:
-                if (Input.GetKeyDown(KeyCode.Keypad2)) {
-                    if (!dialogueStarted) {
-                        dialogueManager.StartDialogue(dialogue);
-                        dialogueStarted = true;
-                    }
-                }
-                break;
-            case 3:
-                if (Input.GetKeyDown(KeyCode.Keypad3)) {
-                    if (!dialogueStarted) {
-                        dialogueManager.StartDialogue(dialogue);
-                        dialogueStarted = true;
-                    }
-                }
-                break;
-            case 4:
-                if (Input.GetKeyDown(KeyCode.Keypad4)) {
-                    if (!dialogueStarted) {
-                        dialogueManager.StartDialogue(dialogue);
-                        dialogueStarted = true;
-                    }
-                }
-                break;
-            case 5:
-                if (Input.GetKeyDown(KeyCode.Keypad5)) {
-                    if (!dialogueStarted) {
-                        dialogueManager.StartDialogue(dialogue);
-                        dialogueStarted = true;
-                    }
-                }
-                break;
+
             default:
+                if (trigger.GetComponent<TriggerObject>().isTriggered) {
+                    if (!dialogueStarted) {
+                        dialogueManager.StartDialogue(dialogue);
+                        dialogueStarted = true;
+                    }
+                }
                 break;
         }
 
