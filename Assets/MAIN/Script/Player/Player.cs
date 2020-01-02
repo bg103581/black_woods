@@ -6,14 +6,20 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
-
     protected bool _isGrounded;
     protected bool _onTree;
     protected bool _wallClimb;
     protected bool _isNextToHole;
 
     protected Vector2 _move;
+
     private float _oldX;
+
+    protected Rigidbody _rb;
+
+    protected Animator animator;
+
+    protected Collider _col;
 
     [SerializeField]
     protected float _playerSpeed = 2;
@@ -23,13 +29,18 @@ public class Player : MonoBehaviour
     protected float _fallMultiplier = 1.5f;
     [SerializeField]
     protected float _airControl = 2f;
-    protected Rigidbody _rb;
     [SerializeField]
-    protected Collider _col;
-    protected Animator animator;
+    protected Vector3 _bottomOffset;
+    [SerializeField]
+    protected float _collisionRadius;
+    [SerializeField]
+    protected LayerMask _groundLayer;
 
     //features that has to be put in update, common with Dots and Strix
     protected void PlayerUpdate() {
+        //_isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + (Vector2)_bottomOffset, _collisionRadius, _groundLayer);
+        _isGrounded = Physics.OverlapSphere(transform.position + _bottomOffset, _collisionRadius, _groundLayer).Length != 0;
+
         if (_isGrounded || _wallClimb) {
             //walk
             _rb.velocity = new Vector3(_move.x * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
@@ -79,25 +90,30 @@ public class Player : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag == "ground")
-            _isGrounded = true;
+        //if (collision.transform.tag == "ground")
+        //    _isGrounded = true;
             animator.SetBool("isJumping", false);
         if (collision.transform.tag == "tree")
             _onTree = true;
     }
 
     private void OnCollisionExit(Collision collision) {
-        if (collision.transform.tag == "ground")
-            _isGrounded = false;
+        //if (collision.transform.tag == "ground")
+        //    _isGrounded = false;
         animator.SetBool("isJumping", true);
         if (collision.transform.tag == "tree")
             _onTree = false;
     }
 
     private void OnCollisionStay(Collision collision) {
-        if (collision.transform.tag == "ground")
-            _isGrounded = true;
+        //if (collision.transform.tag == "ground")
+        //    _isGrounded = true;
         if (collision.transform.tag == "tree")
             _onTree = true;
+    }
+
+    protected void DrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + _bottomOffset, _collisionRadius);
     }
 }

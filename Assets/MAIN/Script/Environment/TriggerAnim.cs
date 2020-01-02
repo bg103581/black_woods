@@ -14,8 +14,8 @@ public class TriggerAnim : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.name == "Strix") {
+    private void OnTriggerEnter(Collider other) {
+        if (other.name == "Strix") {
             _animator.Play("Chap1Scene3Tree");
         }
     }

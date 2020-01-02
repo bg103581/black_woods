@@ -1073,11 +1073,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8f3ed7a93d3684181bfac93bb71ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSpeed: 3
+  _playerSpeed: 2.7
   _jumpStrength: 6
   _fallMultiplier: 1.5
   _airControl: 4
-  _col: {fileID: 0}
+  _bottomOffset: {x: 0.09, y: 0, z: 0}
+  _collisionRadius: 0.2
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
   _flairRadius: 5
   isCoop: 0
   _coopCollider: {fileID: 287456255}
@@ -1120,9 +1124,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.44940722
-  m_Height: 1.5173641
+  m_Height: 1.1231415
   m_Direction: 2
-  m_Center: {x: -0.121346295, y: 0.45297956, z: 0.21692598}
+  m_Center: {x: -0.121346295, y: 0.45297956, z: 0.01981461}
 --- !u!1 &7957307433565395832
 GameObject:
   m_ObjectHideFlags: 0

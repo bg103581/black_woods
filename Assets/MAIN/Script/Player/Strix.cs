@@ -94,6 +94,7 @@ public class Strix : Player
 
     private void OnDrawGizmosSelected() {
         Gizmos.DrawWireSphere(transform.position, _flairRadius);
+        DrawGizmos();
     }
 
     private void OnStrixCreuse() {
