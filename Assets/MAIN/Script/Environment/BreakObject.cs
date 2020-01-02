@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BreakObject : MonoBehaviour
 {
-
-    private bool _isBroken;
+    [HideInInspector]
+    public bool _isBroken;
 
     private Rigidbody _rb;
     private BoxCollider _coll;

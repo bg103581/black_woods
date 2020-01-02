@@ -52,7 +52,9 @@ public class Dots : Player
     }
 
     private void OnDotsJump() {
-        if (_isGrounded) {
+        if (_isGrounded || _isOnStrixHead) {
+            if (_isOnStrixHead) GetDownFromStrix();
+
             //make the jump
             _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
             _rb.velocity += Vector3.up * _jumpStrength;
@@ -91,8 +93,8 @@ public class Dots : Player
         _isOnStrixHead = false;
 
         transform.parent = null;
-
-        _rb.constraints = RigidbodyConstraints.FreezeRotation;
+        transform.position = new Vector3(transform.position.x, transform.position.y, 7.5f);
+        _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         _col.isTrigger = false;
     }
 
@@ -124,5 +126,9 @@ public class Dots : Player
         if (other.tag == "ground") {
             _isGrounded = true;
         }
+    }
+
+    private void OnDrawGizmosSelected() {
+        DrawGizmos();
     }
 }
