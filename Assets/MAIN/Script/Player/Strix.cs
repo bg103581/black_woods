@@ -41,18 +41,13 @@ public class Strix : Player
     }
 
     private void OnStrixMovement(InputValue value) {
-        _move = new Vector2(value.Get<Vector2>().x, 0);
-        animator.SetBool("isRunning", true);
-        if (value.Get<Vector2>().x == 0) {
-            animator.SetBool("isRunning", false);
-        }
+        Move(value);
     }
 
     private void OnStrixJump() {
         if (_isGrounded) {
             //make the jump
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            _rb.velocity += Vector3.up * _jumpStrength;
+            Jump();
         }
     }
 
@@ -115,26 +110,17 @@ public class Strix : Player
             _isNextToHole = true;
             _holeToDig = other.gameObject;
         }
-        if (other.tag == "ground") {
-            _isGrounded = true;
-        }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "creuse_object") {
             _isNextToHole = false;
         }
-        if (other.tag == "ground") {
-            _isGrounded = false;
-        }
     }
 
     private void OnTriggerStay(Collider other) {
         if (other.tag == "creuse_object") {
             _isNextToHole = true;
-        }
-        if (other.tag == "ground") {
-            _isGrounded = true;
         }
     }
 }
