@@ -6,14 +6,18 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
     protected bool _isGrounded;
+    protected bool _isGroundCollided;
     protected bool _onTree;
     protected bool _wallClimb;
     protected bool _isNextToHole;
 
-    protected Vector2 _move;
+    public Vector2 _move;
 
     private float _oldX;
+    protected float _moveX;
+    protected float _moveY;
 
     protected Rigidbody _rb;
 
@@ -38,8 +42,7 @@ public class Player : MonoBehaviour
 
     //features that has to be put in update, common with Dots and Strix
     protected void PlayerUpdate() {
-        //_isGrounded = Physics2D.OverlapCircle((Vector2)transform.position + (Vector2)_bottomOffset, _collisionRadius, _groundLayer);
-        _isGrounded = Physics.OverlapSphere(transform.position + _bottomOffset, _collisionRadius, _groundLayer).Length != 0;
+        _isGrounded = (Physics.OverlapSphere(transform.position + _bottomOffset, _collisionRadius, _groundLayer).Length != 0) && _isGroundCollided;
 
         if (_isGrounded || _wallClimb) {
             //walk
@@ -89,25 +92,61 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    protected void Move(InputValue value) {
+        if (Mathf.Abs(value.Get<Vector2>().x) < 0.4f)
+            _moveX = 0;
+        else {
+            _moveX = value.Get<Vector2>().x;
+            if (gameObject.name == "Strix") animator.SetBool("isRunning", true); //enlever le if quand animations de dots ok
+        }
+
+        if (Mathf.Abs(value.Get<Vector2>().y) < 0.4f)
+            _moveY = 0;
+        else
+            _moveY = value.Get<Vector2>().y;
+
+        _move = new Vector2(_moveX, _moveY);
+
+        if (_moveX == 0) {
+            if (gameObject.name == "Strix") animator.SetBool("isRunning", false); //enlever le if quand animations de dots ok
+        }
+    }
+
+    protected void Jump() {
+        _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+        _rb.velocity += Vector3.up * _jumpStrength;
+    }
+
+    public void IgnorePlatformCollision(Collider PlatformCollider) {
+        Physics.IgnoreCollision(_col, PlatformCollider, true);
+    }
+
+    public void ResetIgnorePlatformCollision(Collider PlatformCollider) {
+        Physics.IgnoreCollision(_col, PlatformCollider, false);
+    }
+
     private void OnCollisionEnter(Collision collision) {
-        //if (collision.transform.tag == "ground")
-        //    _isGrounded = true;
-            animator.SetBool("isJumping", false);
+        animator.SetBool("isJumping", false);
+        if (collision.transform.tag == "ground") {
+            _isGroundCollided = true;
+        }
         if (collision.transform.tag == "tree")
             _onTree = true;
     }
 
     private void OnCollisionExit(Collision collision) {
-        //if (collision.transform.tag == "ground")
-        //    _isGrounded = false;
         animator.SetBool("isJumping", true);
+        if (collision.transform.tag == "ground") {
+            _isGroundCollided = false;
+        }
         if (collision.transform.tag == "tree")
             _onTree = false;
     }
 
     private void OnCollisionStay(Collision collision) {
-        //if (collision.transform.tag == "ground")
-        //    _isGrounded = true;
+        if (collision.transform.tag == "ground") {
+            _isGroundCollided = true;
+        }
         if (collision.transform.tag == "tree")
             _onTree = true;
     }

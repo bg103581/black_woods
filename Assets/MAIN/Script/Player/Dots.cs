@@ -48,7 +48,7 @@ public class Dots : Player
     }
 
     private void OnDotsMovement(InputValue value) {
-        _move = new Vector2(value.Get<Vector2>().x, value.Get<Vector2>().y);
+        Move(value);
     }
 
     private void OnDotsJump() {
@@ -56,8 +56,7 @@ public class Dots : Player
             if (_isOnStrixHead) GetDownFromStrix();
 
             //make the jump
-            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-            _rb.velocity += Vector3.up * _jumpStrength;
+            Jump();
         }
     }
 
@@ -105,9 +104,6 @@ public class Dots : Player
         if (other.tag == "head_strix") {
             _isNearHeadStrix = true;
         }
-        if (other.tag == "ground") {
-            _isGrounded = true;
-        }
     }
 
     private void OnTriggerExit(Collider other) {
@@ -117,15 +113,9 @@ public class Dots : Player
         if (other.tag == "head_strix") {
             _isNearHeadStrix = false;
         }
-        if (other.tag == "ground") {
-            _isGrounded = false;
-        }
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.tag == "ground") {
-            _isGrounded = true;
-        }
     }
 
     private void OnDrawGizmosSelected() {
