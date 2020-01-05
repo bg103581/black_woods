@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,9 @@ public class Strix : Player
 
     [SerializeField]
     private float _flairRadius = 5f;
-
+    [SerializeField]
+    private StrixObjectDetector _objectDetector;
+    
     private int _layerMaskFlair = 1 << 9;
 
     [HideInInspector]
@@ -16,7 +19,9 @@ public class Strix : Player
 
     private GameObject nearestObj;
     private GameObject _holeToDig;
-
+    private GameObject _objectToCatch;
+    private bool _isCatchPressed;
+    private Quaternion _strixRotation;
     [SerializeField]
     private Collider _coopCollider;
 
@@ -38,6 +43,13 @@ public class Strix : Player
         else {
             _coopCollider.enabled = false;
         }
+
+        
+        _objectToCatch = _objectDetector.GetObjectToCatch();
+        if (_isCatchPressed)
+        {
+            transform.rotation = _strixRotation;
+        }
     }
 
     private void OnStrixMovement(InputValue value) {
@@ -56,6 +68,18 @@ public class Strix : Player
         }
     }
 
+    private void OnStrixCatch()
+    {
+        _isCatchPressed = !_isCatchPressed;
+        _strixRotation = transform.rotation;
+        animator.SetBool("isCatching", _isCatchPressed);
+        if (_objectToCatch != null)
+        {
+            _objectToCatch.GetComponent<ObjectCatchable>().DragItem();
+        }
+    }
+     
+    
     private void OnStrixFlair() {
         Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
 
