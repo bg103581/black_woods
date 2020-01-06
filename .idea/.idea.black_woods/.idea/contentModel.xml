@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\yoann\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\yoann\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_black_woods.-113504575.00" t="ExcludeRecursive" />
+    <e p="C:\Users\yoann\Documents\Master\BlackWoods\black_woods" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="AssetsLWRP" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="SampleScript.cs" t="Include" />
+            <e p="SimpleCameraController.cs" t="Include" />
+          </e>
+          <e p="TutorialInfo" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="ReadmeEditor.cs" t="Include" />
+              </e>
+              <e p="Readme.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="AudioSetting.cs" t="Include" />
+        <e p="Demigiant" t="Include">
+          <e p="DOTween" t="Include">
+            <e p="Modules" t="Include">
+              <e p="DOTweenModuleAudio.cs" t="Include" />
+              <e p="DOTweenModulePhysics.cs" t="Include" />
+              <e p="DOTweenModulePhysics2D.cs" t="Include" />
+              <e p="DOTweenModuleSprite.cs" t="Include" />
+              <e p="DOTweenModuleUI.cs" t="Include" />
+              <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+              <e p="DOTweenModuleUtils.cs" t="Include" />
+            </e>
+            <e p="readme.txt" t="Include" />
+          </e>
+        </e>
+        <e p="MAIN" t="Include">
+          <e p="Script" t="Include">
+            <e p="Camera" t="Include">
+              <e p="CameraControl.cs" t="Include" />
+            </e>
+            <e p="Collectibles" t="Include">
+              <e p="CollectionSystem.cs" t="Include" />
+            </e>
+            <e p="DialogueSystem" t="Include">
+              <e p="Dialogue.cs" t="Include" />
+              <e p="DialogueManager.cs" t="Include" />
+              <e p="DialogueTrigger.cs" t="Include" />
+              <e p="TriggerObject.cs" t="Include" />
+            </e>
+            <e p="Environment" t="Include">
+              <e p="ActivateGravity.cs" t="Include" />
+              <e p="BreakObject.cs" t="Include" />
+              <e p="DisableColliderOnBreak.cs" t="Include" />
+              <e p="EnablePathObject.cs" t="Include" />
+              <e p="MovingPlateformes.cs" t="Include" />
+              <e p="OneWayCollision.cs" t="Include" />
+              <e p="PlatformCollision.cs" t="Include" />
+              <e p="RespawnPlayerOnTrigger.cs" t="Include" />
+              <e p="StopObjectOnGround.cs" t="Include" />
+              <e p="SwingController.cs" t="Include" />
+              <e p="SwingPlayerDetector.cs" t="Include" />
+              <e p="TriggerAnim.cs" t="Include" />
+              <e p="Usable.cs" t="Include" />
+            </e>
+            <e p="GameManager" t="Include">
+              <e p="ClickHandlers.cs" t="Include" />
+              <e p="GameData.cs" t="Include" />
+              <e p="GameManager.cs" t="Include" />
+              <e p="SaveSystem.cs" t="Include" />
+              <e p="SceneHandler.cs" t="Include" />
+            </e>
+            <e p="Menu" t="Include">
+              <e p="DDOL.cs" t="Include" />
+              <e p="MenuManager.cs" t="Include" />
+            </e>
+            <e p="Player" t="Include">
+              <e p="Dots.cs" t="Include" />
+              <e p="Player.cs" t="Include" />
+              <e p="PlayerControls.cs" t="Include" />
+              <e p="Strix.cs" t="Include" />
+              <e p="TrainPlayer.cs" t="Include" />
+            </e>
+            <e p="Singleton" t="Include">
+              <e p="GenericSingleton.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="Plugins" t="Include">
+          <e p="FMOD" t="Include">
+            <e p="addons" t="Include">
+              <e p="ResonanceAudio" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="FmodResonanceAudioRoomEditor.cs" t="Include" />
+                </e>
+                <e p="Scripts" t="Include">
+                  <e p="FmodResonanceAudio.cs" t="Include" />
+                  <e p="FmodResonanceAudioRoom.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="src" t="Include">
+              <e p="Editor" t="Include">
+                <e p="BankRefDrawer.cs" t="Include" />
+                <e p="CreateEventPopup.cs" t="Include" />
+                <e p="EditorBankRef.cs" t="Include" />
+                <e p="EditorEventRef.cs" t="Include" />
+                <e p="EditorParamRef.cs" t="Include" />
+                <e p="EditorUtils.cs" t="Include" />
+                <e p="EventBrowser.cs" t="Include" />
+                <e p="EventCache.cs" t="Include" />
+                <e p="EventManager.cs" t="Include" />
+                <e p="EventRefDrawer.cs" t="Include" />
+                <e p="FindAndReplace.cs" t="Include" />
+                <e p="LogViewer.cs" t="Include" />
+                <e p="ParamRefDrawer.cs" t="Include" />
+                <e p="SettingsEditor.cs" t="Include" />
+                <e p="StudioBankLoaderEditor.cs" t="Include" />
+                <e p="StudioEventEmitterEditor.cs" t="Include" />
+                <e p="StudioEventEmitterGizmoDrawer.cs" t="Include" />
+                <e p="StudioGlobalParameterTriggerEditor.cs" t="Include" />
+                <e p="StudioListenerEditor.cs" t="Include" />
+                <e p="StudioParameterTriggerEditor.cs" t="Include" />
+                <e p="Timeline" t="Include">
+                  <e p="FMODEventPlayableEditor.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Runtime" t="Include">
+                <e p="BankRefAttribute.cs" t="Include" />
+                <e p="EventHandler.cs" t="Include" />
+                <e p="EventRefAttribute.cs" t="Include" />
+                <e p="FMODRuntimeManagerOnGUIHelper.cs" t="Include" />
+                <e p="ParamRef.cs" t="Include" />
+                <e p="ParamRefAttribute.cs" t="Include" />
+                <e p="RuntimeManager.cs" t="Include" />
+                <e p="RuntimeUtils.cs" t="Include" />
+                <e p="Settings.cs" t="Include" />
+                <e p="StudioBankLoader.cs" t="Include" />
+                <e p="StudioEventEmitter.cs" t="Include" />
+                <e p="StudioGlobalParameterTrigger.cs" t="Include" />
+                <e p="StudioListener.cs" t="Include" />
+                <e p="StudioParameterTrigger.cs" t="Include" />
+                <e p="Timeline" t="Include">
+                  <e p="FMODEventPlayable.cs" t="Include" />
+                  <e p="FMODEventTrack.cs" t="Include" />
+                </e>
+                <e p="wrapper" t="Include">
+                  <e p="fmod.cs" t="Include" />
+                  <e p="fmod_android.cs" t="Include" />
+                  <e p="fmod_dsp.cs" t="Include" />
+                  <e p="fmod_errors.cs" t="Include" />
+                  <e p="fmod_studio.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="black_woods.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
