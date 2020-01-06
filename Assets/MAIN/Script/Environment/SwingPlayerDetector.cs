@@ -1,10 +1,24 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwingPlayerDetector : MonoBehaviour
 {
 
     private GameObject _strix;
+    [SerializeField] private Transform leftBound;
+    [SerializeField] private Transform rightBound;
+
+    private void Update()
+    {
+        if (_strix != null)
+        {
+            Vector3 position = _strix.transform.position;
+            position = new Vector3(
+                Mathf.Clamp(position.x,leftBound.position.x,rightBound.position.x),
+                position.y,
+                position.z);
+            _strix.transform.position = position;
+        }
+    }
 
     public GameObject GetStrix()
     {
@@ -20,7 +34,6 @@ public class SwingPlayerDetector : MonoBehaviour
         if (other.gameObject.GetComponent<Strix>())
         {
             _strix = other.gameObject;
-            _strix.GetComponent<Rigidbody>().constraints += (int) RigidbodyConstraints.FreezePositionX;
         }
     }
 
@@ -33,7 +46,6 @@ public class SwingPlayerDetector : MonoBehaviour
 
         if (other.gameObject.GetComponent<Strix>())
         {
-            _strix.GetComponent<Rigidbody>().constraints -= (int) RigidbodyConstraints.FreezePositionX;
             _strix = null;
         }
     }
