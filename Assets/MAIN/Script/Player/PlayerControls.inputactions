@@ -76,6 +76,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "StrixCatch",
+                    "type": "Button",
+                    "id": "80e3f559-69b7-4363-94b7-b2446d05c712",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
                 }
             ],
             "bindings": [
@@ -362,6 +370,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "DotsCoop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f45e444-2b2a-46a9-85e1-a3fd702c3805",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "StrixCatch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8b617bb-f83a-4dc3-aaf7-dbc623fe58a0",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "StrixCatch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

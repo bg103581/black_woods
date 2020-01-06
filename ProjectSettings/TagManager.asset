@@ -15,6 +15,7 @@ TagManager:
   - dialogue_box
   - head_strix
   - dialogue_trigger
+  - catchable_object
   layers:
   - Default
   - TransparentFX
