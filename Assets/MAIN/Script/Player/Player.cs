@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
     [SerializeField]
     protected LayerMask _groundLayer;
 
+    public float GetMoveX()
+    {
+        return _moveX;
+    }
+    
     //features that has to be put in update, common with Dots and Strix
     protected void PlayerUpdate() {
         _isGrounded = (Physics.OverlapSphere(transform.position + _bottomOffset, _collisionRadius, _groundLayer).Length != 0) && _isGroundCollided;
