@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6318640702546060647}
   - component: {fileID: 6318640702546060644}
   - component: {fileID: 1767604804}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Dots
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1d5d4d003963849a1d255b2fb2a8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLeft: 0
+  _move: {x: 0, y: 0}
   _playerSpeed: 2.7
   _jumpStrength: 3
   _fallMultiplier: 1.5

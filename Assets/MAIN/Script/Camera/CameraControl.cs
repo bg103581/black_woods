@@ -7,7 +7,11 @@ public class CameraControl : MonoBehaviour
     private GameObject _dots;
     private GameObject _strix;
 
+    [SerializeField]
+    [Range(0, 31)] private int _playerLayer;
+    
     private float _minPosZ;
+    [Space(10f)]
     [SerializeField]
     private float _maxPosZ;
     private Vector2 _posXY;
@@ -21,9 +25,17 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private float _offSetY;
 
+    [Space(10f)]
+    [SerializeField]
+    private float _maxDistPlayers = 100f;
+    [HideInInspector]
+    public bool IsToFar;
+
     // Start is called before the first frame update
     void Start()
     {
+        Physics.IgnoreLayerCollision(_playerLayer, _playerLayer, true);
+
         _dots = GameObject.Find("Dots");
         _strix = GameObject.Find("Strix");
 
@@ -38,6 +50,10 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
         transform.position = UpdatePosition();
+
+        IsToFar = _distanceDiffPlayers >= _maxDistPlayers;
+        _strix.GetComponent<Player>().IsLeft = _strix.transform.position.x < _dots.transform.position.x;
+        _dots.GetComponent<Player>().IsLeft = _dots.transform.position.x < _strix.transform.position.x;
     }
 
     private Vector3 UpdatePosition() {

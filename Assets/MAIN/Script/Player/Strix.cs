@@ -44,8 +44,7 @@ public class Strix : Player
             _coopCollider.enabled = false;
         }
 
-        
-        _objectToCatch = _objectDetector.GetObjectToCatch();
+        if (_objectDetector != null) _objectToCatch = _objectDetector.GetObjectToCatch();
         if (_isCatchPressed)
         {
             transform.rotation = _strixRotation;
