@@ -20,6 +20,9 @@ public class Dots : Player
     [SerializeField]
     private Transform _strixHead;
 
+    //[HideInInspector]
+    public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock;
+
     private void Awake() {
         Init();
         _baseSpeed = _playerSpeed;
@@ -52,29 +55,34 @@ public class Dots : Player
     }
 
     private void OnDotsJump() {
-        if (_isGrounded || _isOnStrixHead) {
-            if (_isOnStrixHead) GetDownFromStrix();
-
-            //make the jump
-            Jump();
+        if (_isGrounded) Jump();
+        else if (_isOnStrixHead) {
+            if (jumpOnStrixIsUnlock) {
+                GetDownFromStrix();
+                Jump();
+            }
         }
     }
 
     private void OnDotsBec(InputValue value) {
-        _isUsingBec = value.Get<float>() > 0;
-        if (_objectToHit != null) {
-            _objectToHit.GetComponent<BreakObject>().OnBecHit();
+        if (becIsUnlock) {
+            _isUsingBec = value.Get<float>() > 0;
+            if (_objectToHit != null) {
+                _objectToHit.GetComponent<BreakObject>().OnBecHit();
+            }
         }
     }
 
     private void OnDotsCoop() {
-        if (_isNearHeadStrix) {
-            Debug.Log("monte sur strix");
-            MoveToStrixHead();
-        }
-        else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {
-            Debug.Log("descend de strix");
-            GetDownFromStrix();
+        if (coopIsUnlock) {
+            if (_isNearHeadStrix) {
+                Debug.Log("monte sur strix");
+                MoveToStrixHead();
+            }
+            else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {
+                Debug.Log("descend de strix");
+                GetDownFromStrix();
+            }
         }
     }
 

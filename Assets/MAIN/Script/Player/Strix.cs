@@ -25,6 +25,9 @@ public class Strix : Player
     [SerializeField]
     private Collider _coopCollider;
 
+    //[HideInInspector]
+    public bool coopIsUnlock, flairIsUnlock, creuseIsUnlock, catchIsUnlock;
+
     private void Awake() {
         Init();
 
@@ -64,38 +67,41 @@ public class Strix : Player
 
     private void OnStrixCatch()
     {
-        _isCatchPressed = !_isCatchPressed;
-        _strixRotation = transform.rotation;
-        animator.SetBool("isCatching", _isCatchPressed);
-        if (_objectToCatch != null)
-        {
-            _objectToCatch.GetComponent<ObjectCatchable>().DragItem();
+        if (catchIsUnlock) {
+            _isCatchPressed = !_isCatchPressed;
+            _strixRotation = transform.rotation;
+            animator.SetBool("isCatching", _isCatchPressed);
+            if (_objectToCatch != null) {
+                _objectToCatch.GetComponent<ObjectCatchable>().DragItem();
+            }
         }
     }
      
     
     private void OnStrixFlair() {
-        Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
+        if (flairIsUnlock) {
+            Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
 
-        if (nearObjects.Length == 1) {
-            nearestObj = nearObjects[0].gameObject;
-        }
-        else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
-            float minDistance = 100f;
-            foreach(Collider obj in nearObjects) {
-                float distance = Vector3.Distance(transform.position, obj.transform.position);
-                if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
-                    minDistance = distance;
-                    nearestObj = obj.gameObject;
+            if (nearObjects.Length == 1) {
+                nearestObj = nearObjects[0].gameObject;
+            }
+            else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
+                float minDistance = 100f;
+                foreach (Collider obj in nearObjects) {
+                    float distance = Vector3.Distance(transform.position, obj.transform.position);
+                    if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
+                        minDistance = distance;
+                        nearestObj = obj.gameObject;
+                    }
                 }
             }
-        }
 
-        if (nearestObj != null) {
-            nearestObj.GetComponent<Usable>().OnDetected();
-        }
+            if (nearestObj != null) {
+                nearestObj.GetComponent<Usable>().OnDetected();
+            }
 
-        StartCoroutine(ActivateFlairAnimation());
+            StartCoroutine(ActivateFlairAnimation());
+        }
     }
 
     IEnumerator ActivateFlairAnimation() {
@@ -116,16 +122,20 @@ public class Strix : Player
     }
 
     private void OnStrixCreuse() {
-        StartCoroutine(ActivateDigAnimation());
+        if (creuseIsUnlock) {
+            StartCoroutine(ActivateDigAnimation());
 
-        if (_isNextToHole && _holeToDig != null) {
-            _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+            if (_isNextToHole && _holeToDig != null) {
+                _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+            }
         }
     }
 
     private void OnStrixCoop(InputValue value) {
-        isCoop = value.Get<float>() > 0;
-        Debug.Log("(Strix) : _isCoop = " + isCoop);
+        if (coopIsUnlock) {
+            isCoop = value.Get<float>() > 0;
+            Debug.Log("(Strix) : _isCoop = " + isCoop);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
