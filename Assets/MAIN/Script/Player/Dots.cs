@@ -65,7 +65,7 @@ public class Dots : Player
     }
 
     private void OnDotsBec(InputValue value) {
-        if (becIsUnlock) {
+        if (becIsUnlock && (_isGrounded || _isOnStrixHead)) {            DisableHorizontalMovement();
             _isUsingBec = value.Get<float>() > 0;
             if (_objectToHit != null) {
                 _objectToHit.GetComponent<BreakObject>().OnBecHit();
@@ -88,11 +88,14 @@ public class Dots : Player
     }
 
     private void MoveToStrixHead() {
+        animator.SetBool("isJumping", false);
+
         _isOnStrixHead = true;
 
         transform.SetParent(_strix);
 
         transform.position = _strixHead.position;
+        transform.rotation = _strixHead.rotation;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
         _col.isTrigger = true;
     }

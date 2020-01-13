@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     protected LayerMask _groundLayer;
 
+    private bool _stopMoving;
+
     public float GetMoveX()
     {
         return _moveX;
@@ -60,13 +62,21 @@ public class Player : MonoBehaviour
         if (_isGrounded || _wallClimb) {
             //walk
             if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
-                _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+                if (_stopMoving) {
+                    _rb.velocity = new Vector3(0f, _rb.velocity.y, _rb.velocity.z);
+                }
+                else {
+                    _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+                }
+
+                if (Mathf.Abs(_rb.velocity.x) > 0) animator.SetBool("isRunning", true);
+                else animator.SetBool("isRunning", false);
             }
 
-            if (_moveX < 0 && transform.rotation == Quaternion.Euler(0,90f,0)) {
+            if (_rb.velocity.x < 0 && transform.rotation == Quaternion.Euler(0,90f,0)) {
                 transform.rotation = Quaternion.Euler(0, 270f, 0);
             }
-            else if (_moveX > 0 && transform.rotation == Quaternion.Euler(0, 270f, 0)) {
+            else if (_rb.velocity.x > 0 && transform.rotation == Quaternion.Euler(0, 270f, 0)) {
                 transform.rotation = Quaternion.Euler(0, 90f, 0);
             }
 
@@ -112,8 +122,6 @@ public class Player : MonoBehaviour
             _moveX = 0;
         else {
             _moveX = value.Get<Vector2>().x;
-            //if (gameObject.name == "Strix")
-            animator.SetBool("isRunning", true); //enlever le if quand animations de dots ok
         }
 
         if (Mathf.Abs(value.Get<Vector2>().y) < 0.4f)
@@ -122,16 +130,21 @@ public class Player : MonoBehaviour
             _moveY = value.Get<Vector2>().y;
 
         _move = new Vector2(_moveX, _moveY);
-
-        if (_moveX == 0) {
-            //if (gameObject.name == "Strix")
-            animator.SetBool("isRunning", false); //enlever le if quand animations de dots ok
-        }
     }
 
     protected void Jump() {
         _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
         _rb.velocity += Vector3.up * _jumpStrength;
+
+        animator.SetBool("isJumping", true);
+    }
+
+    public void DisableHorizontalMovement() {
+        _stopMoving = true;
+    }
+
+    public void EnableHorizontalMovement() {
+        _stopMoving = false;
     }
 
     public void IgnorePlatformCollision(Collider PlatformCollider) {
@@ -152,7 +165,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnCollisionExit(Collision collision) {
-        animator.SetBool("isJumping", true);
+        //animator.SetBool("isJumping", true);
         if (collision.transform.tag == "ground") {
             _isGroundCollided = false;
         }

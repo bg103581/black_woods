@@ -13,6 +13,7 @@ public class TriggerObject : MonoBehaviour
     private bool dotsHasPassed = false;
 
     private void OnTriggerEnter(Collider other) {
+        Debug.Log("trigger dialogue");
         if (!countPlayers) {
             if (!isTriggered) {
                 if (other.tag == "Player") {

@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &421899374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 421899375}
+  - component: {fileID: 421899376}
+  - component: {fileID: 421899377}
+  m_Layer: 0
+  m_Name: ObjectDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &421899375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421899374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6817886499575346424}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &421899376
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421899374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.36680067, y: 0.9819087, z: 0.5178374}
+  m_Center: {x: 0.009045795, y: -0.43720895, z: 0.1747823}
+--- !u!114 &421899377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421899374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5a81fb243c8344cb0234991811cb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350835926428735954
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365315150667766960}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.131, y: 0.94, z: 0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6817886499575346424}
@@ -363,7 +420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2193943661531749376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.761, z: 0.246}
+  m_LocalPosition: {x: -0.149, y: 0.27, z: 1.155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6817886499575346424}
@@ -806,12 +863,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6343494940359083255}
-  m_LocalRotation: {x: -0.49059647, y: -0.49059647, z: -0.5092299, w: 0.5092299}
-  m_LocalPosition: {x: 11.708513, y: 23.857552, z: 0.9127178}
-  m_LocalScale: {x: 31.250004, y: 31.250015, z: 31.250006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7193226728289970287}
   - {fileID: 2501302582336651163}
+  - {fileID: 421899375}
   m_Father: {fileID: 6322296397701079186}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -861,7 +919,7 @@ GameObject:
   - component: {fileID: 2216157200720140188}
   - component: {fileID: 1478165376628918587}
   - component: {fileID: 1229336353}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Strix
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -895,7 +953,7 @@ Animator:
   m_GameObject: {fileID: 7054350928700412545}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7afe9925833dfe046ad12b2afc1d5e59, type: 3}
-  m_Controller: {fileID: 9100000, guid: d6fbadf57121a504d9f55bfbcf9ac8c4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 34927f8ab56594d4e8213a3f28578d70, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -932,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f8f3ed7a93d3684181bfac93bb71ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isGrounded: 0
+  IsLeft: 0
   _move: {x: 0, y: 0}
   _playerSpeed: 2.7
   _jumpStrength: 6
@@ -944,8 +1002,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _flairRadius: 5
+  _objectDetector: {fileID: 421899377}
   isCoop: 0
-  _coopCollider: {fileID: 0}
+  _coopCollider: {fileID: 4192796429674751162}
+  coopIsUnlock: 0
+  flairIsUnlock: 0
+  creuseIsUnlock: 0
+  catchIsUnlock: 0
 --- !u!114 &1478165376628918587
 MonoBehaviour:
   m_ObjectHideFlags: 0
