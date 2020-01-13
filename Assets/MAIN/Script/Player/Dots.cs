@@ -62,6 +62,10 @@ public class Dots : Player
 
     private void OnDotsBec(InputValue value) {
         _isUsingBec = value.Get<float>() > 0;
+        if (_isUsingBec) {
+            animator.SetTrigger("isPecking");
+        }
+
         if (_objectToHit != null) {
             _objectToHit.GetComponent<BreakObject>().OnBecHit();
         }

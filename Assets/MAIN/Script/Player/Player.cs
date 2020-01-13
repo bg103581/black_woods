@@ -97,7 +97,8 @@ public class Player : MonoBehaviour
             _moveX = 0;
         else {
             _moveX = value.Get<Vector2>().x;
-            if (gameObject.name == "Strix") animator.SetBool("isRunning", true); //enlever le if quand animations de dots ok
+            //if (gameObject.name == "Strix")
+            animator.SetBool("isRunning", true); //enlever le if quand animations de dots ok
         }
 
         if (Mathf.Abs(value.Get<Vector2>().y) < 0.4f)
@@ -108,7 +109,8 @@ public class Player : MonoBehaviour
         _move = new Vector2(_moveX, _moveY);
 
         if (_moveX == 0) {
-            if (gameObject.name == "Strix") animator.SetBool("isRunning", false); //enlever le if quand animations de dots ok
+            //if (gameObject.name == "Strix")
+            animator.SetBool("isRunning", false); //enlever le if quand animations de dots ok
         }
     }
 

@@ -72,19 +72,7 @@ public class Strix : Player
             nearestObj.GetComponent<Usable>().OnDetected();
         }
 
-        StartCoroutine(ActivateFlairAnimation());
-    }
-
-    IEnumerator ActivateFlairAnimation() {
-        animator.SetBool("isFlairing", true);
-        yield return new WaitForSeconds(2.25f);
-        animator.SetBool("isFlairing", false);
-    }
-
-    IEnumerator ActivateDigAnimation() {
-        animator.SetBool("isDigging", true);
-        yield return new WaitForSeconds(2.15f);
-        animator.SetBool("isDigging", false);
+        animator.SetTrigger("isFlairing");
     }
 
     private void OnDrawGizmosSelected() {
@@ -93,7 +81,7 @@ public class Strix : Player
     }
 
     private void OnStrixCreuse() {
-        StartCoroutine(ActivateDigAnimation());
+        animator.SetTrigger("isDigging");
 
         if (_isNextToHole && _holeToDig != null) {
             _holeToDig.GetComponent<EnablePathObject>().EnablePath();
