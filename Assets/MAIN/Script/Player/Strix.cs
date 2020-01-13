@@ -79,7 +79,9 @@ public class Strix : Player
      
     
     private void OnStrixFlair() {
-        if (flairIsUnlock) {
+        if (flairIsUnlock && _isGrounded) {
+            DisableHorizontalMovement();
+
             Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
 
             if (nearObjects.Length == 1) {
@@ -107,21 +109,19 @@ public class Strix : Player
        
     }
 
-    private void OnDrawGizmosSelected() {
-        Gizmos.DrawWireSphere(transform.position, _flairRadius);
-        DrawGizmos();
-    }
-
     private void OnStrixCreuse() {
-        animator.SetTrigger("isDigging");
+        if (creuseIsUnlock && _isGrounded) {
+            DisableHorizontalMovement();
+            animator.SetTrigger("isDigging");
 
-        if (_isNextToHole && _holeToDig != null) {
-            _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+            if (_isNextToHole && _holeToDig != null) {
+                _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+            }
         }
     }
 
     private void OnStrixCoop(InputValue value) {
-        if (coopIsUnlock) {
+        if (coopIsUnlock && _isGrounded) {
             isCoop = value.Get<float>() > 0;
             Debug.Log("(Strix) : _isCoop = " + isCoop);
         }
@@ -144,5 +144,10 @@ public class Strix : Player
         if (other.tag == "creuse_object") {
             _isNextToHole = true;
         }
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position, _flairRadius);
+        DrawGizmos();
     }
 }

@@ -15,10 +15,13 @@ public class UnlockCharacterCompetencesOnTrigger : MonoBehaviour
     private Strix _strix;
     private Dots _dots;
 
+    private void Start() {
+        _strix = FindObjectOfType<Strix>();
+        _dots = FindObjectOfType<Dots>();
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            if (other.name == "Strix") _strix = other.GetComponent<Strix>();
-            if (other.name == "Dots") _dots = other.GetComponent<Dots>();
 
             switch(_character) {
                 case Character.STRIX:

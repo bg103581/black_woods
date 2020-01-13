@@ -60,6 +60,8 @@ public class CameraControl : MonoBehaviour
         _posXY = new Vector2((_dots.transform.position.x + _strix.transform.position.x) / 2, (_dots.transform.position.y + _strix.transform.position.y) / 2);
         _distanceDiffPlayers = Vector2.Distance(_dots.transform.position, _strix.transform.position);
 
+        //transform.LookAt(new Vector3(_posXY.x, _posXY.y, _strix.transform.position.z));
+
         return new Vector3(_posXY.x, _posXY.y + _offSetY, Mathf.Lerp(_minPosZ, _maxPosZ, Mathf.Clamp01((_distanceDiffPlayers - _offSetDist) * _scale)));
     }
 }
