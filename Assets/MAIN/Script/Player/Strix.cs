@@ -79,43 +79,61 @@ public class Strix : Player
      
     
     private void OnStrixFlair() {
-        if (flairIsUnlock && _isGrounded) {
-            DisableHorizontalMovement();
+        if (!_stopMoving) {
+            if (flairIsUnlock && _isGrounded) {
+                DisableHorizontalMovement();
 
-            Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
-
-            if (nearObjects.Length == 1) {
-                nearestObj = nearObjects[0].gameObject;
-            }
-            else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
-                float minDistance = 100f;
-                foreach (Collider obj in nearObjects) {
-                    float distance = Vector3.Distance(transform.position, obj.transform.position);
-                    if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
-                        minDistance = distance;
-                        nearestObj = obj.gameObject;
-                    }
-                }
-            }
-
-            if (nearestObj != null) {
-                nearestObj.GetComponent<Usable>().OnDetected();
+                Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
+
+
+
+                if (nearObjects.Length == 1) {
+
+                    nearestObj = nearObjects[0].gameObject;
+
+                } else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
+
+                    float minDistance = 100f;
+
+                    foreach (Collider obj in nearObjects) {
+
+                        float distance = Vector3.Distance(transform.position, obj.transform.position);
+
+                        if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
+
+                            minDistance = distance;
+
+                            nearestObj = obj.gameObject;
+
+                        }
+
+                    }
+
+                }
+
+
+
+                if (nearestObj != null) {
+
+                    nearestObj.GetComponent<Usable>().OnDetected();
+
+                }
+
+                animator.SetTrigger("isFlairing");
+
             }
-
-            animator.SetTrigger("isFlairing");
-
         }
-
-       
     }
 
     private void OnStrixCreuse() {
-        if (creuseIsUnlock && _isGrounded) {
-            DisableHorizontalMovement();
-            animator.SetTrigger("isDigging");
+        if (!_stopMoving) {
+            if (creuseIsUnlock && _isGrounded) {
+                DisableHorizontalMovement();
+                animator.SetTrigger("isDigging");
 
-            if (_isNextToHole && _holeToDig != null) {
-                _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+                if (_isNextToHole && _holeToDig != null) {
+                    _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+                }
             }
         }
     }

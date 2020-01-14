@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     protected LayerMask _groundLayer;
 
-    private bool _stopMoving;
+    protected bool _stopMoving;
 
     public float GetMoveX()
     {
@@ -133,10 +133,13 @@ public class Player : MonoBehaviour
     }
 
     protected void Jump() {
-        _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
-        _rb.velocity += Vector3.up * _jumpStrength;
 
-        animator.SetBool("isJumping", true);
+        if (!_stopMoving) {
+            _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+            _rb.velocity += Vector3.up * _jumpStrength;
+
+            animator.SetBool("isJumping", true);
+        }
     }
 
     public void DisableHorizontalMovement() {
