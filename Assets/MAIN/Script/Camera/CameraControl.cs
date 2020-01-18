@@ -7,10 +7,19 @@ public class CameraControl : MonoBehaviour
     private GameObject _dots;
     private GameObject _strix;
 
+    //[HideInInspector]
+    public bool isMoving;
+    [HideInInspector]
+    public bool isZooming;
+    [HideInInspector]
+    public Vector3 offSetCoop;
+    [HideInInspector]
+    public Vector3 offSetStrixLastUpdatePos;
+
     [SerializeField]
     [Range(0, 31)] private int _playerLayer;
     
-    private float _minPosZ;
+    public float _minPosZ;
     [Space(10f)]
     [SerializeField]
     private float _maxPosZ;
@@ -28,12 +37,12 @@ public class CameraControl : MonoBehaviour
     [Space(10f)]
     [SerializeField]
     private float _maxDistPlayers = 100f;
-    [HideInInspector]
     public bool IsToFar;
 
     // Start is called before the first frame update
     void Start()
     {
+        isMoving = true;
         Physics.IgnoreLayerCollision(_playerLayer, _playerLayer, true);
 
         _dots = GameObject.Find("Dots");
@@ -49,14 +58,19 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = UpdatePosition();
+        if (isMoving) {
+            transform.position = UpdatePosition();
+        }
+        else {
+            transform.position = _strix.transform.position + offSetStrixLastUpdatePos + offSetCoop;
+        }
 
         IsToFar = _distanceDiffPlayers >= _maxDistPlayers;
         _strix.GetComponent<Player>().IsLeft = _strix.transform.position.x < _dots.transform.position.x;
         _dots.GetComponent<Player>().IsLeft = _dots.transform.position.x < _strix.transform.position.x;
     }
 
-    private Vector3 UpdatePosition() {
+    public Vector3 UpdatePosition() {
         _posXY = new Vector2((_dots.transform.position.x + _strix.transform.position.x) / 2, (_dots.transform.position.y + _strix.transform.position.y) / 2);
         _distanceDiffPlayers = Vector2.Distance(_dots.transform.position, _strix.transform.position);
 
