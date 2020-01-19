@@ -20,6 +20,9 @@ public class Dots : Player
     [SerializeField]
     private Transform _strixHead;
 
+    [SerializeField]
+    private GameObject _mainCamera;
+
     //[HideInInspector]
     public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock;
 
@@ -77,11 +80,9 @@ public class Dots : Player
     private void OnDotsCoop() {
         if (coopIsUnlock) {
             if (_isNearHeadStrix) {
-                Debug.Log("monte sur strix");
                 MoveToStrixHead();
             }
             else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {
-                Debug.Log("descend de strix");
                 GetDownFromStrix();
             }
         }
@@ -92,8 +93,15 @@ public class Dots : Player
 
         _isOnStrixHead = true;
 
-        transform.SetParent(_strix);
+        CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();    //to not move cam when coop and anchor is strix
+        cameraControl.isMoving = false;
+        cameraControl.offSetStrixLastUpdatePos = new Vector3(
+            cameraControl.UpdatePosition().x - _strix.position.x,
+            cameraControl.UpdatePosition().y - _strix.position.y,
+            0f);
+        cameraControl.offSetCoop = _mainCamera.transform.position - new Vector3(cameraControl.UpdatePosition().x, cameraControl.UpdatePosition().y, _strix.position.z);
 
+        transform.SetParent(_strix);
         transform.position = _strixHead.position;
         transform.rotation = _strixHead.rotation;
         _rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -102,6 +110,9 @@ public class Dots : Player
 
     private void GetDownFromStrix() {
         _isOnStrixHead = false;
+
+        CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();
+        cameraControl.isMoving = true;
 
         transform.parent = null;
         transform.position = new Vector3(transform.position.x, transform.position.y, 7.5f);
