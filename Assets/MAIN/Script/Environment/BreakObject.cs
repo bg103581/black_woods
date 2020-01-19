@@ -9,14 +9,14 @@ public class BreakObject : MonoBehaviour
 
     private Rigidbody _rb;
     private BoxCollider _coll;
-    private MeshRenderer _mesh;
+    [SerializeField]
+    private GameObject _meshGO;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _coll = GetComponent<BoxCollider>();
-        _mesh = GetComponent<MeshRenderer>();
     }
 
     public void OnBecHit() {
@@ -26,7 +26,11 @@ public class BreakObject : MonoBehaviour
 
             _rb.useGravity = true;
             //_coll.isTrigger = false;
-            _mesh.enabled = false;
+
+            MeshRenderer[] meshs = _meshGO.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer mesh in meshs) {
+                mesh.enabled = false;
+            }
         }
     }
 
