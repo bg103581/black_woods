@@ -80,11 +80,9 @@ public class Dots : Player
     private void OnDotsCoop() {
         if (coopIsUnlock) {
             if (_isNearHeadStrix) {
-                Debug.Log("monte sur strix");
                 MoveToStrixHead();
             }
             else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {
-                Debug.Log("descend de strix");
                 GetDownFromStrix();
             }
         }
