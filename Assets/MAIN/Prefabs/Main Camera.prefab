@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3636919812483531519}
   - component: {fileID: 3636919812483531512}
   - component: {fileID: 3636919812483531513}
+  - component: {fileID: 1322092417}
+  - component: {fileID: 1322092412}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: new_camera
@@ -96,10 +98,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a6bcb6532458c4479e4d2e617d6596f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
+  isZooming: 0
+  offSetCoop: {x: 0, y: 0, z: 0}
+  offSetStrixLastUpdatePos: {x: 0, y: 0, z: 0}
+  isSmoothingToZ: 0
+  smoothScale: 4
+  epsilon: 0.05
   _playerLayer: 12
+  _minPosZ: 0
   _maxPosZ: 1
   _offSetDist: 1
   _scale: 0.2
   _offSetY: 1.5
   _maxDistPlayers: 10
   IsToFar: 0
+--- !u!54 &1322092417
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636919812483531514}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1322092412
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3636919812483531514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
