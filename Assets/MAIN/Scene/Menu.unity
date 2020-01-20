@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 9112075}
   - component: {fileID: 9112074}
   - component: {fileID: 9112073}
+  - component: {fileID: 9112076}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -177,6 +178,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9112076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8137859b563f846ac7c33d52f30c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &78156427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,6 +1270,8 @@ GameObject:
   - component: {fileID: 975039401}
   - component: {fileID: 975039400}
   - component: {fileID: 975039399}
+  - component: {fileID: 975039403}
+  - component: {fileID: 975039402}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1329,6 +1344,42 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975039402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975039398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/Menue/Musique Menue
+  PlayEvent: 11
+  StopEvent: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &975039403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975039398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: -1
 --- !u!1 &1092691407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1538,7 @@ GameObject:
   - component: {fileID: 1195429658}
   - component: {fileID: 1195429657}
   - component: {fileID: 1195429656}
+  - component: {fileID: 1195429659}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -1615,6 +1667,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195429654}
   m_CullTransparentMesh: 0
+--- !u!114 &1195429659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195429654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1206346464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1933,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Voulez-vous vraiment quitter le jeu ?
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2274,6 +2354,7 @@ GameObject:
   - component: {fileID: 1380636394}
   - component: {fileID: 1380636393}
   - component: {fileID: 1380636392}
+  - component: {fileID: 1380636395}
   m_Layer: 5
   m_Name: CollectiblesButton
   m_TagString: Untagged
@@ -2391,6 +2472,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380636390}
   m_CullTransparentMesh: 0
+--- !u!114 &1380636395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380636390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1399498060
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,8 +2752,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1823036876}
-          m_MethodName: TestDaBooty
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2666,6 +2775,7 @@ GameObject:
   - component: {fileID: 1446894685}
   - component: {fileID: 1446894684}
   - component: {fileID: 1446894683}
+  - component: {fileID: 1446894686}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2689,7 +2799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.195}
   m_AnchorMin: {x: 0.7297427, y: 0.3035694}
   m_AnchorMax: {x: 0.8694853, y: 0.35457587}
-  m_AnchoredPosition: {x: -0.40005493, y: 0.6000061}
+  m_AnchoredPosition: {x: -0.40005493, y: 0.600029}
   m_SizeDelta: {x: -0.29999924, y: -0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446894683
@@ -2783,6 +2893,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446894681}
   m_CullTransparentMesh: 0
+--- !u!114 &1446894686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446894681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1472025101
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,6 +3010,7 @@ GameObject:
   - component: {fileID: 1473447260}
   - component: {fileID: 1473447259}
   - component: {fileID: 1473447258}
+  - component: {fileID: 1473447261}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -2989,6 +3128,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473447256}
   m_CullTransparentMesh: 0
+--- !u!114 &1473447261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473447256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1486721568
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3399,7 @@ GameObject:
   - component: {fileID: 1716518649}
   - component: {fileID: 1716518648}
   - component: {fileID: 1716518647}
+  - component: {fileID: 1716518650}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -3360,6 +3528,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1716518645}
   m_CullTransparentMesh: 0
+--- !u!114 &1716518650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716518645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1721407752
 GameObject:
   m_ObjectHideFlags: 0
@@ -3521,6 +3717,7 @@ GameObject:
   - component: {fileID: 1823036877}
   - component: {fileID: 1823036876}
   - component: {fileID: 1823036878}
+  - component: {fileID: 1823036879}
   m_Layer: 0
   m_Name: MenuManager
   m_TagString: Untagged
@@ -3658,6 +3855,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1823036879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823036875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8137859b563f846ac7c33d52f30c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1858074280
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,8 +4085,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1823036876}
-        m_MethodName: VolumeUpdate
+      - m_Target: {fileID: 1823036879}
+        m_MethodName: MasterVolumeLevel
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3899,6 +4108,7 @@ GameObject:
   - component: {fileID: 1957350471}
   - component: {fileID: 1957350470}
   - component: {fileID: 1957350469}
+  - component: {fileID: 1957350472}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -4027,6 +4237,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957350467}
   m_CullTransparentMesh: 0
+--- !u!114 &1957350472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957350467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1823036879}
+          m_MethodName: SoundButtonTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1998764453
 GameObject:
   m_ObjectHideFlags: 0

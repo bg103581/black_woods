@@ -22,5 +22,17 @@ public class AudioSetting : MonoBehaviour
   {
       MasterVolume = newMasterVolume; 
   }
-  
+
+  public void SoundButtonTrigger()
+  {
+        
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Menue/Cracking2", GetComponent<Transform>().position);
+        
+  }
+public void SoundButtonClic()
+{
+
+    FMODUnity.RuntimeManager.PlayOneShot("event:/Menue/WooshClic", GetComponent<Transform>().position);
+
+}
 }
