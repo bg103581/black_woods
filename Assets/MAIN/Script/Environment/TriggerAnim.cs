@@ -7,6 +7,8 @@ public class TriggerAnim : MonoBehaviour
 
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
+    private string _animationName;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,7 @@ public class TriggerAnim : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.name == "Strix") {
-            _animator.Play("Chap1Scene3Tree");
+            _animator.Play(_animationName);
         }
     }
 }
