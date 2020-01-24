@@ -11,10 +11,10 @@ public class MushroomTriggerClouds : MonoBehaviour
     private GameObject[] _objectsToEnable;
     [SerializeField]
     private Animator _crossFade;
-    [SerializeField]
-    private PlayerInput _strixInput;
-    [SerializeField]
-    private PlayerInput _dotsInput;
+    //[SerializeField]
+    public PlayerInput _strixInput;
+    //[SerializeField]
+    public PlayerInput _dotsInput;
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
