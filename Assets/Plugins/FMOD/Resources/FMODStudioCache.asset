@@ -149,6 +149,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-8336913095092676475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Characters.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Characters.bank
+  SubDir: 
+  lastModified: 637140298724819730
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8301837453150341772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +182,8 @@ MonoBehaviour:
   Path: event:/Strix/StrixWalking
   guid: 132f80254658b34bb8f1bd6600862733
   Banks:
-  - {fileID: 900781207059715807}
+  - {fileID: -8336913095092676475}
+  - {fileID: 5905582177252097482}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -172,6 +191,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 160
+--- !u!114 &-8121996585685364222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637140298724889548
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8051313327008873600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +391,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-6716176761524912655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Menue.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Menue.bank
+  SubDir: 
+  lastModified: 637152362382779635
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-6524661959947687917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +486,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 65000
+--- !u!114 &-5290621272908935397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637152362382759689
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4514186920182757335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,7 +573,8 @@ MonoBehaviour:
   Path: event:/Menue/Musique Menue
   guid: 1380dee69dab7d4787d095c4c8678880
   Banks:
-  - {fileID: 7736041862230072136}
+  - {fileID: 9145282091256766543}
+  - {fileID: -6716176761524912655}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -559,7 +633,8 @@ MonoBehaviour:
   Path: event:/Menue/WooshClic
   guid: d641cb39f52baf4c8d1f518e440dce67
   Banks:
-  - {fileID: 7736041862230072136}
+  - {fileID: 9145282091256766543}
+  - {fileID: -6716176761524912655}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -582,6 +657,24 @@ MonoBehaviour:
   Path: Blackwoods Sound/Build/Desktop/Menue.bank
   SubDir: 
   lastModified: 637145986697393410
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &-2676560738162743803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637152362382759689
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -618,7 +711,8 @@ MonoBehaviour:
   Path: event:/Menue/Cracking2
   guid: 416a4e41d820974aa914b42bddea9deb
   Banks:
-  - {fileID: 7736041862230072136}
+  - {fileID: 9145282091256766543}
+  - {fileID: -6716176761524912655}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -676,7 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Blackwoods Sound/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637152833914436649
+  lastModified: 637152362382769661
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -822,10 +916,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -1546545157563329978}
-  - {fileID: 900781207059715807}
-  - {fileID: 8110270742773276721}
-  - {fileID: 7736041862230072136}
-  - {fileID: 3401936963540433294}
+  - {fileID: 5905582177252097482}
+  - {fileID: -2676560738162743803}
+  - {fileID: -6716176761524912655}
+  - {fileID: -8121996585685364222}
   EditorEvents:
   - {fileID: -8301837453150341772}
   - {fileID: -3748099085196664288}
@@ -834,10 +928,10 @@ MonoBehaviour:
   - {fileID: -3040841692896593962}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 8110270742773276721}
+  - {fileID: -2676560738162743803}
   StringsBanks:
   - {fileID: -1546545157563329978}
-  stringsBankWriteTime: 637152833914436649
+  stringsBankWriteTime: 637152362382769661
   cacheVersion: 3
 --- !u!114 &812456595834611893
 MonoBehaviour:
@@ -890,7 +984,8 @@ MonoBehaviour:
   Path: event:/Musique ch 1/CH1
   guid: 75445fe261ee7f49a132b5ce47296209
   Banks:
-  - {fileID: 3401936963540433294}
+  - {fileID: 7682091385479435514}
+  - {fileID: -8121996585685364222}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1226,6 +1321,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 200
+--- !u!114 &5905582177252097482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Characters.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Characters.bank
+  SubDir: 
+  lastModified: 637140298724819730
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5958680065966674154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1462,24 @@ MonoBehaviour:
   Path: Blackwoods Sound/Build/Desktop/Menue.bank
   SubDir: 
   lastModified: 637116829059907773
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
+--- !u!114 &7682091385479435514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637140298724889548
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -1478,3 +1609,21 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &9145282091256766543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Menue.bank
+  m_EditorClassIdentifier: 
+  Path: Blackwoods Sound/Build/Desktop/Menue.bank
+  SubDir: 
+  lastModified: 637152362382779635
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1

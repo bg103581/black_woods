@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771249046265461878}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -308.5, y: -173.33, z: 121.53}
+  m_LocalPosition: {x: -308.57, y: -173.33, z: 121.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1771249046839622061}
@@ -106,7 +106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1771249046352514444
 Transform:
   m_ObjectHideFlags: 0
@@ -138,8 +138,7 @@ MonoBehaviour:
   dialogue:
     name: Kodamins
     sentences:
-    - 'Super ! '
-    - "Chacun de vous poss\xE8de des comp\xE9tences diff\xE9rents."
+    - "Chacun de vous poss\xE8de des comp\xE9tences diff\xE9rentes."
     - "La premi\xE8re comp\xE9tence de Strix est Flair. "
     - "Cela permet de rep\xE9rer les objects cach\xE9s qui peuvent \xEAtre utiles."
     - "La premi\xE8re comp\xE9tence de Dots est Bec."
@@ -223,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1771249046563573665
 Transform:
   m_ObjectHideFlags: 0
@@ -308,12 +307,12 @@ MonoBehaviour:
   dialogue:
     name: Kodamins
     sentences:
-    - "Bienvenu ! Nous sommes des Kodamins, esprits des animaux de la for\xEAt."
+    - "Bienvenue ! Nous sommes des Kodamins, esprits des animaux de la for\xEAt."
     - "Nous apportons notre aide \xE0 ceux qui veulent contribuer \xE0 son bien-\xEAtre. "
     - "Nous savons que vous \xEAtes missionn\xE9s pour lutter contre la mal\xE9diction."
     - C'est pourquoi nous vous aiderons autant que nous le pourrons.
     - Pour commencer, pourquoi ne pas avancer?
-    - Dirigez vous avec le stick analogue gauche.
+    - Dirigez vous avec le stick analogique gauche.
   trigger: {fileID: 0}
 --- !u!1 &1771249046839622063
 GameObject:
@@ -331,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1771249046839622061
 Transform:
   m_ObjectHideFlags: 0
@@ -364,7 +363,7 @@ MonoBehaviour:
     name: Kodamins
     sentences:
     - "Si vous souhaitez survivre dans cette for\xEAt, il va falloir coop\xE9rer."
-    - "Regardez cette d\xE9nivell\xE9e."
+    - "Regardez ce d\xE9nivel\xE9."
     - "Dots, avec son aile cass\xE9e, ne pourra s\xFBrement pas l'escalader!"
     - "Appuyez tous les deux sur RB pour faire monter Dots sur la t\xEAte de Strix."
   trigger: {fileID: 1771249046265461878}
@@ -506,7 +505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771249048032913467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -298.27, y: -172.84184, z: 121.35}
+  m_LocalPosition: {x: -288.41, y: -172.84184, z: 121.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1771249046352514444}
@@ -584,7 +583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1771249048045081461
 Transform:
   m_ObjectHideFlags: 0
@@ -617,7 +616,7 @@ MonoBehaviour:
     name: Kodamins
     sentences:
     - Mince ! Il y a un tronc qui bloque le passage.
-    - "Heureusement que Dots est assez petit pour se faufiler dans des endroits \xE9troites."
+    - "Heureusement que Dots est assez petit pour se faufiler dans des endroits \xE9troits."
     - "Strix peut sauter assez haut pour passer de l'autre c\xF4t\xE9."
     - Pour sauter, appuyez sur A.
   trigger: {fileID: 1771249046473558644}
