@@ -8,7 +8,6 @@ public class CameraControl : MonoBehaviour
     private GameObject _dots;
     private GameObject _strix;
 
-    [HideInInspector]
     public bool isMoving;   //true when coop
     [HideInInspector]
     public bool isZooming;  //true when not in foreground trigger
