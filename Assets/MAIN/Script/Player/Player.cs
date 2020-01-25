@@ -70,13 +70,17 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (_moveX != 0) animator.SetBool("isRunning", true);
+            if (_moveX != 0 && !_stopMoving) animator.SetBool("isRunning", true);
             else animator.SetBool("isRunning", false);
 
             if (_moveX < 0 && transform.rotation == Quaternion.Euler(0, 90f, 0)) {
-                transform.rotation = Quaternion.Euler(0, 270f, 0);
+                if (!_stopMoving) {
+                    transform.rotation = Quaternion.Euler(0, 270f, 0);
+                }
             } else if (_moveX > 0 && transform.rotation == Quaternion.Euler(0, 270f, 0)) {
-                transform.rotation = Quaternion.Euler(0, 90f, 0);
+                if (!_stopMoving) {
+                    transform.rotation = Quaternion.Euler(0, 90f, 0);
+                }
             }
 
             //dots utilise son bec
