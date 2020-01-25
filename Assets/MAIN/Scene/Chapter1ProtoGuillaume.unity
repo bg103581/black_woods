@@ -2776,12 +2776,12 @@ PrefabInstance:
     - target: {fileID: 6322296397701079186, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 96.17
+      value: 20.537998
       objectReference: {fileID: 0}
     - target: {fileID: 6322296397701079186, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.59
+      value: 1.0480003
       objectReference: {fileID: 0}
     - target: {fileID: 6322296397701079186, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
@@ -2872,21 +2872,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 7193226728289970287, guid: a78eeda8bbe668440b32947671f45243,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.909
-      objectReference: {fileID: 0}
-    - target: {fileID: 7193226728289970287, guid: a78eeda8bbe668440b32947671f45243,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.697
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216157200720140188, guid: a78eeda8bbe668440b32947671f45243,
-        type: 3}
-      propertyPath: _playerSpeed
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1365315150667766960, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
@@ -21022,26 +21007,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueTriggersHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 1771249046839622063, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046563573667, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514446, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249048045081463, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1771249047298997688, guid: f426ebab8300b4e459351df83c50b0bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21096,58 +21061,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249048032913466, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -288.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046265461883, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -308.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: "Chacun de vous poss\xE8de des comp\xE9tences diff\xE9rents."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[2]
-      value: "Cela permet de rep\xE9rer les objects cach\xE9s qui peuvent \xEAtre
-        utiles."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[1]
-      value: "La premi\xE8re comp\xE9tence de Strix est Flair. "
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[3]
-      value: "La premi\xE8re comp\xE9tence de Dots est Bec."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[4]
-      value: "Cela permet \xE0 Dots de taper avec son bec afin de casser ou faire
-        tomber un objet."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[5]
-      value: "Pour utiliser votre premi\xE8re comp\xE9tence, appuyez sur X."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1771249046352514445, guid: f426ebab8300b4e459351df83c50b0bf,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[6]
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f426ebab8300b4e459351df83c50b0bf, type: 3}
@@ -99238,7 +99151,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-670784
+  m_Name: pb_Mesh-2421594
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -99942,11 +99855,6 @@ PrefabInstance:
       propertyPath: _mainCamera
       value: 
       objectReference: {fileID: 894272329}
-    - target: {fileID: 6318640702546060647, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
-        type: 3}
-      propertyPath: _playerSpeed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6318640702546060644, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
       propertyPath: m_DefaultControlScheme
@@ -99955,12 +99863,12 @@ PrefabInstance:
     - target: {fileID: 6318640702546060649, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.792
+      value: 22.16
       objectReference: {fileID: 0}
     - target: {fileID: 6318640702546060649, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.6219995
+      value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: 6318640702546060649, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
