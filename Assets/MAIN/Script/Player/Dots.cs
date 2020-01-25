@@ -11,6 +11,7 @@ public class Dots : Player
 
     private bool _isUsingBec;
     private bool _isNearHeadStrix;
+    [SerializeField]
     private bool _isOnStrixHead;
 
     private GameObject _objectToHit;
@@ -82,7 +83,7 @@ public class Dots : Player
             if (_isNearHeadStrix) {
                 MoveToStrixHead();
             }
-            else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {
+            else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
                 GetDownFromStrix();
             }
         }
@@ -109,6 +110,7 @@ public class Dots : Player
     }
 
     private void GetDownFromStrix() {
+        Debug.Log("DOWN");
         _isOnStrixHead = false;
 
         CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();

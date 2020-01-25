@@ -12,8 +12,7 @@ public class Strix : Player
     private StrixObjectDetector _objectDetector;
     
     private int _layerMaskFlair = 1 << 9;
-
-    [HideInInspector]
+    
     public bool isCoop;
 
     private GameObject nearestObj;

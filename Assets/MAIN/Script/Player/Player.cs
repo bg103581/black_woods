@@ -63,20 +63,19 @@ public class Player : MonoBehaviour
             //walk
             if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
                 if (_stopMoving) {
-                    _rb.velocity = new Vector3(0f, _rb.velocity.y, _rb.velocity.z);
+                    _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
                 }
                 else {
                     _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
                 }
-
-                if (Mathf.Abs(_rb.velocity.x) > 0) animator.SetBool("isRunning", true);
-                else animator.SetBool("isRunning", false);
             }
 
-            if (_rb.velocity.x < 0 && transform.rotation == Quaternion.Euler(0,90f,0)) {
+            if (_moveX != 0) animator.SetBool("isRunning", true);
+            else animator.SetBool("isRunning", false);
+
+            if (_moveX < 0 && transform.rotation == Quaternion.Euler(0, 90f, 0)) {
                 transform.rotation = Quaternion.Euler(0, 270f, 0);
-            }
-            else if (_rb.velocity.x > 0 && transform.rotation == Quaternion.Euler(0, 270f, 0)) {
+            } else if (_moveX > 0 && transform.rotation == Quaternion.Euler(0, 270f, 0)) {
                 transform.rotation = Quaternion.Euler(0, 90f, 0);
             }
 
