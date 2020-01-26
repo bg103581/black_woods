@@ -11,8 +11,8 @@ public class Dots : Player
 
     private bool _isUsingBec;
     private bool _isNearHeadStrix;
-    [SerializeField]
-    private bool _isOnStrixHead;
+    [HideInInspector]
+    public bool isOnStrixHead;
 
     private GameObject _objectToHit;
 
@@ -44,7 +44,7 @@ public class Dots : Player
             _playerSpeed = _speedOnTree;
             _rb.useGravity = false;
         } 
-        else if (_isOnStrixHead) {      //si dots est sur Strix
+        else if (isOnStrixHead) {      //si dots est sur Strix
             _rb.useGravity = false;
         }
         else {
@@ -60,7 +60,7 @@ public class Dots : Player
 
     private void OnDotsJump() {
         if (_isGrounded) Jump();
-        else if (_isOnStrixHead) {
+        else if (isOnStrixHead) {
             if (jumpOnStrixIsUnlock) {
                 GetDownFromStrix();
                 Jump();
@@ -69,7 +69,7 @@ public class Dots : Player
     }
 
     private void OnDotsBec(InputValue value) {
-        if (becIsUnlock && (_isGrounded || _isOnStrixHead)) {            DisableHorizontalMovement();
+        if (becIsUnlock && (_isGrounded || isOnStrixHead)) {            DisableHorizontalMovement();
             _isUsingBec = value.Get<float>() > 0;
             if (_objectToHit != null) {
                 _objectToHit.GetComponent<BreakObject>().OnBecHit();
@@ -83,7 +83,7 @@ public class Dots : Player
             if (_isNearHeadStrix) {
                 MoveToStrixHead();
             }
-            else if (_isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
+            else if (isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
                 GetDownFromStrix();
             }
         }
@@ -92,7 +92,7 @@ public class Dots : Player
     private void MoveToStrixHead() {
         animator.SetBool("isJumping", false);
 
-        _isOnStrixHead = true;
+        isOnStrixHead = true;
 
         CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();    //to not move cam when coop and anchor is strix
         cameraControl.isMoving = false;
@@ -111,7 +111,7 @@ public class Dots : Player
 
     private void GetDownFromStrix() {
         Debug.Log("DOWN");
-        _isOnStrixHead = false;
+        isOnStrixHead = false;
 
         CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();
         cameraControl.isMoving = true;
@@ -120,6 +120,10 @@ public class Dots : Player
         transform.position = new Vector3(transform.position.x, transform.position.y, 7.5f);
         _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         _col.isTrigger = false;
+    }
+
+    public void SetBoolJumpAnim(bool boolJump) {
+        animator.SetBool("isJumping", boolJump);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -141,6 +145,18 @@ public class Dots : Player
     }
 
     private void OnTriggerStay(Collider other) {
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        CollisionEnter(collision);
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        CollisionExit(collision);
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        CollisionStay(collision);
     }
 
     private void OnDrawGizmosSelected() {

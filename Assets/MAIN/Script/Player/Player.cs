@@ -161,7 +161,16 @@ public class Player : MonoBehaviour
         Physics.IgnoreCollision(_col, PlatformCollider, false);
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    //private void OnCollisionEnter(Collision collision) {
+    //    animator.SetBool("isJumping", false);
+    //    if (collision.transform.tag == "ground") {
+    //        _isGroundCollided = true;
+    //    }
+    //    if (collision.transform.tag == "tree")
+    //        _onTree = true;
+    //}
+
+    protected void CollisionEnter(Collision collision) {
         animator.SetBool("isJumping", false);
         if (collision.transform.tag == "ground") {
             _isGroundCollided = true;
@@ -170,8 +179,16 @@ public class Player : MonoBehaviour
             _onTree = true;
     }
 
-    private void OnCollisionExit(Collision collision) {
-        //animator.SetBool("isJumping", true);
+    //private void OnCollisionExit(Collision collision) {
+    //    //animator.SetBool("isJumping", true);
+    //    if (collision.transform.tag == "ground") {
+    //        _isGroundCollided = false;
+    //    }
+    //    if (collision.transform.tag == "tree")
+    //        _onTree = false;
+    //}
+
+    protected void CollisionExit(Collision collision) {
         if (collision.transform.tag == "ground") {
             _isGroundCollided = false;
         }
@@ -179,7 +196,15 @@ public class Player : MonoBehaviour
             _onTree = false;
     }
 
-    private void OnCollisionStay(Collision collision) {
+    //private void OnCollisionStay(Collision collision) {
+    //    if (collision.transform.tag == "ground") {
+    //        _isGroundCollided = true;
+    //    }
+    //    if (collision.transform.tag == "tree")
+    //        _onTree = true;
+    //}
+
+    protected void CollisionStay(Collision collision) {
         if (collision.transform.tag == "ground") {
             _isGroundCollided = true;
         }

@@ -10,6 +10,8 @@ public class ChangeLayerUnderground : MonoBehaviour
     private GameObject _hole;
     [SerializeField]
     private GameObject _root;
+    [SerializeField]
+    private GameObject _feather;
     [Range(0,31)]
     [SerializeField]
     private int _playerUnderground;
@@ -28,6 +30,7 @@ public class ChangeLayerUnderground : MonoBehaviour
             _dots.layer = _playerUnderground;
             _hole.layer = _underGround;
             _root.layer = _playerUnderground;
+            _feather.layer = _playerUnderground;
         }
     }
 
@@ -36,6 +39,7 @@ public class ChangeLayerUnderground : MonoBehaviour
             _dots.layer = _player;
             _hole.layer = _default;
             _root.layer = _default;
+            _feather.layer = _default;
         }
     }
 
