@@ -22,6 +22,8 @@ public class Strix : Player
     private Quaternion _strixRotation;
     [SerializeField]
     private Collider _coopCollider;
+    [SerializeField]
+    private Dots _dots;
 
     //[HideInInspector]
     public bool coopIsUnlock, flairIsUnlock, creuseIsUnlock, catchIsUnlock;
@@ -60,6 +62,10 @@ public class Strix : Player
         if (_isGrounded) {
             //make the jump
             Jump();
+
+            if (_dots.isOnStrixHead) {
+                _dots.SetBoolJumpAnim(true);
+            }
         }
     }
 
@@ -159,6 +165,19 @@ public class Strix : Player
         if (other.tag == "creuse_object") {
             _isNextToHole = true;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        CollisionEnter(collision);
+        _dots.SetBoolJumpAnim(false);
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        CollisionExit(collision);
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        CollisionStay(collision);
     }
 
     private void OnDrawGizmosSelected() {
