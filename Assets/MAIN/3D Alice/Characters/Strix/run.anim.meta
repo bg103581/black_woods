@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: a4c6400b026b75a4480b07d272159031
+labels:
+- Vegetation
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000
