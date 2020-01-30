@@ -35,4 +35,28 @@ public void SoundButtonClic()
     FMODUnity.RuntimeManager.PlayOneShot("event:/Menue/WooshClic", GetComponent<Transform>().position);
 
 }
+public void StrixWalking()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Strix/StrixWalking", GetComponent<Transform>().position);
+
+    }
+ public void StrixDig()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Strix/StrixGratte", GetComponent<Transform>().position);
+
+    }
+public void StrixSniff()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Strix/StrixSnif", GetComponent<Transform>().position);
+
+    }
+public void StrixJump()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Strix/StrixJump", GetComponent<Transform>().position);
+
+    }
 }

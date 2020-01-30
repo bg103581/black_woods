@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{da591b21-f9f1-4de0-ab17-5afb9d293438}">
+		<property name="assetPath">
+			<value>Musique un game BW CH 1.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>184.00653061224489</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ece7d7b5-ecb9-4f68-8a4c-96fb707941d2}</destination>
+		</relationship>
+	</object>
+</objects>
