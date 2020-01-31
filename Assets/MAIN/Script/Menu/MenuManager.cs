@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class MenuManager : MonoBehaviour
     public GameObject menuCanvas;
     public GameObject noSavedDataCanvas;
     public FMODUnity.StudioEventEmitter EventEmitterRef; /// Sound 
+    public Animator crossFade;
 
     #endregion
 
@@ -37,9 +39,10 @@ public class MenuManager : MonoBehaviour
 
     #region BUTTON HANDLERS
     public void NewGame() {
-        SaveSystem.NewGame();
-        gameManager.Initialize();
-        EventEmitterRef.Play(); //Sound
+        //EventEmitterRef.Play(); //Sound
+        StartCoroutine("SwitchScene");
+        //SaveSystem.NewGame();
+        //gameManager.Initialize();
 
     }
 
@@ -49,7 +52,8 @@ public class MenuManager : MonoBehaviour
     }
 
     public void Continue() {
-        
+        EventEmitterRef.Play(); // Sound
+
         try {
             GameData data = SaveSystem.LoadGame();
             gameManager.Collectibles = data.collectibles;
@@ -62,11 +66,17 @@ public class MenuManager : MonoBehaviour
         }
 
         menuCanvas.SetActive(false);
-        EventEmitterRef.Play(); // Sound
     }
 
     public void LoadScene(int sceneNumber) {
         SceneManager.LoadScene(sceneNumber);
     }
     #endregion
+
+    IEnumerator SwitchScene() {
+        crossFade.SetTrigger("crossFadeTrigger");
+        yield return new WaitForSeconds(1.5f);
+        SaveSystem.NewGame();
+        gameManager.Initialize();
+    }
 }
