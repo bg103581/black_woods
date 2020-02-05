@@ -11,9 +11,18 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/MAIN/Scene/Chapter1ProtoGuillaume.unity
-    guid: 2aac2c42340d0d648b09b1e180cf45b8
+    path: "Assets/MAIN/Scene/Cinematiques/Cin\xE9matiqueNewGame.unity"
+    guid: 452b3c313277d044ea217d4f3e7999b8
+  - enabled: 1
+    path: Assets/MAIN/Scene/Chapter1Proto.unity
+    guid: 3eabbc4a3bf608748a7d1f80e6a4ee3f
+  - enabled: 1
+    path: Assets/MAIN/Scene/Cinematiques/CinematiqueEndChapter1.unity
+    guid: f2f4998611643864f87a2886a8fefc0b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8c6f4853ef460174d8602d006034c611,
       type: 2}
