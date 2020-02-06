@@ -61,14 +61,14 @@ public class Player : MonoBehaviour
 
         if (_isGrounded || _wallClimb) {
             //walk
-            if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
-                if (_stopMoving) {
-                    _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
-                }
-                else {
-                    _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
-                }
-            }
+            //if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
+            //    if (_stopMoving) {
+            //        _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
+            //    }
+            //    else {
+            //        _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+            //    }
+            //}
 
             if (_moveX != 0 && !_stopMoving) animator.SetBool("isRunning", true);
             else animator.SetBool("isRunning", false);
@@ -84,10 +84,66 @@ public class Player : MonoBehaviour
             }
 
             //dots utilise son bec
+            //if (_wallClimb) {
+            //    _rb.velocity = new Vector3(0, _moveY * _playerSpeed, _rb.velocity.z);
+            //}
+            _oldX = _moveX;
+        }
+        else {
+            //aircontrol
+            //if (_oldX != _moveX) {
+            //    if (_moveX > 0 && _rb.velocity.x < _playerSpeed)
+            //        _rb.AddForce(Vector3.right * _airControl, ForceMode.Force);
+            //    else if (_moveX < 0 && _rb.velocity.x > (-1 * _playerSpeed))
+            //        _rb.AddForce(Vector3.left * _airControl, ForceMode.Force);
+            //    else if (_moveX == 0 && Mathf.Abs(_rb.velocity.x) > 0.5f) {
+            //        if (_oldX < 0) {
+            //            _rb.AddForce(Vector3.right * _airControl, ForceMode.Force);
+            //        }
+            //        else if (_oldX > 0) {
+            //            _rb.AddForce(Vector3.left * _airControl, ForceMode.Force);
+            //        }
+            //    }
+            //}
+        }
+
+        //speed up fall
+        //if (_rb.velocity.y < 0) {
+        //    _rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
+        //}
+    }
+
+    protected void PlayerFixedUpdate() {
+        if (_isGrounded || _wallClimb) {
+            //walk
+            if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
+                if (_stopMoving) {
+                    _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
+                }
+                else {
+                    _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+                }
+            }
+
+            //if (_moveX != 0 && !_stopMoving) animator.SetBool("isRunning", true);
+            //else animator.SetBool("isRunning", false);
+
+            //if (_moveX < 0 && transform.rotation == Quaternion.Euler(0, 90f, 0)) {
+            //    if (!_stopMoving) {
+            //        transform.rotation = Quaternion.Euler(0, 270f, 0);
+            //    }
+            //}
+            //else if (_moveX > 0 && transform.rotation == Quaternion.Euler(0, 270f, 0)) {
+            //    if (!_stopMoving) {
+            //        transform.rotation = Quaternion.Euler(0, 90f, 0);
+            //    }
+            //}
+
+            //dots utilise son bec
             if (_wallClimb) {
                 _rb.velocity = new Vector3(0, _moveY * _playerSpeed, _rb.velocity.z);
             }
-            _oldX = _moveX;
+            //_oldX = _moveX;
         }
         else {
             //aircontrol
