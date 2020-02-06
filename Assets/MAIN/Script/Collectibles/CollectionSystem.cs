@@ -12,6 +12,9 @@ public class CollectionSystem : MonoBehaviour
 
     private GameManager gameManager;
 
+    [SerializeField]
+    private Usable _usable;
+
     private void Awake() {
 
         gameManager = FindObjectOfType<GameManager>();
@@ -22,7 +25,7 @@ public class CollectionSystem : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "Player" && _usable.isDetected) {
             gameManager.Collectibles++;
             gameManager.CollectibleState[CollectibleIndex] = false;
             gameObject.SetActive(false);

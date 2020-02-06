@@ -9,6 +9,8 @@ public class Usable : MonoBehaviour
 
     [SerializeField]
     private MeshRenderer _mesh;
+    [SerializeField]
+    private ParticleSystem _blingBling;
 
     //action when the object is detected with strix's flair
     public void OnDetected() {
@@ -17,6 +19,7 @@ public class Usable : MonoBehaviour
             Debug.Log(gameObject.name.ToString() + "detected !");
             isDetected = true;
             _mesh.enabled = true;
+            _blingBling.Stop();
         }
     }
 }
