@@ -60,19 +60,19 @@ public class Dots : Player
 
     private void OnDotsJump() {
         if (_isGrounded) Jump();
-        else if (isOnStrixHead) {
-            if (jumpOnStrixIsUnlock) {
-                GetDownFromStrix();
-                Jump();
-            }
+        else if (isOnStrixHead) {
+            if (jumpOnStrixIsUnlock) {
+                GetDownFromStrix();
+                Jump();
+            }
         }
     }
 
     private void OnDotsBec(InputValue value) {
         if (becIsUnlock && (_isGrounded || isOnStrixHead)) {            DisableHorizontalMovement();
             _isUsingBec = value.Get<float>() > 0;
-            if (_objectToHit != null) {
-                _objectToHit.GetComponent<BreakObject>().OnBecHit();
+            if (_objectToHit != null) {
+                _objectToHit.GetComponent<BreakObject>().OnBecHit();
             }
             animator.SetTrigger("isPecking");
         }
@@ -80,11 +80,11 @@ public class Dots : Player
 
     private void OnDotsCoop() {
         if (coopIsUnlock) {
-            if (_isNearHeadStrix) {
-                MoveToStrixHead();
+            if (_isNearHeadStrix) {
+                MoveToStrixHead();
             }
             else if (isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
-                GetDownFromStrix();
+                GetDownFromStrix();
             }
         }
     }

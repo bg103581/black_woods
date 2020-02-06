@@ -69,14 +69,13 @@ public class Strix : Player
         }
     }
 
-    private void OnStrixCatch()
-    {
-        if (catchIsUnlock) {
-            _isCatchPressed = !_isCatchPressed;
-            _strixRotation = transform.rotation;
+    private void OnStrixCatch() {
+        if (catchIsUnlock) {
+            _isCatchPressed = !_isCatchPressed;
+            _strixRotation = transform.rotation;
             animator.SetBool("isCatching", _isCatchPressed);
-            if (_objectToCatch != null) {
-                _objectToCatch.GetComponent<ObjectCatchable>().DragItem();
+            if (_objectToCatch != null) {
+                _objectToCatch.GetComponent<ObjectCatchable>().DragItem();
             }
         }
     }
@@ -89,42 +88,24 @@ public class Strix : Player
 
                 Collider[] nearObjects = Physics.OverlapSphere(transform.position, _flairRadius, _layerMaskFlair);
 
-
-
                 if (nearObjects.Length == 1) {
-
                     nearestObj = nearObjects[0].gameObject;
-
                 } else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
-
                     float minDistance = 100f;
-
                     foreach (Collider obj in nearObjects) {
-
                         float distance = Vector3.Distance(transform.position, obj.transform.position);
-
                         if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
-
                             minDistance = distance;
-
                             nearestObj = obj.gameObject;
-
                         }
-
                     }
-
                 }
 
-
-
                 if (nearestObj != null) {
-
                     nearestObj.GetComponent<Usable>().OnDetected();
-
                 }
 
                 animator.SetTrigger("isFlairing");
-
             }
         }
     }
@@ -143,8 +124,8 @@ public class Strix : Player
     }
 
     private void OnStrixCoop(InputValue value) {
-        if (coopIsUnlock && _isGrounded) {
-            isCoop = value.Get<float>() > 0;
+        if (coopIsUnlock && _isGrounded) {
+            isCoop = value.Get<float>() > 0;
         }
     }
 

@@ -122,15 +122,18 @@ public class Player : MonoBehaviour
 
     protected void Move(InputValue value) {
         if (Mathf.Abs(value.Get<Vector2>().x) < 0.4f)
-            _moveX = 0;
+            _moveX = 0f;
         else {
-            _moveX = value.Get<Vector2>().x;
+            if (value.Get<Vector2>().x > 0.4f) { _moveX = 1f; }
+            else { _moveX = -1f; }
         }
 
         if (Mathf.Abs(value.Get<Vector2>().y) < 0.4f)
-            _moveY = 0;
-        else
-            _moveY = value.Get<Vector2>().y;
+            _moveY = 0f;
+        else {
+            if (value.Get<Vector2>().y > 0.4f) { _moveY = 1f; }
+            else { _moveY = -1f; }
+        }
 
         _move = new Vector2(_moveX, _moveY);
     }
@@ -161,15 +164,6 @@ public class Player : MonoBehaviour
         Physics.IgnoreCollision(_col, PlatformCollider, false);
     }
 
-    //private void OnCollisionEnter(Collision collision) {
-    //    animator.SetBool("isJumping", false);
-    //    if (collision.transform.tag == "ground") {
-    //        _isGroundCollided = true;
-    //    }
-    //    if (collision.transform.tag == "tree")
-    //        _onTree = true;
-    //}
-
     protected void CollisionEnter(Collision collision) {
         animator.SetBool("isJumping", false);
         if (collision.transform.tag == "ground") {
@@ -179,15 +173,6 @@ public class Player : MonoBehaviour
             _onTree = true;
     }
 
-    //private void OnCollisionExit(Collision collision) {
-    //    //animator.SetBool("isJumping", true);
-    //    if (collision.transform.tag == "ground") {
-    //        _isGroundCollided = false;
-    //    }
-    //    if (collision.transform.tag == "tree")
-    //        _onTree = false;
-    //}
-
     protected void CollisionExit(Collision collision) {
         if (collision.transform.tag == "ground") {
             _isGroundCollided = false;
@@ -195,14 +180,7 @@ public class Player : MonoBehaviour
         if (collision.transform.tag == "tree")
             _onTree = false;
     }
-
-    //private void OnCollisionStay(Collision collision) {
-    //    if (collision.transform.tag == "ground") {
-    //        _isGroundCollided = true;
-    //    }
-    //    if (collision.transform.tag == "tree")
-    //        _onTree = true;
-    //}
+    
 
     protected void CollisionStay(Collision collision) {
         if (collision.transform.tag == "ground") {
