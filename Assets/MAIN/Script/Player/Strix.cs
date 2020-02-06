@@ -10,9 +10,9 @@ public class Strix : Player
     private float _flairRadius = 5f;
     [SerializeField]
     private StrixObjectDetector _objectDetector;
-    
+
     private int _layerMaskFlair = 1 << 9;
-    
+
     public bool isCoop;
 
     private GameObject nearestObj;
@@ -46,10 +46,10 @@ public class Strix : Player
         else {
             _coopCollider.enabled = false;
         }
+        animator.SetBool("isCoop", isCoop);
 
         if (_objectDetector != null) _objectToCatch = _objectDetector.GetObjectToCatch();
-        if (_isCatchPressed)
-        {
+        if (_isCatchPressed) {
             transform.rotation = _strixRotation;
         }
     }
@@ -79,8 +79,8 @@ public class Strix : Player
             }
         }
     }
-     
-    
+
+
     private void OnStrixFlair() {
         if (!_stopMoving) {
             if (flairIsUnlock && _isGrounded) {
@@ -90,7 +90,8 @@ public class Strix : Player
 
                 if (nearObjects.Length == 1) {
                     nearestObj = nearObjects[0].gameObject;
-                } else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
+                }
+                else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
                     float minDistance = 100f;
                     foreach (Collider obj in nearObjects) {
                         float distance = Vector3.Distance(transform.position, obj.transform.position);
@@ -126,6 +127,9 @@ public class Strix : Player
     private void OnStrixCoop(InputValue value) {
         if (coopIsUnlock && _isGrounded) {
             isCoop = value.Get<float>() > 0;
+            if (!_stopMoving) {
+                DisableHorizontalMovement();
+            }
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Dots : Player
 {
@@ -80,7 +81,7 @@ public class Dots : Player
 
     private void OnDotsCoop() {
         if (coopIsUnlock) {
-            if (_isNearHeadStrix) {
+            if (_isNearHeadStrix && _isGrounded) {
                 MoveToStrixHead();
             }
             else if (isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
@@ -90,8 +91,7 @@ public class Dots : Player
     }
 
     private void MoveToStrixHead() {
-        animator.SetBool("isJumping", false);
-
+        animator.SetBool("isJumping", true);
         isOnStrixHead = true;
 
         CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();    //to not move cam when coop and anchor is strix
@@ -102,11 +102,18 @@ public class Dots : Player
             0f);
         cameraControl.offSetCoop = _mainCamera.transform.position - new Vector3(cameraControl.UpdatePosition().x, cameraControl.UpdatePosition().y, _strix.position.z);
 
-        transform.SetParent(_strix);
-        transform.position = _strixHead.position;
-        transform.rotation = _strixHead.rotation;
+        transform.SetParent(_strixHead);
+
+        transform.DOJump(_strixHead.position, 0.5f, 1, 0.5f).OnComplete(() => EndMoveToStrixHead());
+        
         _rb.constraints = RigidbodyConstraints.FreezeAll;
         _col.isTrigger = true;
+    }
+
+    private void EndMoveToStrixHead() {
+        animator.SetBool("isJumping", false);
+        transform.position = _strixHead.position;
+        transform.rotation = _strixHead.rotation;
     }
 
     private void GetDownFromStrix() {

@@ -138,12 +138,12 @@ MonoBehaviour:
   dialogue:
     name: Kodamins
     sentences:
-    - "Chacun de vous poss\xE8de des comp\xE9tences diff\xE9rentes."
+    - "Vos diff\xE9rences de comp\xE9tences font de vous de bons partenaires."
     - "La premi\xE8re comp\xE9tence de Strix est Flair. "
-    - "Cela permet de rep\xE9rer les objects cach\xE9s qui peuvent \xEAtre utiles."
+    - "Cela permet de rep\xE9rer les objets cach\xE9s qui peuvent \xEAtre utiles."
     - "La premi\xE8re comp\xE9tence de Dots est Bec."
     - "Cela permet \xE0 Dots de taper avec son bec afin de casser ou faire tomber
-      un objet."
+      des objets, comme une branche par exemple."
     - "Pour utiliser votre premi\xE8re comp\xE9tence, appuyez sur X."
   trigger: {fileID: 1771249048032913467}
 --- !u!1 &1771249046473558644
@@ -307,10 +307,13 @@ MonoBehaviour:
   dialogue:
     name: Kodamins
     sentences:
-    - "Bienvenue ! Nous sommes des Kodamins, esprits des animaux de la for\xEAt."
-    - "Nous apportons notre aide \xE0 ceux qui veulent contribuer \xE0 son bien-\xEAtre. "
-    - "Nous savons que vous \xEAtes missionn\xE9s pour lutter contre la mal\xE9diction."
-    - C'est pourquoi nous vous aiderons autant que nous le pourrons.
+    - "Ah, vous \xEAtes donc ceux qui tentent de s'\xE9chapper d'ici."
+    - "Vous n'\xEAtes pas les premiers, mais les pr\xE9c\xE9dents  ont rapidement
+      abandonn\xE9. \nSerez-vous les premiers \xE0 r\xE9ussir? Nous nous demandons..."
+    - "Permettez-nous de nous pr\xE9senter. Nous sommes des Kodamins, les esprits
+      des animaux de la for\xEAt."
+    - "Nous aimerions vous apporter notre aide et voir o\xF9 cette aventure va vous
+      mener."
     - Pour commencer, pourquoi ne pas avancer?
     - Dirigez vous avec le stick analogique gauche.
   trigger: {fileID: 0}
@@ -365,7 +368,9 @@ MonoBehaviour:
     - "Si vous souhaitez survivre dans cette for\xEAt, il va falloir coop\xE9rer."
     - "Regardez ce d\xE9nivel\xE9."
     - "Dots, avec son aile cass\xE9e, ne pourra s\xFBrement pas l'escalader!"
-    - "Appuyez tous les deux sur RB pour faire monter Dots sur la t\xEAte de Strix."
+    - "Mettez vous assez proche et face \xE0 face."
+    - "Strix doit maintenir RB enfonc\xE9 pour permettre \xE0 Dots de monter ou descendre
+      de sa t\xEAte en utilisant aussi RB."
   trigger: {fileID: 1771249046265461878}
 --- !u!1 &1771249047298997689
 GameObject:
@@ -615,8 +620,10 @@ MonoBehaviour:
   dialogue:
     name: Kodamins
     sentences:
-    - Mince ! Il y a un tronc qui bloque le passage.
-    - "Heureusement que Dots est assez petit pour se faufiler dans des endroits \xE9troits."
-    - "Strix peut sauter assez haut pour passer de l'autre c\xF4t\xE9."
+    - "Lorsque des obstacles se pr\xE9sentent \xE0 vous, utilisez-les comme un tremplin.
+      Ou parfois, il suffit de les traverser !"
+    - "Dots, tu ne sautes pas haut mais tu peux facilement te faufiler dans des endroits
+      \xE9troits."
+    - "Strix, tu peux sauter assez haut pour passer de l'autre c\xF4t\xE9."
     - Pour sauter, appuyez sur A.
   trigger: {fileID: 1771249046473558644}
