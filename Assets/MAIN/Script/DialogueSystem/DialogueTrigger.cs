@@ -44,7 +44,7 @@ public class DialogueTrigger : MonoBehaviour
     }
 
     private void CheckIfSentenceIsComplete() {
-        if (Input.GetKeyDown(KeyCode.Return)) {
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Submit")) {
             if (dialogueManager.sentenceIsComplete) {
                 dialogueManager.DisplayNextSentence();
             } else {
