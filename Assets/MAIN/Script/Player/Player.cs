@@ -60,16 +60,6 @@ public class Player : MonoBehaviour
         _goLeftWhenMaxRight = (_cameraControl.IsToFar && !IsLeft && (_moveX < 0));
 
         if (_isGrounded || _wallClimb) {
-            //walk
-            if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
-                if (_stopMoving) {
-                    _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
-                }
-                else {
-                    _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
-                }
-            }
-
             if (_moveX != 0 && !_stopMoving) animator.SetBool("isRunning", true);
             else animator.SetBool("isRunning", false);
 
@@ -82,12 +72,27 @@ public class Player : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, 90f, 0);
                 }
             }
+            
+            _oldX = _moveX;
+        }
+    }
+
+    protected void PlayerFixedUpdate() {
+        if (_isGrounded || _wallClimb) {
+            //walk
+            if (!_cameraControl.IsToFar || _goRightWhenMaxLeft || _goLeftWhenMaxRight) {
+                if (_stopMoving) {
+                    _rb.velocity = new Vector3(0, _rb.velocity.y, _rb.velocity.z);
+                }
+                else {
+                    _rb.velocity = new Vector3(_moveX * _playerSpeed, _rb.velocity.y, _rb.velocity.z);
+                }
+            }
 
             //dots utilise son bec
             if (_wallClimb) {
                 _rb.velocity = new Vector3(0, _moveY * _playerSpeed, _rb.velocity.z);
             }
-            _oldX = _moveX;
         }
         else {
             //aircontrol

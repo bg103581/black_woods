@@ -55,6 +55,10 @@ public class Dots : Player
         }
     }
 
+    private void FixedUpdate() {
+        PlayerFixedUpdate();
+    }
+
     private void OnDotsMovement(InputValue value) {
         Move(value);
     }

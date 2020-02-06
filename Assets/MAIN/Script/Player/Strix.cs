@@ -54,6 +54,10 @@ public class Strix : Player
         }
     }
 
+    private void FixedUpdate() {
+        PlayerFixedUpdate();
+    }
+
     private void OnStrixMovement(InputValue value) {
         Move(value);
     }
