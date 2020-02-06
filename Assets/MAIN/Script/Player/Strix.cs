@@ -127,9 +127,9 @@ public class Strix : Player
     private void OnStrixCoop(InputValue value) {
         if (coopIsUnlock && _isGrounded) {
             isCoop = value.Get<float>() > 0;
-            if (!_stopMoving) {
-                DisableHorizontalMovement();
-            }
+            //if (!_stopMoving) {
+            //    DisableHorizontalMovement();
+            //}
         }
     }
 
