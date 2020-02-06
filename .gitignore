@@ -67,3 +67,7 @@ ProjectSettings/QualitySettings.asset
 fmod_editor.log
 
 Assets/_TerrainAutoUpgrade.meta
+
+Assets/MAIN/Scene/V_CH1 Scene.unity
+
+Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
