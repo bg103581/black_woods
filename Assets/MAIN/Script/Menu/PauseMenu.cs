@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,20 +10,30 @@ public class PauseMenu : MonoBehaviour
     private GameObject _panel;
     [SerializeField]
     private Animator _crossFade;
+    [SerializeField]
+    private PlayerInput _strixInput;
+    [SerializeField]
+    private PlayerInput _dotsInput;
     private bool isActive;
     
     void Update()
     {
         if (Input.GetButtonDown("Start")) {
             if (!isActive) {
-                isActive = true;
-                _panel.SetActive(true);
-                Time.timeScale = 0f;
+                Pause();
             }
             else {
                 Resume();
             }
         }
+    }
+
+    private void Pause() {
+        isActive = true;
+        _strixInput.PassivateInput();
+        _dotsInput.PassivateInput();
+        _panel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void MainMenu() {
@@ -31,6 +42,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume() {
         isActive = false;
+        _strixInput.ActivateInput();
+        _dotsInput.ActivateInput();
         _panel.SetActive(false);
         Time.timeScale = 1f;
     }
