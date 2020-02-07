@@ -91,6 +91,7 @@ public class CameraControl : MonoBehaviour
         }
 
         _posXY = new Vector2((_dots.transform.position.x + _strix.transform.position.x) / 2, (_dots.transform.position.y + _strix.transform.position.y) / 2);
+        _distanceDiffPlayers = Vector2.Distance(_dots.transform.position, _strix.transform.position);
         IsToFar = _distanceDiffPlayers >= _maxDistPlayers;
         _strix.GetComponent<Player>().IsLeft = _strix.transform.position.x < _dots.transform.position.x;
         _dots.GetComponent<Player>().IsLeft = _dots.transform.position.x < _strix.transform.position.x;
@@ -125,8 +126,6 @@ public class CameraControl : MonoBehaviour
     }
 
     private float SmoothToZ() {
-        _distanceDiffPlayers = Vector2.Distance(_dots.transform.position, _strix.transform.position);
-
         float desiredZ = Mathf.Lerp(_minPosZ, _maxPosZ, Mathf.Clamp01((_distanceDiffPlayers - _offSetDist) * _scale));
         float smoothedZ = Mathf.Lerp(transform.position.z, desiredZ, smoothScale * Time.deltaTime);
         return smoothedZ;
@@ -137,8 +136,6 @@ public class CameraControl : MonoBehaviour
     }
 
     public Vector3 UpdatePosition() {
-        _distanceDiffPlayers = Vector2.Distance(_dots.transform.position, _strix.transform.position);
-
         float z;
         z = Mathf.Lerp(_minPosZ, _maxPosZ, Mathf.Clamp01((_distanceDiffPlayers - _offSetDist) * _scale));
         return new Vector3(_posXY.x, _posXY.y + _offSetY, z);
