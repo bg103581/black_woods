@@ -100,7 +100,8 @@ public class Dots : Player
     }
 
     private void MoveToStrixHead() {
-        animator.SetBool("isJumping", true);
+        //animator.SetBool("isJumping", true);
+        animator.SetTrigger("triggerIsJumping");
         isOnStrixHead = true;
 
         CameraControl cameraControl = _mainCamera.GetComponent<CameraControl>();    //to not move cam when coop and anchor is strix
@@ -120,7 +121,7 @@ public class Dots : Player
     }
 
     private void EndMoveToStrixHead() {
-        animator.SetBool("isJumping", false);
+        //animator.SetBool("isJumping", false);
         transform.position = _strixHead.position;
         transform.rotation = _strixHead.rotation;
     }
@@ -140,6 +141,10 @@ public class Dots : Player
 
     public void SetBoolAnim(string animatorParameter, bool boolJump) {
         animator.SetBool(animatorParameter, boolJump);
+    }
+
+    public void SetTriggerAnim(string animatorParameter) {
+        animator.SetTrigger(animatorParameter);
     }
 
     private void OnTriggerEnter(Collider other) {

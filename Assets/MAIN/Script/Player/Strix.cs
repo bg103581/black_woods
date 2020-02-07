@@ -82,7 +82,7 @@ public class Strix : Player
             Jump();
 
             if (_dots.isOnStrixHead) {
-                _dots.SetBoolAnim("isJumping", true);
+                _dots.SetTriggerAnim("triggerIsJumping");
             }
         }
     }
@@ -172,7 +172,7 @@ public class Strix : Player
 
     private void OnCollisionEnter(Collision collision) {
         CollisionEnter(collision);
-        _dots.SetBoolAnim("isJumping", false);
+        //_dots.SetBoolAnim("isJumping", false);
     }
 
     private void OnCollisionExit(Collision collision) {

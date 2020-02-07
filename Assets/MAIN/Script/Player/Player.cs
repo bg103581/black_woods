@@ -149,7 +149,8 @@ public class Player : MonoBehaviour
             _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
             _rb.velocity += Vector3.up * _jumpStrength;
 
-            animator.SetBool("isJumping", true);
+            //animator.SetBool("isJumping", true);
+            animator.SetTrigger("triggerIsJumping");
         }
     }
 
@@ -170,7 +171,7 @@ public class Player : MonoBehaviour
     }
 
     protected void CollisionEnter(Collision collision) {
-        animator.SetBool("isJumping", false);
+        //animator.SetBool("isJumping", false);
         if (collision.transform.tag == "ground") {
             _isGroundCollided = true;
         }
