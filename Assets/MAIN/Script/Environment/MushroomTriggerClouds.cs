@@ -20,8 +20,8 @@ public class MushroomTriggerClouds : MonoBehaviour
         if (other.tag == "Player") {
             if (!_hasTriggered) {
                 _hasTriggered = true;
-                _strixInput.enabled = false;
-                _dotsInput.enabled = false;
+                _strixInput.PassivateInput();
+                _dotsInput.PassivateInput();
                 StartCoroutine("CloudCorout");
                 _crossFade.Play("CrossFade_Start");
             }
@@ -31,8 +31,8 @@ public class MushroomTriggerClouds : MonoBehaviour
     private IEnumerator CloudCorout() {
         yield return new WaitForSeconds(1f);
 
-        _strixInput.enabled = true;
-        _dotsInput.enabled = true;
+        _strixInput.ActivateInput();
+        _dotsInput.ActivateInput();
         foreach (GameObject obj in _objectsToEnable) {
             obj.SetActive(true);
         }
