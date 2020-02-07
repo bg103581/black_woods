@@ -14,7 +14,7 @@ public class DialogueTrigger : MonoBehaviour
     #endregion
 
     private void Awake() {
-        dialogueManager = FindObjectOfType<DialogueManager>();
+        dialogueManager = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
     }
 
     public void Update() {
