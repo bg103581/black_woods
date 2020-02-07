@@ -28,6 +28,11 @@ public class Dots : Player
     //[HideInInspector]
     public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock;
 
+    public bool IsNearHeadStrix {
+        get { return _isNearHeadStrix; }
+        set { _isNearHeadStrix = value; }
+    }
+
     private void Awake() {
         Init();
         _baseSpeed = _playerSpeed;
@@ -85,7 +90,7 @@ public class Dots : Player
 
     private void OnDotsCoop() {
         if (coopIsUnlock) {
-            if (_isNearHeadStrix && _isGrounded) {
+            if (_isNearHeadStrix && _isGrounded /*&& _strix.gameObject.GetComponent<Strix>().isCoop*/) {
                 MoveToStrixHead();
             }
             else if (isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
@@ -133,8 +138,8 @@ public class Dots : Player
         _col.isTrigger = false;
     }
 
-    public void SetBoolJumpAnim(bool boolJump) {
-        animator.SetBool("isJumping", boolJump);
+    public void SetBoolAnim(string animatorParameter, bool boolJump) {
+        animator.SetBool(animatorParameter, boolJump);
     }
 
     private void OnTriggerEnter(Collider other) {

@@ -35,7 +35,7 @@ public class DialogueManager : GenericSingleton<DialogueManager>
         players = GameObject.FindGameObjectsWithTag("Player");
 
         foreach (GameObject player in players) {
-            player.GetComponent<PlayerInput>().enabled = false;
+            player.GetComponent<PlayerInput>().PassivateInput();
         }
 
         foreach (GameObject trigger in dialogueTriggers) {
@@ -50,7 +50,7 @@ public class DialogueManager : GenericSingleton<DialogueManager>
     public void StartDialogue(Dialogue dialogue) {
         
         foreach (GameObject player in players) {
-            player.GetComponent<PlayerInput>().enabled = false;
+            player.GetComponent<PlayerInput>().PassivateInput();
         }
 
         dialogueBox.SetActive(true);
@@ -91,7 +91,7 @@ public class DialogueManager : GenericSingleton<DialogueManager>
         }
         
         foreach (GameObject player in players) {
-            player.GetComponent<PlayerInput>().enabled = true;
+            player.GetComponent<PlayerInput>().ActivateInput();
         }
     }
 

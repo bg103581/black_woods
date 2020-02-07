@@ -40,11 +40,17 @@ public class Strix : Player
     private void Update() {
         PlayerUpdate();
 
+        if (_isGrounded || _wallClimb) {
+            if (_moveX != 0 && !_stopMoving) { _dots.SetBoolAnim("isIdleRunOnStrix", true); }
+            else { _dots.SetBoolAnim("isIdleRunOnStrix", false); }
+        }
+
         if (isCoop) {
             _coopCollider.enabled = true;
         }
         else {
             _coopCollider.enabled = false;
+            _dots.IsNearHeadStrix = false;
         }
         animator.SetBool("isCoop", isCoop);
 
@@ -68,7 +74,7 @@ public class Strix : Player
             Jump();
 
             if (_dots.isOnStrixHead) {
-                _dots.SetBoolJumpAnim(true);
+                _dots.SetBoolAnim("isJumping", true);
             }
         }
     }
@@ -158,7 +164,7 @@ public class Strix : Player
 
     private void OnCollisionEnter(Collision collision) {
         CollisionEnter(collision);
-        _dots.SetBoolJumpAnim(false);
+        _dots.SetBoolAnim("isJumping", false);
     }
 
     private void OnCollisionExit(Collision collision) {
