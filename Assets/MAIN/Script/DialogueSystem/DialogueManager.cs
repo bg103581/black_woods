@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-public class DialogueManager : GenericSingleton<DialogueManager>
+public class DialogueManager : MonoBehaviour
 {
     #region VARIABLES
     private Queue<string> sentences; // FIFO collection
@@ -25,7 +25,7 @@ public class DialogueManager : GenericSingleton<DialogueManager>
     public bool sentenceIsComplete = false;
     #endregion
 
-    void Start()
+    void Start ()
     {
         sentences = new Queue<string>();
         dialogueBox = GameObject.FindGameObjectWithTag("dialogue_box");
