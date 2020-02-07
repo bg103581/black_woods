@@ -41,8 +41,16 @@ public class Strix : Player
         PlayerUpdate();
 
         if (_isGrounded || _wallClimb) {
-            if (_moveX != 0 && !_stopMoving) { _dots.SetBoolAnim("isIdleRunOnStrix", true); }
-            else { _dots.SetBoolAnim("isIdleRunOnStrix", false); }
+            if (_moveX != 0 && !_stopMoving) {
+                if (_dots.isOnStrixHead) {
+                    _dots.SetBoolAnim("isIdleRunOnStrix", true);
+                }
+            }
+            else {
+                if (_dots.isOnStrixHead) {
+                    _dots.SetBoolAnim("isIdleRunOnStrix", false);
+                }
+            }
         }
 
         if (isCoop) {
