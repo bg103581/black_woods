@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -23,6 +24,8 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject[] dialogueTriggers;
     public bool sentenceIsComplete = false;
+
+    public bool isReadyForNextScene = false;
     #endregion
 
     void Start ()
@@ -80,19 +83,24 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EndDialogue() {
-        dialogueBox.SetActive(false);
-        sentenceIsComplete = false;
+        if (SceneManager.GetActiveScene().buildIndex == 2) {
+            dialogueBox.SetActive(false);
+            sentenceIsComplete = false;
 
-        dialogueTriggers[triggerIDcount].SetActive(false);
+            dialogueTriggers[triggerIDcount].SetActive(false);
 
-        triggerIDcount++;
-        if (triggerIDcount < dialogueTriggers.Length) {
-            dialogueTriggers[triggerIDcount].SetActive(true);
+            triggerIDcount++;
+            if (triggerIDcount < dialogueTriggers.Length) {
+                dialogueTriggers[triggerIDcount].SetActive(true);
+            }
+
+            foreach (GameObject player in players) {
+                player.GetComponent<PlayerInput>().ActivateInput();
+            }
+        } else {
+            isReadyForNextScene = true;
         }
         
-        foreach (GameObject player in players) {
-            player.GetComponent<PlayerInput>().ActivateInput();
-        }
     }
 
     public void CompleteCurrentSentence() {
