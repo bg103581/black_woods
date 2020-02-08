@@ -25,6 +25,7 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     [Range(0, 31)] private int _playerLayer;
 
+    [HideInInspector]
     public float _minPosZ;
     [Space(10f)]
     [SerializeField]
