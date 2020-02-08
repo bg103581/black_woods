@@ -21,8 +21,8 @@ public class CollectionSystem : MonoBehaviour
         if (!gameManager.CollectibleState[CollectibleIndex]) {
             gameObject.SetActive(false);
         }
-        
     }
+    
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player" && _usable.isDetected) {
