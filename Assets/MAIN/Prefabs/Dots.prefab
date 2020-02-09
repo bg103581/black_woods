@@ -70,12 +70,13 @@ MonoBehaviour:
   _jumpStrength: 3
   _fallMultiplier: 1.5
   _airControl: 7
-  _bottomOffset: {x: 0.03, y: 0, z: 0}
+  _bottomOffset: {x: 0, y: 0, z: 0}
   _collisionRadius: 0.06
   _groundLayer:
     serializedVersion: 2
     m_Bits: 2048
   _speedOnTree: 1
+  isOnStrixHead: 0
   _strix: {fileID: 0}
   _strixHead: {fileID: 0}
   _mainCamera: {fileID: 0}
