@@ -50604,6 +50604,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 2.4
+    functionName: EnablePath
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.4
     functionName: EnableHorizontalMovement
     data: 
     objectReferenceParameter: {fileID: 0}

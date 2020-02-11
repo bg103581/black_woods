@@ -134,10 +134,7 @@ public class Strix : Player
             if (creuseIsUnlock && _isGrounded) {
                 DisableHorizontalMovement();
                 animator.SetTrigger("isDigging");
-
-                if (_isNextToHole && _holeToDig != null) {
-                    _holeToDig.GetComponent<EnablePathObject>().EnablePath();
-                }
+                
             }
         }
     }
@@ -187,4 +184,12 @@ public class Strix : Player
         Gizmos.DrawWireSphere(transform.position, _flairRadius);
         DrawGizmos();
     }
+
+    public void EnablePath() {
+        if (_isNextToHole && _holeToDig != null) {
+            _holeToDig.GetComponent<EnablePathObject>().EnablePath();
+        }
+    }
+
+
 }
