@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnablePathObject : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _objectToShow;
+    private GameObject _objectToHide;
 
     public void EnablePath() {
-        _objectToShow.SetActive(true);
+        _objectToHide.SetActive(false);
     }
+    
 }
