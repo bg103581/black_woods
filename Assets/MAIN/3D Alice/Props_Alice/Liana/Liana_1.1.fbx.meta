@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a38bd702259ceb948bc0bead85af66c2
+guid: 5ecfe10598d2eac4dbb1aca71d0ea4d9
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: No Name
-    second: {fileID: 2100000, guid: f49a250546ae5bb48be1eb04f369a1e1, type: 2}
+      name: Liana_1_Leafs
+    second: {fileID: 2100000, guid: 8661d4e522a4a374ebb51ba01a30917f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Liana_1_Trunk
+    second: {fileID: 2100000, guid: aa4d75d0ad3823b4eabcb5fc4717b20a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +44,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -86,7 +91,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
