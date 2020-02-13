@@ -8,6 +8,7 @@ public class Dots : Player
 {
     [SerializeField]
     private float _speedOnTree = 1f;
+    private float _speedOnWeb = 0.85f;
     private float _baseSpeed;
 
     private bool _isUsingBec;
@@ -52,6 +53,9 @@ public class Dots : Player
         } 
         else if (isOnStrixHead) {      //si dots est sur Strix
             _rb.useGravity = false;
+        }
+        else if (_isOnSpiderWeb) {
+            _playerSpeed = _speedOnWeb;
         }
         else {
             _wallClimb = false;
@@ -148,7 +152,7 @@ public class Dots : Player
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "break_object") {
+        if (other.tag == "break_object" || other.tag == "caveBranch") {
             _objectToHit = other.gameObject;
         }
         if (other.tag == "head_strix") {
@@ -157,7 +161,7 @@ public class Dots : Player
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "break_object") {
+        if (other.tag == "break_object" || other.tag == "caveBranch") {
             _objectToHit = null;
         }
         if (other.tag == "head_strix") {

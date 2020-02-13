@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     protected LayerMask _groundLayer;
 
     protected bool _stopMoving;
+    protected bool _isOnSpiderWeb = false;
 
     public float GetMoveX()
     {
@@ -174,6 +175,9 @@ public class Player : MonoBehaviour
         //animator.SetBool("isJumping", false);
         if (collision.transform.tag == "ground") {
             _isGroundCollided = true;
+        } else if (collision.transform.tag == "spider_web") {
+            _isGroundCollided = true;
+            _isOnSpiderWeb = true;
         }
         if (collision.transform.tag == "tree")
             _onTree = true;
@@ -182,6 +186,9 @@ public class Player : MonoBehaviour
     protected void CollisionExit(Collision collision) {
         if (collision.transform.tag == "ground") {
             _isGroundCollided = false;
+        } else if (collision.transform.tag == "spider_web") {
+            _isGroundCollided = false;
+            _isOnSpiderWeb = false;
         }
         if (collision.transform.tag == "tree")
             _onTree = false;
@@ -191,6 +198,9 @@ public class Player : MonoBehaviour
     protected void CollisionStay(Collision collision) {
         if (collision.transform.tag == "ground") {
             _isGroundCollided = true;
+        } else if (collision.transform.tag == "spider_web") {
+            _isGroundCollided = true;
+            _isOnSpiderWeb = true;
         }
         if (collision.transform.tag == "tree")
             _onTree = true;

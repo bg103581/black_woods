@@ -18,19 +18,32 @@ public class CollectionSystem : MonoBehaviour
     private void Awake() {
 
         gameManager = FindObjectOfType<GameManager>();
-        if (!gameManager.CollectibleState[CollectibleIndex]) {
-            gameObject.SetActive(false);
+        if (tag == "collectible") {
+            if (!gameManager.CollectibleState[CollectibleIndex]) {
+                gameObject.SetActive(false);
+            }
+        }
+
+        if (tag == "BlueFeather") {
+            gameObject.SetActive(true);
         }
     }
     
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player" && _usable.isDetected) {
-            gameManager.Collectibles++;
-            gameManager.CollectibleState[CollectibleIndex] = false;
-            gameObject.SetActive(false);
+        if (tag == "BlueFeather") {
+            if (other.tag == "Player" && other.name == "Dots") {
+                gameObject.SetActive(false);
+            }
+        } else {
+            if (other.tag == "Player" && _usable.isDetected) {
+                gameManager.Collectibles++;
+                gameManager.CollectibleState[CollectibleIndex] = false;
+                gameObject.SetActive(false);
 
-            Debug.Log("Feather collected. You have " + gameManager.Collectibles + " feathers in total.");
+                Debug.Log("Feather collected. You have " + gameManager.Collectibles + " feathers in total.");
+            }
         }
+        
     }
 }

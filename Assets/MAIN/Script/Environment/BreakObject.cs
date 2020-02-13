@@ -27,9 +27,11 @@ public class BreakObject : MonoBehaviour
             _rb.useGravity = true;
             //_coll.isTrigger = false;
 
-            MeshRenderer[] meshs = _meshGO.GetComponentsInChildren<MeshRenderer>();
-            foreach (MeshRenderer mesh in meshs) {
-                mesh.enabled = false;
+            if (tag != "caveBranch") {
+                MeshRenderer[] meshs = _meshGO.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer mesh in meshs) {
+                    mesh.enabled = false;
+                }
             }
         }
     }
