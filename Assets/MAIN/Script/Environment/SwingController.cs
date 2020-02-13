@@ -23,6 +23,7 @@ public class SwingController : MonoBehaviour
 
     private SwingPhase currentSwingPhase = SwingPhase.STOP;
     private SwingPlayerDetector _playerDetector;
+
     private void Start()
     {
         _playerDetector = _swingChild.GetComponent<SwingPlayerDetector>();
@@ -82,13 +83,16 @@ public class SwingController : MonoBehaviour
 
     private void UpdateSwingRotation()
     {
+        Quaternion angle;
         switch (currentSwingPhase)
         {
             case SwingPhase.TO_RIGHT :
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,currentAngleRightToReach),RETURN_SWING_SPEED * _timeSinceStrixOn);
+                angle = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, currentAngleRightToReach), RETURN_SWING_SPEED * _timeSinceStrixOn);
+                transform.rotation = angle;
                 break;
             case SwingPhase.TO_LEFT :
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,currentAngleLeftToReach),RETURN_SWING_SPEED * _timeSinceStrixOn);
+                angle = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, currentAngleLeftToReach), RETURN_SWING_SPEED * _timeSinceStrixOn);
+                transform.rotation = angle;
                 break;
             case SwingPhase.STOP:
                 break;
