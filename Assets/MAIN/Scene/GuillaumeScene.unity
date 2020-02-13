@@ -18269,12 +18269,12 @@ PrefabInstance:
     - target: {fileID: 6322296397701079186, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.54
+      value: 58.1
       objectReference: {fileID: 0}
     - target: {fileID: 6322296397701079186, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.7
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 6322296397701079186, guid: a78eeda8bbe668440b32947671f45243,
         type: 3}
@@ -20369,12 +20369,12 @@ PrefabInstance:
     - target: {fileID: 6318640702546060649, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.465006
+      value: 59.025
       objectReference: {fileID: 0}
     - target: {fileID: 6318640702546060649, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.7
+      value: 9.55
       objectReference: {fileID: 0}
     - target: {fileID: 6318640702546060649, guid: 68fdd5f34f34e8848ba29e9c4bccf317,
         type: 3}
@@ -23653,6 +23653,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2029946350}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2033476335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2216157200720140188, guid: a78eeda8bbe668440b32947671f45243,
+    type: 3}
+  m_PrefabInstance: {fileID: 1605429059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f8f3ed7a93d3684181bfac93bb71ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2052052776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24811,5 +24823,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 603758937, guid: 4297ef272762bce47bb0f117949d312f, type: 3}
+      propertyPath: _strixPlayer
+      value: 
+      objectReference: {fileID: 2033476335}
+    - target: {fileID: 603758937, guid: 4297ef272762bce47bb0f117949d312f, type: 3}
+      propertyPath: _dotsPlayer
+      value: 
+      objectReference: {fileID: 88472020}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4297ef272762bce47bb0f117949d312f, type: 3}

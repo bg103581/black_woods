@@ -86,7 +86,12 @@ public class Dots : Player
         if (becIsUnlock && (_isGrounded || isOnStrixHead)) {            DisableHorizontalMovement();
             _isUsingBec = value.Get<float>() > 0;
             if (_objectToHit != null) {
-                _objectToHit.GetComponent<BreakObject>().OnBecHit();
+                if (_objectToHit.tag == "branchDoMove") {
+                    _objectToHit.GetComponent<DoMoveOnBec>().OnBecHit();
+                }
+                else {
+                    _objectToHit.GetComponent<BreakObject>().OnBecHit();
+                }
             }
             animator.SetTrigger("isPecking");
         }
@@ -152,7 +157,7 @@ public class Dots : Player
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "break_object" || other.tag == "caveBranch") {
+        if (other.tag == "break_object" || other.tag == "caveBranch" || other.tag == "branchDoMove") {
             _objectToHit = other.gameObject;
         }
         if (other.tag == "head_strix") {
@@ -161,7 +166,7 @@ public class Dots : Player
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "break_object" || other.tag == "caveBranch") {
+        if (other.tag == "break_object" || other.tag == "caveBranch" || other.tag == "branchDoMove") {
             _objectToHit = null;
         }
         if (other.tag == "head_strix") {
