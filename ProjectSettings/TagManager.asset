@@ -17,6 +17,9 @@ TagManager:
   - dialogue_trigger
   - catchable_object
   - DialogueManager
+  - spider_web
+  - BlueFeather
+  - caveBranch
   layers:
   - Default
   - TransparentFX
