@@ -23,6 +23,13 @@ public class SwingController : MonoBehaviour
 
     private SwingPhase currentSwingPhase = SwingPhase.STOP;
     private SwingPlayerDetector _playerDetector;
+    [SerializeField]
+    private Transform _leftLiane;
+    [SerializeField]
+    private Transform _rightLiane;
+    [SerializeField]
+    private float _lianeAngleCoeff;
+
     private void Start()
     {
         _playerDetector = _swingChild.GetComponent<SwingPlayerDetector>();
@@ -82,13 +89,23 @@ public class SwingController : MonoBehaviour
 
     private void UpdateSwingRotation()
     {
+        Quaternion angle;
+        Quaternion lianeAngle;
         switch (currentSwingPhase)
         {
             case SwingPhase.TO_RIGHT :
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,currentAngleRightToReach),RETURN_SWING_SPEED * _timeSinceStrixOn);
+                angle = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, currentAngleRightToReach), RETURN_SWING_SPEED * _timeSinceStrixOn);
+                lianeAngle = Quaternion.Slerp(_leftLiane.rotation, Quaternion.Euler(0, 0, currentAngleRightToReach * _lianeAngleCoeff), RETURN_SWING_SPEED * _timeSinceStrixOn);
+                transform.rotation = angle;
+                _leftLiane.rotation = lianeAngle;
+                _rightLiane.rotation = lianeAngle;
                 break;
             case SwingPhase.TO_LEFT :
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0,0,currentAngleLeftToReach),RETURN_SWING_SPEED * _timeSinceStrixOn);
+                angle = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, currentAngleLeftToReach), RETURN_SWING_SPEED * _timeSinceStrixOn);
+                lianeAngle = Quaternion.Slerp(_leftLiane.rotation, Quaternion.Euler(0, 0, currentAngleLeftToReach * _lianeAngleCoeff), RETURN_SWING_SPEED * _timeSinceStrixOn);
+                transform.rotation = angle;
+                _leftLiane.rotation = lianeAngle;
+                _rightLiane.rotation = lianeAngle;
                 break;
             case SwingPhase.STOP:
                 break;
