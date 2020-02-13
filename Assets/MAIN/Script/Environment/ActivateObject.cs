@@ -8,9 +8,7 @@ public class ActivateObject : MonoBehaviour
     private GameObject BlueFeather;
     [SerializeField]
     private GameObject RollingStone;
-
-    private Vector3 StrixPos;
-    private Vector3 DotsPos;
+    
     private Vector3 RollingStonePos;
 
     [Header("RESET OBJECTS")]
@@ -18,6 +16,8 @@ public class ActivateObject : MonoBehaviour
     public GameObject caveBranch;
     public GameObject Dots;
     public GameObject Strix;
+    public Transform StrixPos;
+    public Transform DotsPos;
     
     private Transform holeStoneTransform;
     private Transform caveBranchTransform;
@@ -28,11 +28,6 @@ public class ActivateObject : MonoBehaviour
         caveBranchTransform = caveBranch.transform;
         blueFeatherTransform = BlueFeather.transform;
         RollingStonePos = RollingStone.transform.position;
-
-        StrixPos = new Vector3(97f, 7.28f, 7.5f);
-        DotsPos = new Vector3(98.07f, 6.6f, 7.5f);
-        
-
     }
 
     private void Update() {
@@ -48,6 +43,8 @@ public class ActivateObject : MonoBehaviour
         if (childConstraints != RigidbodyConstraints.FreezeAll) {
             if (collision.gameObject.tag == "Player") {
                 Reset();
+            } else {
+                
             }
         }
     }
@@ -62,8 +59,10 @@ public class ActivateObject : MonoBehaviour
 
     private void Reset() {
 
-        Dots.transform.position = DotsPos;
-        Strix.transform.position = StrixPos;
+        Dots.transform.position = DotsPos.position;
+        Dots.transform.rotation = DotsPos.rotation;
+        Strix.transform.position = StrixPos.position;
+        Strix.transform.rotation = StrixPos.rotation;
         RollingStone.transform.position = RollingStonePos;
 
         holeStone.transform.position = holeStoneTransform.position;
