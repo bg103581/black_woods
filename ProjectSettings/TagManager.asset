@@ -21,6 +21,7 @@ TagManager:
   - BlueFeather
   - caveBranch
   - branchDoMove
+  - sing_object
   layers:
   - Default
   - TransparentFX

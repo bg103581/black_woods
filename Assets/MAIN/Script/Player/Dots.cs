@@ -4,12 +4,16 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 
-public class Dots : Player
-{
+public class Dots : Player {
     [SerializeField]
     private float _speedOnTree = 1f;
     private float _speedOnWeb = 0.85f;
     private float _baseSpeed;
+    [SerializeField]
+    private float _chanteRadius = 5f;
+
+    private int _layerMaskFlair = 1 << 9;
+    private GameObject nearestObj;
 
     private bool _isUsingBec;
     private bool _isNearHeadStrix;
@@ -27,7 +31,10 @@ public class Dots : Player
     private GameObject _mainCamera;
 
     //[HideInInspector]
-    public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock;
+    public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock, chanteIsUnlock;
+
+    [SerializeField]
+    private float _dotsZPosition = 7.5f;
 
     public bool IsNearHeadStrix {
         get { return _isNearHeadStrix; }
@@ -50,14 +57,11 @@ public class Dots : Player
             _wallClimb = true;
             _playerSpeed = _speedOnTree;
             _rb.useGravity = false;
-        } 
-        else if (isOnStrixHead) {      //si dots est sur Strix
+        } else if (isOnStrixHead) {      //si dots est sur Strix
             _rb.useGravity = false;
-        }
-        else if (_isOnSpiderWeb) {
+        } else if (_isOnSpiderWeb) {
             _playerSpeed = _speedOnWeb;
-        }
-        else {
+        } else {
             _wallClimb = false;
             _playerSpeed = _baseSpeed;
             _rb.useGravity = true;
@@ -101,9 +105,37 @@ public class Dots : Player
         if (coopIsUnlock) {
             if (_isNearHeadStrix && _isGrounded /*&& _strix.gameObject.GetComponent<Strix>().isCoop*/) {
                 MoveToStrixHead();
-            }
-            else if (isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
+            } else if (isOnStrixHead && _strix.gameObject.GetComponent<Strix>().isCoop) {                Debug.Log("TRYING");
                 GetDownFromStrix();
+            }
+        }
+    }
+
+    private void OnDotsChante() {
+        if (!_stopMoving) {
+            if (chanteIsUnlock && _isGrounded) {
+                DisableHorizontalMovement();
+
+                Collider[] nearObjects = Physics.OverlapSphere(transform.position, _chanteRadius, _layerMaskFlair);
+
+                if (nearObjects.Length == 1) {
+                    nearestObj = nearObjects[0].gameObject;
+                } else if (nearObjects.Length > 1) {  //trouver l'objet le plus proche qui n'est pas deja detecté
+                    float minDistance = 100f;
+                    foreach (Collider obj in nearObjects) {
+                        float distance = Vector3.Distance(transform.position, obj.transform.position);
+                        if (distance <= minDistance && !obj.GetComponent<Usable>().isDetected) {
+                            minDistance = distance;
+                            nearestObj = obj.gameObject;
+                        }
+                    }
+                }
+
+                if (nearestObj != null) {
+                    nearestObj.GetComponent<Usable>().OnDetected();
+                }
+
+                animator.SetTrigger("isSinging");
             }
         }
     }
@@ -124,7 +156,7 @@ public class Dots : Player
         transform.SetParent(_strixHead);
 
         transform.DOJump(_strixHead.position, 0.5f, 1, 0.5f).OnComplete(() => EndMoveToStrixHead());
-        
+
         _rb.constraints = RigidbodyConstraints.FreezeAll;
         _col.isTrigger = true;
     }
@@ -143,7 +175,7 @@ public class Dots : Player
         cameraControl.isMoving = true;
 
         transform.parent = null;
-        transform.position = new Vector3(transform.position.x, transform.position.y, 7.5f);
+        transform.position = new Vector3(transform.position.x, transform.position.y, _dotsZPosition);
         _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         _col.isTrigger = false;
     }
@@ -190,6 +222,7 @@ public class Dots : Player
     }
 
     private void OnDrawGizmosSelected() {
+        Gizmos.DrawWireSphere(transform.position, _chanteRadius);
         DrawGizmos();
     }
 }
