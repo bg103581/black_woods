@@ -12,19 +12,21 @@ public class ActivateObject : MonoBehaviour
     private Vector3 RollingStonePos;
 
     [Header("RESET OBJECTS")]
-    public GameObject holeStone;
+    public GameObject warren;
     public GameObject caveBranch;
     public GameObject Dots;
     public GameObject Strix;
     public Transform StrixPos;
     public Transform DotsPos;
-    
-    private Transform holeStoneTransform;
+    public Transform _strixHead;
+
+
+    private Transform warrenTransform;
     private Transform caveBranchTransform;
     private Transform blueFeatherTransform;
 
     private void Awake() {
-        holeStoneTransform = holeStone.transform;
+        warrenTransform = warren.transform;
         caveBranchTransform = caveBranch.transform;
         blueFeatherTransform = BlueFeather.transform;
         RollingStonePos = RollingStone.transform.position;
@@ -59,18 +61,22 @@ public class ActivateObject : MonoBehaviour
 
     private void Reset() {
 
-        Dots.transform.position = DotsPos.position;
-        Dots.transform.rotation = DotsPos.rotation;
+        if (Dots.GetComponent<Dots>().isOnStrixHead) {
+            Dots.transform.position = _strixHead.position;
+        } else {
+            Dots.transform.position = DotsPos.position;
+            Dots.transform.rotation = DotsPos.rotation;
+        }
         Strix.transform.position = StrixPos.position;
         Strix.transform.rotation = StrixPos.rotation;
         RollingStone.transform.position = RollingStonePos;
 
-        holeStone.transform.position = holeStoneTransform.position;
+        warren.transform.position = warrenTransform.position;
         caveBranch.transform.position = caveBranchTransform.position;
         blueFeatherTransform.position = blueFeatherTransform.position;
 
         RollingStone.SetActive(false);
-        holeStone.SetActive(true);
+        warren.SetActive(true);
         BlueFeather.SetActive(true);
     }
 }
