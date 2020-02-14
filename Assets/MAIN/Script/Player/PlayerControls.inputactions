@@ -84,6 +84,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "DotsChante",
+                    "type": "Button",
+                    "id": "9926f89d-26ca-4c9c-88d3-d8f42b9c4cbf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -392,6 +400,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "StrixCatch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "711885db-b6a5-4fc4-8204-bbc6c7ca3032",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DotsChante",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51cf5c54-e037-47a9-9190-e03b0130244d",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DotsChante",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

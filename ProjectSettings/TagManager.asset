@@ -20,6 +20,7 @@ TagManager:
   - spider_web
   - BlueFeather
   - caveBranch
+  - sing_object
   layers:
   - Default
   - TransparentFX
