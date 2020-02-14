@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.4012685, y: 7.0906506, z: 2.1474128}
-  m_Center: {x: 0.10385692, y: 1.1065236, z: -0.15579247}
+  m_Size: {x: 5.1645784, y: 9.751406, z: 3.38277}
+  m_Center: {x: 0.17520985, y: 0.4413358, z: -0.0132515915}
 --- !u!114 &5825102569348425580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +107,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.3797522, y: 7.878594, z: 2.1670597}
-  m_Center: {x: 0.26800373, y: 0.03989331, z: -0.19451201}
+  m_Size: {x: 3.0603645, y: 8.337913, z: 0.8366815}
+  m_Center: {x: 0.116934404, y: 0.12714292, z: -0.051971126}
 --- !u!1 &8083294863252445567
 GameObject:
   m_ObjectHideFlags: 0
@@ -4988,7 +4988,12 @@ PrefabInstance:
     - target: {fileID: -1504981713932161579, guid: 60eb6ae0976c4674e8ec25fa7194f2cc,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 60eb6ae0976c4674e8ec25fa7194f2cc,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60eb6ae0976c4674e8ec25fa7194f2cc, type: 3}

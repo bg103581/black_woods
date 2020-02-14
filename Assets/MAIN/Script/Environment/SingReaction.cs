@@ -16,6 +16,7 @@ public class SingReaction : MonoBehaviour {
 
     private void EndMoveToStrixHead() {
         //animator.SetBool("isJumping", false);
+        transform.localScale = _fireflyPos.localScale;
         transform.position = _fireflyPos.position;
         transform.rotation = _fireflyPos.rotation;
     }
