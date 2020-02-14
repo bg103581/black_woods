@@ -32,7 +32,7 @@ public class CollectionSystem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (tag == "BlueFeather") {
-            if (other.tag == "Player" && other.name == "Dots") {
+            if (other.tag == "Player" && other.gameObject.name == "Dots") {
                 gameObject.SetActive(false);
             }
         } else {
