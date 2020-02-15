@@ -465,6 +465,134 @@ public class PlayerControls : IInputActionCollection
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DotsQTE"",
+            ""id"": ""80c91ea3-96b7-495d-bf28-32cc352c4723"",
+            ""actions"": [
+                {
+                    ""name"": ""A"",
+                    ""type"": ""Button"",
+                    ""id"": ""d3dd473f-9d70-41e3-bf3b-f9e486b9e6aa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""B"",
+                    ""type"": ""Button"",
+                    ""id"": ""ccefe9a4-6ea6-429b-9391-111514100d40"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""X"",
+                    ""type"": ""Button"",
+                    ""id"": ""e29396ff-bd51-4b89-a7be-1bc5089a73e3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Y"",
+                    ""type"": ""Button"",
+                    ""id"": ""93fe17ab-1a97-4fb6-aa99-9248d112cab5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""50d07b0f-b4d2-4a6f-960e-b73de54302ad"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2e94292-cdf3-4692-9c2c-22cf87f19ee9"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""A"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""924126dd-1ecb-411f-aff5-f52022f29677"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""B"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e887df38-fc75-461f-9e8f-049f157b5006"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""B"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6375afde-527d-43c8-938c-467298bd8208"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a50f5d6-e909-473e-ad49-2affa91f5acb"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""X"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed96af0f-6c64-4f57-b064-0c6f844650d2"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88097e41-ddee-4ac9-83af-4ef2dbc8bd9d"",
+                    ""path"": ""<Keyboard>/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Y"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -508,6 +636,12 @@ public class PlayerControls : IInputActionCollection
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_PopupAide = m_Menu.FindAction("PopupAide", throwIfNotFound: true);
+        // DotsQTE
+        m_DotsQTE = asset.FindActionMap("DotsQTE", throwIfNotFound: true);
+        m_DotsQTE_A = m_DotsQTE.FindAction("A", throwIfNotFound: true);
+        m_DotsQTE_B = m_DotsQTE.FindAction("B", throwIfNotFound: true);
+        m_DotsQTE_X = m_DotsQTE.FindAction("X", throwIfNotFound: true);
+        m_DotsQTE_Y = m_DotsQTE.FindAction("Y", throwIfNotFound: true);
     }
 
     ~PlayerControls()
@@ -699,6 +833,63 @@ public class PlayerControls : IInputActionCollection
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // DotsQTE
+    private readonly InputActionMap m_DotsQTE;
+    private IDotsQTEActions m_DotsQTEActionsCallbackInterface;
+    private readonly InputAction m_DotsQTE_A;
+    private readonly InputAction m_DotsQTE_B;
+    private readonly InputAction m_DotsQTE_X;
+    private readonly InputAction m_DotsQTE_Y;
+    public struct DotsQTEActions
+    {
+        private PlayerControls m_Wrapper;
+        public DotsQTEActions(PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @A => m_Wrapper.m_DotsQTE_A;
+        public InputAction @B => m_Wrapper.m_DotsQTE_B;
+        public InputAction @X => m_Wrapper.m_DotsQTE_X;
+        public InputAction @Y => m_Wrapper.m_DotsQTE_Y;
+        public InputActionMap Get() { return m_Wrapper.m_DotsQTE; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DotsQTEActions set) { return set.Get(); }
+        public void SetCallbacks(IDotsQTEActions instance)
+        {
+            if (m_Wrapper.m_DotsQTEActionsCallbackInterface != null)
+            {
+                A.started -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnA;
+                A.performed -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnA;
+                A.canceled -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnA;
+                B.started -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnB;
+                B.performed -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnB;
+                B.canceled -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnB;
+                X.started -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnX;
+                X.performed -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnX;
+                X.canceled -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnX;
+                Y.started -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnY;
+                Y.performed -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnY;
+                Y.canceled -= m_Wrapper.m_DotsQTEActionsCallbackInterface.OnY;
+            }
+            m_Wrapper.m_DotsQTEActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                A.started += instance.OnA;
+                A.performed += instance.OnA;
+                A.canceled += instance.OnA;
+                B.started += instance.OnB;
+                B.performed += instance.OnB;
+                B.canceled += instance.OnB;
+                X.started += instance.OnX;
+                X.performed += instance.OnX;
+                X.canceled += instance.OnX;
+                Y.started += instance.OnY;
+                Y.performed += instance.OnY;
+                Y.canceled += instance.OnY;
+            }
+        }
+    }
+    public DotsQTEActions @DotsQTE => new DotsQTEActions(this);
     private int m_KeyboardSchemeIndex = -1;
     public InputControlScheme KeyboardScheme
     {
@@ -734,5 +925,12 @@ public class PlayerControls : IInputActionCollection
     public interface IMenuActions
     {
         void OnPopupAide(InputAction.CallbackContext context);
+    }
+    public interface IDotsQTEActions
+    {
+        void OnA(InputAction.CallbackContext context);
+        void OnB(InputAction.CallbackContext context);
+        void OnX(InputAction.CallbackContext context);
+        void OnY(InputAction.CallbackContext context);
     }
 }

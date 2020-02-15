@@ -15,14 +15,17 @@ public class Usable : MonoBehaviour
     //action when the object is detected with strix's flair
     public void OnDetected() {
         if (tag == "sing_object") {
-            if (!isDetected) {
+            QTESystem qte = gameObject.GetComponent<QTESystem>();
+            if (!qte.isDone) {
                 Debug.Log(gameObject.name.ToString() + "detected !");
-                isDetected = true;
-                GetComponent<SingReaction>().React();
+
+                Dots dots = GameObject.Find("Dots").GetComponent<Dots>();
+                dots.currentQTE = qte;
+                dots.currentQTE.StartQTE();
+                //GetComponent<SingReaction>().React();
             }
         } else {
             if (!isDetected) {
-                //work on flair's fx
                 Debug.Log(gameObject.name.ToString() + "detected !");
                 isDetected = true;
                 _mesh.enabled = true;
