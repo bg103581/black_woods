@@ -93,6 +93,9 @@ public class Dots : Player {
                 if (_objectToHit.tag == "branchDoMove") {
                     _objectToHit.GetComponent<DoMoveOnBec>().OnBecHit();
                 }
+                else if (_objectToHit.tag == "brambleDoMove") {
+                    _objectToHit.GetComponent<SeparateBrambles>().OnBecHit();
+                }
                 else {
                     _objectToHit.GetComponent<BreakObject>().OnBecHit();
                 }
@@ -189,7 +192,7 @@ public class Dots : Player {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "break_object" || other.tag == "caveBranch" || other.tag == "branchDoMove") {
+        if (other.tag == "break_object" || other.tag == "caveBranch" || other.tag == "branchDoMove" || other.tag == "brambleDoMove") {
             _objectToHit = other.gameObject;
         }
         if (other.tag == "head_strix") {
@@ -198,7 +201,7 @@ public class Dots : Player {
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "break_object" || other.tag == "caveBranch" || other.tag == "branchDoMove") {
+        if (other.tag == "break_object" || other.tag == "caveBranch" || other.tag == "branchDoMove" || other.tag == "brambleDoMove") {
             _objectToHit = null;
         }
         if (other.tag == "head_strix") {
