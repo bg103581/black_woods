@@ -36,6 +36,9 @@ public class Dots : Player {
     [SerializeField]
     private float _dotsZPosition = 7.5f;
 
+    [HideInInspector]
+    public QTESystem currentQTE;
+
     public bool IsNearHeadStrix {
         get { return _isNearHeadStrix; }
         set { _isNearHeadStrix = value; }
@@ -225,4 +228,33 @@ public class Dots : Player {
         Gizmos.DrawWireSphere(transform.position, _chanteRadius);
         DrawGizmos();
     }
+
+    #region QTE
+
+    private void OnA() {
+        CheckQTE(QTESystem.Buttons.A);
+    }
+
+    private void OnB() {
+        CheckQTE(QTESystem.Buttons.B);
+    }
+
+    private void OnX() {
+        CheckQTE(QTESystem.Buttons.X);
+    }
+
+    private void OnY() {
+        CheckQTE(QTESystem.Buttons.Y);
+    }
+
+    private void CheckQTE(QTESystem.Buttons button) {
+        if (currentQTE.currentButton == button) {
+            currentQTE.ButtonSuccess();
+        }
+        else {
+            currentQTE.ButtonFail();
+        }
+    }
+
+    #endregion
 }
