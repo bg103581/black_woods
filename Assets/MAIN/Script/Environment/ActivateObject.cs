@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ActivateObject : MonoBehaviour
 {
+    [SerializeField]
+    private Animator _crossFadeReverse;
     [SerializeField]
     private GameObject BlueFeather;
     [SerializeField]
     private GameObject RollingStone;
     
     private Vector3 RollingStonePos;
+    private bool canCrossFade = true;
 
     [Header("RESET OBJECTS")]
     public GameObject warren;
@@ -44,9 +48,7 @@ public class ActivateObject : MonoBehaviour
         RigidbodyConstraints childConstraints = child.gameObject.GetComponent<Rigidbody>().constraints;
         if (childConstraints != RigidbodyConstraints.FreezeAll) {
             if (collision.gameObject.tag == "Player") {
-                Reset();
-            } else {
-                
+                StartCoroutine(Reset());
             }
         }
     }
@@ -59,7 +61,17 @@ public class ActivateObject : MonoBehaviour
         }
     }
 
-    private void Reset() {
+    IEnumerator Reset() {
+
+        canCrossFade = false;
+
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+            player.GetComponent<PlayerInput>().PassivateInput();
+        }
+
+        _crossFadeReverse.SetTrigger("crossFadeTrigger");
+        
+        yield return new WaitForSeconds(1);
 
         if (Dots.GetComponent<Dots>().isOnStrixHead) {
             Dots.transform.position = _strixHead.position;
@@ -78,5 +90,13 @@ public class ActivateObject : MonoBehaviour
         RollingStone.SetActive(false);
         warren.SetActive(true);
         BlueFeather.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+            player.GetComponent<PlayerInput>().ActivateInput();
+        }
+
+        canCrossFade = true;
     }
 }
