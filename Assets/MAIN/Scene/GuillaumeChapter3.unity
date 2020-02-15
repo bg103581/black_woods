@@ -5017,6 +5017,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireflyPos: {fileID: 1830262157}
+  _StrixPosOnScaraboss: {fileID: 0}
+  _scarabossPos: {fileID: 0}
+  _strixLandPos: {fileID: 0}
+  _dotsTransform: {fileID: 0}
+  _strixTransform: {fileID: 0}
 --- !u!114 &70494057
 MonoBehaviour:
   m_ObjectHideFlags: 0
