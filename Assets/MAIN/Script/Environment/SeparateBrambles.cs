@@ -18,7 +18,8 @@ public class SeparateBrambles : MonoBehaviour
     [SerializeField]
     private float doDuration;
 
-    private bool isHit = false;
+    [HideInInspector]
+    public bool isHit = false;
 
     public void OnBecHit() {
         Debug.Log("HIT BY DOTS BEC");
