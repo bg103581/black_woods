@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{ad903893-5daa-48e9-90e2-11c3491f5ab8}">
+		<property name="assetPath">
+			<value>Grincement.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>7.2480000000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ece7d7b5-ecb9-4f68-8a4c-96fb707941d2}</destination>
+		</relationship>
+	</object>
+</objects>
