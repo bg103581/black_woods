@@ -96,6 +96,7 @@ public class QTESystem : MonoBehaviour
             _qteImage.SetActive(false);
             isDone = true;
             GetComponent<SingReaction>().React();
+            GetComponent<Usable>().isDetected = true;
         }
         else if (currentIndex < _numberButtons) {
             Debug.Log("success");

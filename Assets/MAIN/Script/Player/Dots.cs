@@ -170,7 +170,10 @@ public class Dots : Player {
                 }
 
                 if (nearestObj != null) {
-                    nearestObj.GetComponent<Usable>().OnDetected();
+                    Debug.Log(nearestObj.name);
+                    if (nearestObj.tag == "sing_object") {
+                        nearestObj.GetComponent<Usable>().OnDetected();
+                    }
                 }
 
                 animator.SetTrigger("isSinging");
