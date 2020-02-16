@@ -104,6 +104,22 @@ public class PlayerControls : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DotsPlane"",
+                    ""type"": ""Value"",
+                    ""id"": ""fa525a00-b3e8-4e88-aa75-9875d04465e1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.2)""
+                },
+                {
+                    ""name"": ""DotsCancelPlane"",
+                    ""type"": ""Value"",
+                    ""id"": ""e64e68d9-08de-4289-a926-7025e6810abb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -436,6 +452,50 @@ public class PlayerControls : IInputActionCollection
                     ""action"": ""DotsChante"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0ebc119-2e6b-471e-acea-87122080de40"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DotsPlane"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""016a7f5c-c8ac-4dfd-8b6b-16b44ce93443"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DotsPlane"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6be00655-365b-43f1-ad3f-ae055defcaf6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DotsCancelPlane"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""663e3830-b64b-4dfe-b6c3-ad0a25f8dcd8"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DotsCancelPlane"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -633,6 +693,8 @@ public class PlayerControls : IInputActionCollection
         m_Player_DotsCoop = m_Player.FindAction("DotsCoop", throwIfNotFound: true);
         m_Player_StrixCatch = m_Player.FindAction("StrixCatch", throwIfNotFound: true);
         m_Player_DotsChante = m_Player.FindAction("DotsChante", throwIfNotFound: true);
+        m_Player_DotsPlane = m_Player.FindAction("DotsPlane", throwIfNotFound: true);
+        m_Player_DotsCancelPlane = m_Player.FindAction("DotsCancelPlane", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_PopupAide = m_Menu.FindAction("PopupAide", throwIfNotFound: true);
@@ -702,6 +764,8 @@ public class PlayerControls : IInputActionCollection
     private readonly InputAction m_Player_DotsCoop;
     private readonly InputAction m_Player_StrixCatch;
     private readonly InputAction m_Player_DotsChante;
+    private readonly InputAction m_Player_DotsPlane;
+    private readonly InputAction m_Player_DotsCancelPlane;
     public struct PlayerActions
     {
         private PlayerControls m_Wrapper;
@@ -717,6 +781,8 @@ public class PlayerControls : IInputActionCollection
         public InputAction @DotsCoop => m_Wrapper.m_Player_DotsCoop;
         public InputAction @StrixCatch => m_Wrapper.m_Player_StrixCatch;
         public InputAction @DotsChante => m_Wrapper.m_Player_DotsChante;
+        public InputAction @DotsPlane => m_Wrapper.m_Player_DotsPlane;
+        public InputAction @DotsCancelPlane => m_Wrapper.m_Player_DotsCancelPlane;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -759,6 +825,12 @@ public class PlayerControls : IInputActionCollection
                 DotsChante.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsChante;
                 DotsChante.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsChante;
                 DotsChante.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsChante;
+                DotsPlane.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsPlane;
+                DotsPlane.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsPlane;
+                DotsPlane.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsPlane;
+                DotsCancelPlane.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsCancelPlane;
+                DotsCancelPlane.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsCancelPlane;
+                DotsCancelPlane.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDotsCancelPlane;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -796,6 +868,12 @@ public class PlayerControls : IInputActionCollection
                 DotsChante.started += instance.OnDotsChante;
                 DotsChante.performed += instance.OnDotsChante;
                 DotsChante.canceled += instance.OnDotsChante;
+                DotsPlane.started += instance.OnDotsPlane;
+                DotsPlane.performed += instance.OnDotsPlane;
+                DotsPlane.canceled += instance.OnDotsPlane;
+                DotsCancelPlane.started += instance.OnDotsCancelPlane;
+                DotsCancelPlane.performed += instance.OnDotsCancelPlane;
+                DotsCancelPlane.canceled += instance.OnDotsCancelPlane;
             }
         }
     }
@@ -921,6 +999,8 @@ public class PlayerControls : IInputActionCollection
         void OnDotsCoop(InputAction.CallbackContext context);
         void OnStrixCatch(InputAction.CallbackContext context);
         void OnDotsChante(InputAction.CallbackContext context);
+        void OnDotsPlane(InputAction.CallbackContext context);
+        void OnDotsCancelPlane(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

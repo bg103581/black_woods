@@ -92,6 +92,22 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DotsPlane",
+                    "type": "Value",
+                    "id": "fa525a00-b3e8-4e88-aa75-9875d04465e1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.2)"
+                },
+                {
+                    "name": "DotsCancelPlane",
+                    "type": "Value",
+                    "id": "e64e68d9-08de-4289-a926-7025e6810abb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -422,6 +438,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "DotsChante",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e0ebc119-2e6b-471e-acea-87122080de40",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DotsPlane",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "016a7f5c-c8ac-4dfd-8b6b-16b44ce93443",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DotsPlane",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6be00655-365b-43f1-ad3f-ae055defcaf6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DotsCancelPlane",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "663e3830-b64b-4dfe-b6c3-ad0a25f8dcd8",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DotsCancelPlane",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
