@@ -66,6 +66,7 @@ public class ActivateObject : MonoBehaviour
         canCrossFade = false;
 
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+            Physics.IgnoreCollision(player.GetComponent<Collider>(), RollingStone.GetComponent<Collider>());
             player.GetComponent<PlayerInput>().PassivateInput();
         }
 
@@ -94,6 +95,7 @@ public class ActivateObject : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+            Physics.IgnoreCollision(player.GetComponent<Collider>(), RollingStone.GetComponent<Collider>(), false);
             player.GetComponent<PlayerInput>().ActivateInput();
         }
 
