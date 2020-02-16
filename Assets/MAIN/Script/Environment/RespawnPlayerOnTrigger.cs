@@ -26,6 +26,7 @@ public class RespawnPlayerOnTrigger : MonoBehaviour
         canCrossFade = false;
 
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+            Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
             player.GetComponent<PlayerInput>().PassivateInput();
         }
 
@@ -45,6 +46,7 @@ public class RespawnPlayerOnTrigger : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+            Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>(), false);
             player.GetComponent<PlayerInput>().ActivateInput();
         }
 
