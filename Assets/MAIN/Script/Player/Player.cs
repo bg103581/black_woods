@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public Vector2 _move;
 
-    private float _oldX;
+    protected float _oldX;
     protected float _moveX;
     protected float _moveY;
 

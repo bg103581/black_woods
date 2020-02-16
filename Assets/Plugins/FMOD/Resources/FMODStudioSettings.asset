@@ -15,8 +15,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Blackwoods Sound/Blackwoods Sound.fspro
-  sourceBankPath: Blackwoods Sound\Build
+  sourceProjectPath: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Blackwoods Sound.fspro
+  sourceBankPath: Assets\MAIN\Son Valentin\Fmod\Blackwoods Sound\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -82,5 +82,6 @@ MonoBehaviour:
   - Characters
   - Menue
   - Music
+  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
