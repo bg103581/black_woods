@@ -31,13 +31,18 @@ public class Dots : Player {
     private GameObject _mainCamera;
 
     //[HideInInspector]
-    public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock, chanteIsUnlock;
+    public bool becIsUnlock, coopIsUnlock, jumpOnStrixIsUnlock, chanteIsUnlock, planeIsUnlock;
 
     [SerializeField]
     private float _dotsZPosition = 7.5f;
 
     [HideInInspector]
     public QTESystem currentQTE;
+
+    [SerializeField]
+    private bool _isPlaning;
+    [SerializeField]
+    private float _planeFallSpeed;
 
     public bool IsNearHeadStrix {
         get { return _isNearHeadStrix; }
@@ -69,10 +74,37 @@ public class Dots : Player {
             _playerSpeed = _baseSpeed;
             _rb.useGravity = true;
         }
+
+        if (planeIsUnlock) {
+            if (_isPlaning && !_isGrounded && !isOnStrixHead) {
+                //if (_rb.velocity.y < 0) {
+                //    animator.SetBool("isPlaning", true);
+                //}
+                animator.SetBool("isPlaning", true);
+            }
+            else {
+                animator.SetBool("isPlaning", false);
+            }
+        }
+
     }
 
     private void FixedUpdate() {
         PlayerFixedUpdate();
+
+        if (planeIsUnlock) {
+            if (_isPlaning && !_isGrounded && !isOnStrixHead) {
+
+                if (_rb.velocity.y < 0) {
+                    if (transform.rotation == Quaternion.Euler(0, 90f, 0)) {
+                        _rb.velocity = new Vector3(_playerSpeed, _planeFallSpeed, _rb.velocity.z);
+                    }
+                    else if (transform.rotation == Quaternion.Euler(0, 270f, 0)) {
+                        _rb.velocity = new Vector3(-_playerSpeed, _planeFallSpeed, _rb.velocity.z);
+                    }
+                }
+            }
+        }
     }
 
     private void OnDotsMovement(InputValue value) {
@@ -143,6 +175,16 @@ public class Dots : Player {
 
                 animator.SetTrigger("isSinging");
             }
+        }
+    }
+
+    private void OnDotsPlane(InputValue value) {
+        _isPlaning = value.Get<float>() > 0;
+    }
+
+    private void OnDotsCancelPlane(InputValue value) {
+        if (value.Get<float>() < 1) {
+            _isPlaning = false;
         }
     }
 
