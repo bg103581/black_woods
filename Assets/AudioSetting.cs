@@ -59,4 +59,40 @@ public void StrixJump()
         FMODUnity.RuntimeManager.PlayOneShot("event:/Strix/StrixJump", GetComponent<Transform>().position);
 
     }
+    public void DotsWalking()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Dots/DotsWalking", GetComponent<Transform>().position);
+
+    }
+    public void DotsJump()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Dots/Dots jump", GetComponent<Transform>().position);
+
+    }
+    public void DotsBec()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Dots/DotsBec", GetComponent<Transform>().position);
+
+    }
+    public void DotsSing()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Dots/DotsSing", GetComponent<Transform>().position);
+
+    }
+    public void FallingTree()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/FallingTree", GetComponent<Transform>().position);
+
+    }
+    public void BoomingTree()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/BoomingTree", GetComponent<Transform>().position);
+
+    }
 }
