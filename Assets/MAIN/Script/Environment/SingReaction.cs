@@ -25,6 +25,8 @@ public class SingReaction : MonoBehaviour {
             transform.DOJump(_fireflyPos.position, 0, 1, 2f).OnComplete(() => EndDOJump(transform, _fireflyPos));
         } else if (name == "Scaraboss") {
             checkScarabossState = true;
+        } else if (name == "Ent_1") {
+            GetComponentInChildren<TurnEnt>().TurnLeft();
         }
     }
 

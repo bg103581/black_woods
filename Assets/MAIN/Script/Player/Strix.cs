@@ -121,7 +121,9 @@ public class Strix : Player
                 }
 
                 if (nearestObj != null) {
-                    nearestObj.GetComponent<Usable>().OnDetected();
+                    if(nearestObj.tag != "sing_object") {
+                        nearestObj.GetComponent<Usable>().OnDetected();
+                    }
                 }
 
                 animator.SetTrigger("isFlairing");
