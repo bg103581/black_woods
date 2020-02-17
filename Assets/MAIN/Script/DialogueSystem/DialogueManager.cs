@@ -37,16 +37,18 @@ public class DialogueManager : MonoBehaviour
 
         players = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach (GameObject player in players) {
-            player.GetComponent<PlayerInput>().PassivateInput();
-        }
+        if ((SceneManager.GetActiveScene().buildIndex == 2) || SceneManager.GetActiveScene().buildIndex == 5) {
+            foreach (GameObject player in players) {
+                player.GetComponent<PlayerInput>().PassivateInput();
+            }
 
-        foreach (GameObject trigger in dialogueTriggers) {
-            if (trigger.GetComponent<DialogueTrigger>().ID != 1) {
-                trigger.SetActive(false);
+            foreach (GameObject trigger in dialogueTriggers) {
+                if (trigger.GetComponent<DialogueTrigger>().ID != 1) {
+                    trigger.SetActive(false);
+                }
             }
         }
-
+        
         dialogueBox.SetActive(false);
     }
     
@@ -83,7 +85,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EndDialogue() {
-        if (SceneManager.GetActiveScene().buildIndex == 2) {
+        if ((SceneManager.GetActiveScene().buildIndex == 2) || SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5) {
             dialogueBox.SetActive(false);
             sentenceIsComplete = false;
 

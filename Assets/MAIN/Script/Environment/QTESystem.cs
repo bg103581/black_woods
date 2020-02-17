@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 public class QTESystem : MonoBehaviour
 {
     public enum Buttons { A, B, X, Y, error}
-
+    
     [SerializeField]
-    private PlayerInput _dotsControls;
+    private GameObject _dots;
     [SerializeField]
     private int _numberButtons;
     [SerializeField]
@@ -20,6 +20,8 @@ public class QTESystem : MonoBehaviour
     [SerializeField]
     private Sprite[] _buttonSprites;
 
+    private PlayerInput _dotsControls;
+    private Dots _dotsScript;
     [HideInInspector]
     public bool success;
     [HideInInspector]
@@ -31,8 +33,10 @@ public class QTESystem : MonoBehaviour
     private int currentIndex = 0;
 
     private void Start() {
-        _dicButtonSprite = new Dictionary<Buttons, Sprite>();
+        _dotsControls = _dots.GetComponent<PlayerInput>();
+        _dotsScript = _dots.GetComponent<Dots>();
 
+        _dicButtonSprite = new Dictionary<Buttons, Sprite>();
         foreach (Sprite sprite in _buttonSprites) {
             switch(sprite.name) {
                 case "sprite_A":
@@ -104,6 +108,8 @@ public class QTESystem : MonoBehaviour
             currentButton = _buttonsQTE[currentIndex];
             _qte.sprite = _dicButtonSprite[currentButton];
         }
+
+        _dotsScript.SetTriggerAnim("isSinging");
     }
 
     public void ButtonFail() {
