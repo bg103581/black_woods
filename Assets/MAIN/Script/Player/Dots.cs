@@ -93,7 +93,7 @@ public class Dots : Player {
         PlayerFixedUpdate();
 
         if (planeIsUnlock) {
-            if (_isPlaning && !_isGrounded && !isOnStrixHead) {
+            if (_isPlaning && !_isGrounded && !isOnStrixHead && !_mainCamera.GetComponent<CameraControl>().IsToFar) {
 
                 if (_rb.velocity.y < 0) {
                     if (transform.rotation == Quaternion.Euler(0, 90f, 0)) {
