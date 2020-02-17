@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnlockCharacterCompetencesOnTrigger : MonoBehaviour
 {
-    private enum Competences {DOTS_BEC, DOTS_COOP, DOTS_JUMP_ON_STRIX, STRIX_FLAIR, STRIX_CREUSE, STRIX_COOP, STRIX_CATCH}
+    private enum Competences {DOTS_BEC, DOTS_COOP, DOTS_JUMP_ON_STRIX, DOTS_PLANE, DOTS_SING, STRIX_FLAIR, STRIX_CREUSE, STRIX_COOP, STRIX_CATCH}
     private enum Character {STRIX, DOTS}
 
     [SerializeField]
@@ -54,6 +54,12 @@ public class UnlockCharacterCompetencesOnTrigger : MonoBehaviour
                             break;
                         case Competences.DOTS_JUMP_ON_STRIX:
                             _dots.jumpOnStrixIsUnlock = true;
+                            break;
+                        case Competences.DOTS_SING:
+                            _dots.chanteIsUnlock = true;
+                            break;
+                        case Competences.DOTS_PLANE:
+                            _dots.planeIsUnlock = true;
                             break;
                         default:
                             Debug.Log("Mauvaise association Character/Competence");
