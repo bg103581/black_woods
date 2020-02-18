@@ -11,6 +11,17 @@ public class Usable : MonoBehaviour
     private MeshRenderer _mesh;
     [SerializeField]
     private ParticleSystem _blingBling;
+    [SerializeField]
+    private Collider _featherCollider;
+
+    private void Start() {
+        if (tag == "collectible") {
+            Collider dotsCol = GameObject.Find("Dots").GetComponent<Collider>();
+            Collider strixCol = GameObject.Find("Strix").GetComponent<Collider>();
+            Physics.IgnoreCollision(_featherCollider, dotsCol);
+            Physics.IgnoreCollision(_featherCollider, strixCol);
+        }
+    }
 
     //action when the object is detected with strix's flair
     public void OnDetected() {

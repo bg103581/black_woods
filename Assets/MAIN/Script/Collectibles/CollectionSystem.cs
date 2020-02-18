@@ -46,4 +46,16 @@ public class CollectionSystem : MonoBehaviour
         }
         
     }
+
+    private void OnTriggerStay(Collider other) {
+        if (tag != "BlueFeather") {
+            if (other.tag == "Player" && _usable.isDetected) {
+                gameManager.Collectibles++;
+                gameManager.CollectibleState[CollectibleIndex] = false;
+                gameObject.SetActive(false);
+
+                Debug.Log("Feather collected. You have " + gameManager.Collectibles + " feathers in total.");
+            }
+        }
+    }
 }
