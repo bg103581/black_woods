@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: b1ef91ead1b339d4c97575ccc78ccce4,
+        type: 3}
+      propertyPath: m_Name
+      value: Bark_3 Variant
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b1ef91ead1b339d4c97575ccc78ccce4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,10 +67,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: b1ef91ead1b339d4c97575ccc78ccce4,
+    - target: {fileID: -4216859302048453862, guid: b1ef91ead1b339d4c97575ccc78ccce4,
         type: 3}
-      propertyPath: m_Name
-      value: Bark_3
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1ef91ead1b339d4c97575ccc78ccce4, type: 3}
