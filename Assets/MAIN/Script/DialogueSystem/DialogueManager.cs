@@ -48,8 +48,10 @@ public class DialogueManager : MonoBehaviour
                 }
             }
         }
-        
-        dialogueBox.SetActive(false);
+
+        if ((SceneManager.GetActiveScene().buildIndex == 2) || SceneManager.GetActiveScene().buildIndex == 4 || SceneManager.GetActiveScene().buildIndex == 5) {
+            dialogueBox.SetActive(false);
+        }
     }
     
     public void StartDialogue(Dialogue dialogue) {

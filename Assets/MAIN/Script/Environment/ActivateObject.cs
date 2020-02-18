@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ActivateObject : MonoBehaviour
 {
     [SerializeField]
     private Animator _crossFadeReverse;
+    [SerializeField]
+    private Animator _crossFade;
     [SerializeField]
     private GameObject BlueFeather;
     [SerializeField]
@@ -56,8 +59,9 @@ public class ActivateObject : MonoBehaviour
     public void TriggerDetected(ChildCollision child, Collider other) {
         RigidbodyConstraints childConstraints = child.gameObject.GetComponent<Rigidbody>().constraints;
         if (other.gameObject.tag == "caveBranch") {
-            Debug.Log("BRANCH DETECTED");
+            Debug.Log("BRANCH DETECTED : " + other);
             child.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            StartCoroutine("SwitchSceneEndChapter2");
         }
     }
 
@@ -100,5 +104,11 @@ public class ActivateObject : MonoBehaviour
         }
 
         canCrossFade = true;
+    }
+
+    IEnumerator SwitchSceneEndChapter2() {
+        _crossFade.SetTrigger("crossFadeTrigger");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(7);
     }
 }

@@ -8,12 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MAIN/Scene/Menu.unity
     guid: 8ec58cb338d76594397a6aa5db98e8d8
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: "Assets/MAIN/Scene/Cinematiques/Cin\xE9matiqueNewGame.unity"
     guid: 452b3c313277d044ea217d4f3e7999b8
@@ -29,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MAIN/Scene/Chapter3.unity
     guid: 2253f383bec0eb043b1cb619ac15e764
+  - enabled: 1
+    path: Assets/MAIN/Scene/Cinematiques/CinematiqueStartChapter2.unity
+    guid: d26c533e6f571a54895b34af7ad22437
+  - enabled: 1
+    path: Assets/MAIN/Scene/Cinematiques/CinematiqueEndChapter2.unity
+    guid: ae0b739dc241879428f98ed151aa16d6
+  - enabled: 1
+    path: Assets/MAIN/Scene/Cinematiques/CinematiqueStartChapter3.unity
+    guid: 7dd966ca64585b744a0b61efb735bb5a
+  - enabled: 1
+    path: Assets/MAIN/Scene/Cinematiques/CinematiqueEndChapter3.unity
+    guid: 85c6c32a016c00a43b8ecb504a2a78d5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8c6f4853ef460174d8602d006034c611,
       type: 2}
