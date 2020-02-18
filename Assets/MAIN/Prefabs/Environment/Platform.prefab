@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba9f5961bbe7ea4581c1a47cd017d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colliderToIgnore: {fileID: 0}
   _strixPlayer: {fileID: 0}
   _dotsPlayer: {fileID: 0}
 --- !u!1 &8204830972110131069
@@ -456,5 +457,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 0.036383152, z: 1}
-  m_Center: {x: 1, y: 0.47984147, z: -0.5}
+  m_Size: {x: 2.9026604, y: 0.036383152, z: 1}
+  m_Center: {x: 0.95824695, y: 0.47984147, z: -0.5}

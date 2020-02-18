@@ -20,9 +20,19 @@ public class LoadSceneOnTrigger : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other) {
+        if (other.tag == "Player" && _usable.isDetected) {
+            if (!_isTriggered) {
+                _isTriggered = true;
+                StartCoroutine("SwitchSceneEndChapter1");
+            }
+        }
+    }
+
     IEnumerator SwitchSceneEndChapter1() {
         _crossFade.SetTrigger("crossFadeTrigger");
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(3);
     }
+
 }

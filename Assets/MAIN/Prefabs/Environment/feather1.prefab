@@ -80,6 +80,7 @@ MonoBehaviour:
   isUsable: 0
   _mesh: {fileID: 7320589681953562336}
   _blingBling: {fileID: 1173199002930840593}
+  _featherCollider: {fileID: 5905324298811867849}
 --- !u!54 &5825102569348425581
 Rigidbody:
   m_ObjectHideFlags: 0
