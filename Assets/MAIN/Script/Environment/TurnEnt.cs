@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 public class TurnEnt : MonoBehaviour
 {
     [SerializeField]
-    private Transform StartPos;
+    private Transform RotateLeft;
     [SerializeField]
-    private Transform EndPos;
+    private Transform RotateRight;
+    [SerializeField]
+    private Transform UnbendPos;
 
     [SerializeField]
     private Transform Strix;
@@ -20,11 +22,13 @@ public class TurnEnt : MonoBehaviour
     private bool DotsIsIn = false;
     private bool StrixIsIn = false;
 
+
+
     public void TurnLeft() {
-      transform.parent.transform.DORotate(StartPos.rotation.eulerAngles, 3f);
+      transform.parent.transform.DORotate(RotateLeft.rotation.eulerAngles, 3f);
     }
 
-    private void OnCollisionEnter(Collision collision) {
+    private void OnTriggerEnter(Collider collision) {
         if (!isTriggered) {
             if (Dots.GetComponent<Dots>().isOnStrixHead) {
                 StartCoroutine(TurnRight());
@@ -46,7 +50,7 @@ public class TurnEnt : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision) {
+    private void OnTriggerExit(Collider collision) {
         if (collision.gameObject.name == "Dots") {
             DotsIsIn = false;
         }
@@ -56,8 +60,7 @@ public class TurnEnt : MonoBehaviour
     }
 
     IEnumerator TurnRight() {
-        yield return new WaitForSeconds(0.5f);
-
+    
         Strix.GetComponent<PlayerInput>().PassivateInput();
         Dots.GetComponent<PlayerInput>().PassivateInput();
 
@@ -68,14 +71,19 @@ public class TurnEnt : MonoBehaviour
             Dots.transform.SetParent(transform.parent);
         }
 
-        yield return new WaitForSeconds(1.5f);
+        //yield return new WaitForSeconds(1.5f);
 
-        transform.parent.transform.DORotate(EndPos.rotation.eulerAngles, 3f);
+        //transform.parent.transform.DORotate(UnbendPos.rotation.eulerAngles, 3f);
+
+        yield return new WaitForSeconds(2);
+
+        transform.parent.transform.DORotate(RotateRight.rotation.eulerAngles, 3f);
 
         yield return new WaitForSeconds(4f);
 
         if (Dots.GetComponent<Dots>().isOnStrixHead) {
             Strix.transform.SetParent(null);
+
         } else {
             Strix.transform.SetParent(null);
             Dots.transform.SetParent(null);

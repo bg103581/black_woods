@@ -10,6 +10,8 @@ public class RespawnPlayerOnTrigger : MonoBehaviour
     private Animator _crossFadeReverse;
     [SerializeField]
     private Transform _posToRespawn;
+    [SerializeField]
+    private GameObject _qteHolder;
 
     private bool canCrossFade = true;
 
@@ -28,6 +30,10 @@ public class RespawnPlayerOnTrigger : MonoBehaviour
         foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
             Physics.IgnoreCollision(player.GetComponent<Collider>(), GetComponent<Collider>());
             player.GetComponent<PlayerInput>().PassivateInput();
+
+            if (_qteHolder != null) {
+                _qteHolder.GetComponent<QTESystem>().ButtonFail();
+            }
         }
 
         _crossFadeReverse.SetTrigger("crossFadeTrigger");
