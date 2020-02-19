@@ -24,8 +24,11 @@ public class SingReaction : MonoBehaviour {
     
     public void React() {
         if (name == "Firefly") {
+            fireflySequence.Kill();
+
             transform.SetParent(_fireflyPos);
-            transform.DOJump(_fireflyPos.position, 0, 1, 2f).OnComplete(() => EndDOJump(transform, _fireflyPos));
+            transform.DOLocalJump(Vector3.zero, 0, 1, 1.5f).OnComplete(() => EndDOJump(transform, _fireflyPos));
+            //transform.DOLocalMove(Vector3.zero, 1.5f).OnComplete(() => EndDOJump(transform, _fireflyPos));
         } else if (name == "Dragonfly") {
             checkScarabossState = true;
         } else if (name == "Ent_1") {
@@ -81,5 +84,8 @@ public class SingReaction : MonoBehaviour {
         toChange.localScale = reference.localScale;
         toChange.position = reference.position;
         toChange.rotation = reference.rotation;
+
+        //toChange.gameObject.GetComponent<Animator>().enabled = true;
+        toChange.DOShakePosition(3f, new Vector3(0, 0.1f, 0), 1, 0f, false, false).SetLoops(-1);
     }
 }
