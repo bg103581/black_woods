@@ -191,7 +191,7 @@ public class Dots : Player {
         }
     }
 
-    private void MoveToStrixHead() {
+    public void MoveToStrixHead() {
         //animator.SetBool("isJumping", true);
         animator.SetTrigger("triggerIsJumping");
         isOnStrixHead = true;

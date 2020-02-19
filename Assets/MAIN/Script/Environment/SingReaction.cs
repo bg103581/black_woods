@@ -21,7 +21,16 @@ public class SingReaction : MonoBehaviour {
     private Transform _strixTransform;
 
     private bool checkScarabossState = false;
-    
+
+    private Sequence fireflySequence;
+    private Transform upPos, downPos;
+
+    private void Start() {
+        if (name == "Firefly") {
+            InitSequence(false);
+        }
+    }
+
     public void React() {
         if (name == "Firefly") {
             fireflySequence.Kill();
@@ -39,13 +48,16 @@ public class SingReaction : MonoBehaviour {
     private void Update() {
         if (checkScarabossState && (name == "Dragonfly")) {
             if (GetComponent<Usable>().isDetected) {
-                if (_dotsTransform.GetComponent<Dots>().isOnStrixHead) {
-                    Debug.Log("Dragonfly ready");
-                    if (_strixTransform.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name.Equals("idle")) {
-                        checkScarabossState = false;
-                        StartCoroutine(Fly());
-                    }
-                }
+                Debug.Log("Dragonfly ready");
+                //if (_strixTransform.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name.Equals("idle")) {
+                //    checkScarabossState = false;
+                //    StartCoroutine(Fly());
+                //}
+                _strixTransform.GetComponent<PlayerInput>().PassivateInput();
+                _dotsTransform.GetComponent<PlayerInput>().PassivateInput();
+                _dotsTransform.GetComponent<Dots>().MoveToStrixHead();
+                checkScarabossState = false;
+                StartCoroutine(Fly());
             }
         }
     }
@@ -58,9 +70,9 @@ public class SingReaction : MonoBehaviour {
 
         _strixTransform.SetParent(_StrixPosOnDragonfly);
         _strixTransform.GetComponent<Rigidbody>().useGravity = false;
-        _strixTransform.GetComponent<PlayerInput>().PassivateInput();
-        _dotsTransform.GetComponent<PlayerInput>().PassivateInput();
-        _strixTransform.DOJump(_StrixPosOnDragonfly.position, 2, 1, 2f);
+        _strixTransform.DOJump(_StrixPosOnDragonfly.position, 2, 1, 1.5f);
+        _strixTransform.DORotate(Quaternion.Euler(0f, 90f, 0f).eulerAngles, 1f);
+        _strixTransform.GetComponent<Animator>().SetTrigger("triggerIsJumping");
 
         GetComponentInChildren<Animator>().SetBool("isFlying", true);
         
@@ -69,7 +81,8 @@ public class SingReaction : MonoBehaviour {
 
         yield return new WaitForSeconds(4);
         _strixTransform.SetParent(null);
-        _strixTransform.DOJump(_strixLandPos.position, 2, 1, 2f).OnComplete(() => _strixTransform.GetComponent<Rigidbody>().useGravity = true);
+        _strixTransform.GetComponent<Animator>().SetTrigger("triggerIsJumping");
+        _strixTransform.DOJump(_strixLandPos.position, 2, 1, 1.5f).OnComplete(() => _strixTransform.GetComponent<Rigidbody>().useGravity = true);
 
         _strixTransform.GetComponent<PlayerInput>().ActivateInput();
         _dotsTransform.GetComponent<PlayerInput>().ActivateInput();
@@ -85,7 +98,25 @@ public class SingReaction : MonoBehaviour {
         toChange.position = reference.position;
         toChange.rotation = reference.rotation;
 
-        //toChange.gameObject.GetComponent<Animator>().enabled = true;
-        toChange.DOShakePosition(3f, new Vector3(0, 0.1f, 0), 1, 0f, false, false).SetLoops(-1);
+        InitSequence(true);
+    }
+
+    private void InitSequence(bool isLocal) {
+        upPos = transform.Find("UpPos");
+        downPos = transform.Find("DownPos");
+
+        fireflySequence = DOTween.Sequence();
+        fireflySequence.SetLoops(-1);
+
+        if (isLocal) {
+            fireflySequence.Append(transform.DOLocalMove(upPos.localPosition, 1.7f).SetEase(Ease.InOutSine));
+            fireflySequence.Append(transform.DOLocalMove(downPos.localPosition, 1.7f).SetEase(Ease.InOutSine));
+        }
+        else {
+            fireflySequence.Append(transform.DOMove(upPos.position, 1.7f).SetEase(Ease.InOutSine));
+            fireflySequence.Append(transform.DOMove(downPos.position, 1.7f).SetEase(Ease.InOutSine));
+        }
+
+        fireflySequence.Play();
     }
 }
