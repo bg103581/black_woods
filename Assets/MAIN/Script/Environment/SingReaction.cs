@@ -21,7 +21,7 @@ public class SingReaction : MonoBehaviour {
     private Transform _strixTransform;
 
     private bool checkScarabossState = false;
-
+    
     public void React() {
         if (name == "Firefly") {
             transform.SetParent(_fireflyPos);
@@ -39,11 +39,6 @@ public class SingReaction : MonoBehaviour {
                 if (_dotsTransform.GetComponent<Dots>().isOnStrixHead) {
                     Debug.Log("Dragonfly ready");
                     if (_strixTransform.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name.Equals("idle")) {
-                        _strixTransform.SetParent(_StrixPosOnDragonfly);
-                        _strixTransform.GetComponent<Rigidbody>().useGravity = false;
-                        _strixTransform.GetComponent<PlayerInput>().PassivateInput();
-                        _dotsTransform.GetComponent<PlayerInput>().PassivateInput();
-                        _strixTransform.DOJump(_StrixPosOnDragonfly.position, 2, 1, 2f);
                         checkScarabossState = false;
                         StartCoroutine(Fly());
                     }
@@ -53,11 +48,19 @@ public class SingReaction : MonoBehaviour {
     }
 
     IEnumerator Fly() {
-        GetComponentInChildren<Animator>().SetBool("isFlying", true);
 
-        yield return new WaitForSeconds(3);
         transform.DORotate(_dragonflyRotatePos.rotation.eulerAngles, 2);
 
+        yield return new WaitForSeconds(3);
+
+        _strixTransform.SetParent(_StrixPosOnDragonfly);
+        _strixTransform.GetComponent<Rigidbody>().useGravity = false;
+        _strixTransform.GetComponent<PlayerInput>().PassivateInput();
+        _dotsTransform.GetComponent<PlayerInput>().PassivateInput();
+        _strixTransform.DOJump(_StrixPosOnDragonfly.position, 2, 1, 2f);
+
+        GetComponentInChildren<Animator>().SetBool("isFlying", true);
+        
         yield return new WaitForSeconds(2);
         transform.DOJump(_dragonflyPos.position, 2, 1, 3f);
 
