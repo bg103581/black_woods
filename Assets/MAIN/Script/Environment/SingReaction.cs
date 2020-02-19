@@ -21,9 +21,21 @@ public class SingReaction : MonoBehaviour {
     private Transform _strixTransform;
 
     private bool checkScarabossState = false;
+    private Sequence fireflySequence;
+
+    private void Start() {
+        fireflySequence = DOTween.Sequence();
+        fireflySequence.SetLoops(-1);
+
+        fireflySequence.Append(transform.DOShakePosition(3f, new Vector3(0, 0.2f, 0), 1, 0f, false, false));
+
+        fireflySequence.Play();
+    }
 
     public void React() {
         if (name == "Firefly") {
+            fireflySequence.Kill();
+
             transform.SetParent(_fireflyPos);
             transform.DOLocalJump(Vector3.zero, 0, 1, 1.5f).OnComplete(() => EndDOJump(transform, _fireflyPos));
             //transform.DOLocalMove(Vector3.zero, 1.5f).OnComplete(() => EndDOJump(transform, _fireflyPos));
@@ -80,10 +92,7 @@ public class SingReaction : MonoBehaviour {
         toChange.position = reference.position;
         toChange.rotation = reference.rotation;
 
-        toChange.gameObject.GetComponent<Animator>().enabled = true;
-    }
-
-    public void Shake() {
-        transform.DOShakePosition(3f, 0.1f, 1, 90f);
+        //toChange.gameObject.GetComponent<Animator>().enabled = true;
+        toChange.DOShakePosition(3f, new Vector3(0, 0.1f, 0), 1, 0f, false, false).SetLoops(-1);
     }
 }
