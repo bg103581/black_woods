@@ -83,7 +83,11 @@ public class DialogueManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         currentSentence = sentence;
         StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        if ((SceneManager.GetActiveScene().buildIndex != 2) && (SceneManager.GetActiveScene().buildIndex != 4) && (SceneManager.GetActiveScene().buildIndex != 5)) {
+            StartCoroutine(TypeSentence(sentence));
+        } else {
+            CompleteCurrentSentence();
+        }
     }
 
     public void EndDialogue() {

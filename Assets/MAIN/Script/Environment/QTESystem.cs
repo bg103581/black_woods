@@ -8,7 +8,10 @@ using UnityEngine.InputSystem;
 public class QTESystem : MonoBehaviour
 {
     public enum Buttons { A, B, X, Y, error}
-    
+
+    [SerializeField]
+    private ParticleSystem _zzz;
+
     [SerializeField]
     private GameObject _dots;
     [SerializeField]
@@ -101,6 +104,9 @@ public class QTESystem : MonoBehaviour
             isDone = true;
             GetComponent<SingReaction>().React();
             GetComponent<Usable>().isDetected = true;
+
+            _zzz.Stop();
+            _zzz.gameObject.SetActive(false);
         }
         else if (currentIndex < _numberButtons) {
             Debug.Log("success");
