@@ -95,6 +95,9 @@
 		<property name="timelockedOffset">
 			<value>11.950000000000028</value>
 		</property>
+		<property name="pitch">
+			<value>-5</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{4aff4cbe-1ee5-434a-b27a-1c20036f3c38}</destination>
 		</relationship>
