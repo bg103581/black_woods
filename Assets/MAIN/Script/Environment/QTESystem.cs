@@ -116,6 +116,8 @@ public class QTESystem : MonoBehaviour
         Debug.Log("fail");
         currentIndex = 0;
         _qteImage.SetActive(false);
+        GetComponent<Usable>().isDetected = false;
+
         InitQTE();
         _dotsControls.SwitchCurrentActionMap("Player");
     }

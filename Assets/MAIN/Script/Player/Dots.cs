@@ -152,7 +152,7 @@ public class Dots : Player {
     private void OnDotsChante() {
         if (!_stopMoving) {
             if (chanteIsUnlock && _isGrounded) {
-                DisableHorizontalMovement();
+                //DisableHorizontalMovement();
 
                 Collider[] nearObjects = Physics.OverlapSphere(transform.position, _chanteRadius, _layerMaskFlair);
 
@@ -168,6 +168,7 @@ public class Dots : Player {
                         }
                     }
                 }
+                else { nearestObj = null; }
 
                 if (nearestObj != null) {
                     Debug.Log(nearestObj.name);
@@ -176,7 +177,7 @@ public class Dots : Player {
                     }
                 }
 
-                animator.SetTrigger("isSinging");
+                //animator.SetTrigger("isSinging");
             }
         }
     }

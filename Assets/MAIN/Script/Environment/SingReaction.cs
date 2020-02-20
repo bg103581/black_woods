@@ -53,13 +53,21 @@ public class SingReaction : MonoBehaviour {
                 //    checkScarabossState = false;
                 //    StartCoroutine(Fly());
                 //}
+                checkScarabossState = false;
                 _strixTransform.GetComponent<PlayerInput>().PassivateInput();
                 _dotsTransform.GetComponent<PlayerInput>().PassivateInput();
-                _dotsTransform.GetComponent<Dots>().MoveToStrixHead();
-                checkScarabossState = false;
-                StartCoroutine(Fly());
+                _strixTransform.GetComponent<Animator>().SetTrigger("triggerIsJumping");
+                _strixTransform.GetComponent<Rigidbody>().useGravity = false;
+                _strixTransform.GetComponent<Rigidbody>().isKinematic = true;
+                _strixTransform.DOJump(transform.Find("StrixJumpPosBeforeFly").position, 1.5f, 1, 1f).OnComplete(() => BeforeFly());
             }
         }
+    }
+
+    private void BeforeFly() {
+        _dotsTransform.GetComponent<Dots>().MoveToStrixHead();
+
+        StartCoroutine(Fly());
     }
 
     IEnumerator Fly() {
@@ -69,8 +77,8 @@ public class SingReaction : MonoBehaviour {
         yield return new WaitForSeconds(3);
 
         _strixTransform.SetParent(_StrixPosOnDragonfly);
-        _strixTransform.GetComponent<Rigidbody>().useGravity = false;
-        _strixTransform.DOJump(_StrixPosOnDragonfly.position, 2, 1, 1.5f);
+        //_strixTransform.GetComponent<Rigidbody>().useGravity = false;
+        _strixTransform.DOJump(_StrixPosOnDragonfly.position, 2, 1, 1f);
         _strixTransform.DORotate(Quaternion.Euler(0f, 90f, 0f).eulerAngles, 1f);
         _strixTransform.GetComponent<Animator>().SetTrigger("triggerIsJumping");
 
@@ -82,7 +90,7 @@ public class SingReaction : MonoBehaviour {
         yield return new WaitForSeconds(4);
         _strixTransform.SetParent(null);
         _strixTransform.GetComponent<Animator>().SetTrigger("triggerIsJumping");
-        _strixTransform.DOJump(_strixLandPos.position, 2, 1, 1.5f).OnComplete(() => _strixTransform.GetComponent<Rigidbody>().useGravity = true);
+        _strixTransform.DOJump(_strixLandPos.position, 2, 1, 1f).OnComplete(() => ResetStrixRigidBody());
 
         _strixTransform.GetComponent<PlayerInput>().ActivateInput();
         _dotsTransform.GetComponent<PlayerInput>().ActivateInput();
@@ -90,6 +98,11 @@ public class SingReaction : MonoBehaviour {
         GetComponentInChildren<Animator>().SetBool("isFlying", false);
 
         StopAllCoroutines();
+    }
+
+    private void ResetStrixRigidBody() {
+        _strixTransform.GetComponent<Rigidbody>().useGravity = true;
+        _strixTransform.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void EndDOJump(Transform toChange, Transform reference) {
