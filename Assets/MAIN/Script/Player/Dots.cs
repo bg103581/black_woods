@@ -299,7 +299,6 @@ public class Dots : Player {
     private void CheckQTE(QTESystem.Buttons button) {
         if (currentQTE.currentButton == button) {
             currentQTE.ButtonSuccess();
-            transform.Find("SingParticle").GetComponent<ParticleSystem>().Play();
         }
         else {
             currentQTE.ButtonFail();

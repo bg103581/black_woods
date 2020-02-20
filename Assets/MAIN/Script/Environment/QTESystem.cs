@@ -11,6 +11,10 @@ public class QTESystem : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem _zzz;
+    [SerializeField]
+    private ParticleSystem _goodNote;
+    [SerializeField]
+    private ParticleSystem _badNote;
 
     [SerializeField]
     private GameObject _dots;
@@ -113,6 +117,8 @@ public class QTESystem : MonoBehaviour
             currentIndex++;
             currentButton = _buttonsQTE[currentIndex];
             _qte.sprite = _dicButtonSprite[currentButton];
+            _goodNote.Simulate(0.0f, true, true);
+            _goodNote.Play();
         }
 
         _dotsScript.SetTriggerAnim("isSinging");
@@ -122,6 +128,8 @@ public class QTESystem : MonoBehaviour
         Debug.Log("fail");
         currentIndex = 0;
         _qteImage.SetActive(false);
+        _badNote.Simulate(0.0f, true, true);
+        _badNote.Play();
         GetComponent<Usable>().isDetected = false;
 
         InitQTE();
