@@ -29,9 +29,10 @@ public class GameManager : GenericSingleton<GameManager> {
 
         Collectibles = 0;
 
-        CollectibleState = new bool[3];
+        int length = 7;
+        CollectibleState = new bool[length];
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < length; i++) {
             CollectibleState[i] = true;
         }
     }
