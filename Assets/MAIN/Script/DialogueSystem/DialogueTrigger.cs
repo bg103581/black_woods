@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -45,10 +46,16 @@ public class DialogueTrigger : MonoBehaviour
 
     private void CheckIfSentenceIsComplete() {
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Submit")) {
-            if (dialogueManager.sentenceIsComplete) {
-                dialogueManager.DisplayNextSentence();
+            if ((SceneManager.GetActiveScene().buildIndex != 2) && (SceneManager.GetActiveScene().buildIndex != 4) && (SceneManager.GetActiveScene().buildIndex != 5)) {
+                if (dialogueManager.sentenceIsComplete) {
+                    dialogueManager.DisplayNextSentence();
+                } else {
+                    dialogueManager.CompleteCurrentSentence();
+                }
             } else {
-                dialogueManager.CompleteCurrentSentence();
+                if (dialogueManager.sentenceIsComplete) {
+                    dialogueManager.DisplayNextSentence();
+                }
             }
         }
     }
