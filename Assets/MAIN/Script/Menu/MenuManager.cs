@@ -28,7 +28,7 @@ public class MenuManager : MonoBehaviour
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
 
-        EventEmitterRef = GetComponent<FMODUnity.StudioEventEmitter>(); //Sound
+        EventEmitterRef = EventEmitterRef.GetComponent<FMODUnity.StudioEventEmitter>(); //Sound
     }
 
     private void OnEnable() {
