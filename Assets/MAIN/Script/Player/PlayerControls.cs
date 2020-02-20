@@ -51,9 +51,9 @@ public class PlayerControls : IInputActionCollection
                 },
                 {
                     ""name"": ""DotsBec"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""51c6bf55-b238-4a1b-99c4-17b1da7d107a"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -368,7 +368,7 @@ public class PlayerControls : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""138696be-79ad-4c5a-a42b-2f938c07864d"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -390,7 +390,7 @@ public class PlayerControls : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""7218fffd-a8e9-4194-badb-4ed20e1f521f"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",

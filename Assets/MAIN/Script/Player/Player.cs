@@ -134,10 +134,10 @@ public class Player : MonoBehaviour
             else { _moveX = -1f; }
         }
 
-        if (Mathf.Abs(value.Get<Vector2>().y) < 0.4f)
+        if (Mathf.Abs(value.Get<Vector2>().y) < 0.8f)
             _moveY = 0f;
         else {
-            if (value.Get<Vector2>().y > 0.4f) { _moveY = 1f; }
+            if (value.Get<Vector2>().y > 0.8f) { _moveY = 1f; }
             else { _moveY = -1f; }
         }
 

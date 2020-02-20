@@ -121,9 +121,9 @@ public class Dots : Player {
         }
     }
 
-    private void OnDotsBec(InputValue value) {
+    private void OnDotsBec() {
         if (becIsUnlock && (_isGrounded || isOnStrixHead)) {            DisableHorizontalMovement();
-            _isUsingBec = value.Get<float>() > 0;
+            //_isUsingBec = value.Get<float>() > 0;
             if (_objectToHit != null) {
                 if (_objectToHit.tag == "branchDoMove") {
                     _objectToHit.GetComponent<DoMoveOnBec>().OnBecHit();
