@@ -437,8 +437,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7228424, y: 0.31661898, z: 0.562661}
-  m_Center: {x: 0.05580783, y: -0.13185158, z: -0.30913106}
+  m_Size: {x: 0.7228424, y: 0.51959294, z: 0.91212416}
+  m_Center: {x: 0.05580783, y: -0.21378049, z: -0.23546535}
 --- !u!1 &2225524541133106561
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLeft: 0
   _move: {x: 0, y: 0}
-  _playerSpeed: 3
+  _playerSpeed: 3.5
   _jumpStrength: 6
   _fallMultiplier: 1.5
   _airControl: 4
@@ -1005,6 +1005,7 @@ MonoBehaviour:
   _objectDetector: {fileID: 421899377}
   isCoop: 0
   _coopCollider: {fileID: 4192796429674751162}
+  _dots: {fileID: 0}
   coopIsUnlock: 0
   flairIsUnlock: 0
   creuseIsUnlock: 0
