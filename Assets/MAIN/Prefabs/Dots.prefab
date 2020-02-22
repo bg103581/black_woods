@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsLeft: 0
   _move: {x: 0, y: 0}
-  _playerSpeed: 3
+  _playerSpeed: 3.5
   _jumpStrength: 3
   _fallMultiplier: 1.5
   _airControl: 7
@@ -76,6 +76,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   _speedOnTree: 1
+  _chanteRadius: 5
   isOnStrixHead: 0
   _strix: {fileID: 0}
   _strixHead: {fileID: 0}
@@ -83,6 +84,12 @@ MonoBehaviour:
   becIsUnlock: 0
   coopIsUnlock: 0
   jumpOnStrixIsUnlock: 0
+  chanteIsUnlock: 0
+  planeIsUnlock: 0
+  _dotsZPosition: 7.5
+  currentQTE: {fileID: 0}
+  _isPlaning: 0
+  _planeFallSpeed: 0
 --- !u!114 &6318640702546060644
 MonoBehaviour:
   m_ObjectHideFlags: 0
