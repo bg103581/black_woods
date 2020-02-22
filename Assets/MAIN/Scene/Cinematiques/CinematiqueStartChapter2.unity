@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 1
   dialogue:
-    name: Reprise d'esrit
+    name: Reprise d'esprit
     sentences:
     - "Lorsque nos h\xE9ros reprennent conscience"
     - "les jolis arbres ont laiss\xE9 place \xE0 d'autres rabougris et ternes."
