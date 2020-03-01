@@ -279,7 +279,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -404,7 +404,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1174,7 +1174,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 2940147797896957304}
   - {fileID: 3397804771415666177}
-  - {fileID: 823832886530569640}
+  - {fileID: 3352548838875392521}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -1509,7 +1509,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1589,6 +1589,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-4759256573037706601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637174905218510445
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-4514186920182757335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1633,7 +1651,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -1794,7 +1812,7 @@ MonoBehaviour:
   - {fileID: 4909185119827240564}
   - {fileID: 335303919005619874}
   - {fileID: -8689692467977579715}
-  - {fileID: 2082824066641533999}
+  - {fileID: -3155950911731967142}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -1802,6 +1820,24 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 160008
+--- !u!114 &-3728377692961311462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Characters.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Build/Desktop/Characters.bank
+  SubDir: 
+  lastModified: 637178422554876897
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-3694883227391972819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1824,7 +1860,7 @@ MonoBehaviour:
   - {fileID: -7340476242053839092}
   - {fileID: 401033684358905466}
   - {fileID: 1484840528574784743}
-  - {fileID: -7892073119663884649}
+  - {fileID: -191638312991935544}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2001,6 +2037,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 0
+--- !u!114 &-3155950911731967142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Menue.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Build/Desktop/Menue.bank
+  SubDir: 
+  lastModified: 637174905218749800
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-3134531742840742974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2253,7 +2307,7 @@ MonoBehaviour:
   - {fileID: 4909185119827240564}
   - {fileID: 335303919005619874}
   - {fileID: -8689692467977579715}
-  - {fileID: 2082824066641533999}
+  - {fileID: -3155950911731967142}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2314,7 +2368,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 2940147797896957304}
   - {fileID: 3397804771415666177}
-  - {fileID: 823832886530569640}
+  - {fileID: 3352548838875392521}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -2542,7 +2596,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2844,7 +2898,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 2940147797896957304}
   - {fileID: 3397804771415666177}
-  - {fileID: 823832886530569640}
+  - {fileID: 3352548838875392521}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -2915,7 +2969,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -3030,7 +3084,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 2940147797896957304}
   - {fileID: 3397804771415666177}
-  - {fileID: 823832886530569640}
+  - {fileID: 3352548838875392521}
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -3164,6 +3218,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &-191638312991935544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/SFX.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Build/Desktop/SFX.bank
+  SubDir: 
+  lastModified: 637174905218670018
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-143069134423582686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3232,11 +3304,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 1265998392366487206}
-  - {fileID: 8996338221948371166}
-  - {fileID: 1772833095166344798}
-  - {fileID: 2082824066641533999}
-  - {fileID: 823832886530569640}
-  - {fileID: -7892073119663884649}
+  - {fileID: -3728377692961311462}
+  - {fileID: -4759256573037706601}
+  - {fileID: -3155950911731967142}
+  - {fileID: 3352548838875392521}
+  - {fileID: -191638312991935544}
   EditorEvents:
   - {fileID: -8301837453150341772}
   - {fileID: -3748099085196664288}
@@ -3261,10 +3333,10 @@ MonoBehaviour:
   - {fileID: -2328117375376484881}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 1772833095166344798}
+  - {fileID: -4759256573037706601}
   StringsBanks:
   - {fileID: 1265998392366487206}
-  stringsBankWriteTime: 637178408522162851
+  stringsBankWriteTime: 637178422547366945
   cacheVersion: 3
 --- !u!114 &57386705385610475
 MonoBehaviour:
@@ -3306,7 +3378,7 @@ MonoBehaviour:
   - {fileID: -7340476242053839092}
   - {fileID: 401033684358905466}
   - {fileID: 1484840528574784743}
-  - {fileID: -7892073119663884649}
+  - {fileID: -191638312991935544}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -3653,7 +3725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637178408522162851
+  lastModified: 637178422547366945
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -4348,6 +4420,24 @@ MonoBehaviour:
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &3352548838875392521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Music.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/MAIN/Son Valentin/Fmod/Blackwoods Sound/Build/Desktop/Music.bank
+  SubDir: 
+  lastModified: 637178422598590251
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &3397804771415666177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4527,7 +4617,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 2940147797896957304}
   - {fileID: 3397804771415666177}
-  - {fileID: 823832886530569640}
+  - {fileID: 3352548838875392521}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -5515,7 +5605,7 @@ MonoBehaviour:
   - {fileID: -9121515479966560008}
   - {fileID: -7869141220750273674}
   - {fileID: 2285958966618133325}
-  - {fileID: 8996338221948371166}
+  - {fileID: -3728377692961311462}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -5851,7 +5941,7 @@ MonoBehaviour:
   Banks:
   - {fileID: 2940147797896957304}
   - {fileID: 3397804771415666177}
-  - {fileID: 823832886530569640}
+  - {fileID: 3352548838875392521}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
